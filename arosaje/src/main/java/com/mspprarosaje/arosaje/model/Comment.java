@@ -18,7 +18,7 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false)
 	private String text;
 
 	@Column(nullable = false)
@@ -29,4 +29,10 @@ public class Comment {
 
 	@OneToMany
 	private List<Comment> answers;
+
+	@ManyToOne
+	private User user;
+
+	@ManyToOne
+	private Plant plant;
 }

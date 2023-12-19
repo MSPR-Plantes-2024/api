@@ -17,8 +17,4 @@ public class UserType {
 
 	@Column(nullable = false, length = 20)
 	private String name;
-
-	@Column(nullable = false)
-	private String description;
-
 }

@@ -23,4 +23,10 @@ public class Address {
 
 	@Column(nullable = false)
 	private int zipCode;
+
+	@Column(nullable = false)
+	private String otherInfo;
+
+	@ManyToOne
+	private User user;
 }
