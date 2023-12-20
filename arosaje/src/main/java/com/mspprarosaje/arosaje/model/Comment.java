@@ -24,14 +24,11 @@ public class Comment {
 	@Column(nullable = false)
 	private Date publishingDate = new Date();
 
-	@ManyToOne
-	private User publisher;
-
 	@OneToMany
 	private List<Comment> answers;
 
 	@ManyToOne
-	private User user;
+	private User commentator;
 
 	@ManyToOne
 	private Plant plant;
