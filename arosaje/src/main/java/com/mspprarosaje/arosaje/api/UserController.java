@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -21,20 +20,20 @@ public class UserController {
 
     @GetMapping
     public ResponseEntity<List<UserMinimalDTO>> getUsers(){
-        List<User> userList = userService.getUsers();
+        return ResponseEntity.ok(
+                userService.getUsers()
+                        .stream()
+                        .map(this::mapToDto)
+                        .toList()
+        );
+    }
 
-        List<UserMinimalDTO> userMinimalDTOList = new ArrayList<>();
-        for (User user: userList){
-            UserMinimalDTO userMinimalDTO = UserMinimalDTO
-                    .builder()
-                    .id(user.getId())
-                    .firstName(user.getFirstName())
-                    .lastName(user.getLastName())
-                    .build();
-            userMinimalDTOList.add(userMinimalDTO);
-        }
-
-
-        return ResponseEntity.ok(userMinimalDTOList);
+    private UserMinimalDTO mapToDto(User user){
+        return UserMinimalDTO
+                .builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .build();
     }
 }
