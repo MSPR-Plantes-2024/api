@@ -1,25 +1,40 @@
 package com.mspprarosaje.arosaje.api;
 
 import com.mspprarosaje.arosaje.api.dto.UserMinimalDTO;
+import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
+@RequiredArgsConstructor
 public class UserController {
+
+    private final UserService userService;
 
     @GetMapping
     public ResponseEntity<List<UserMinimalDTO>> getUsers(){
-        UserMinimalDTO userMinimalDTO = UserMinimalDTO
-                .builder()
-                .id(1)
-                .firstName("Louis")
-                .lastName("Dupont")
-                .build();
-        return ResponseEntity.ok(List.of(userMinimalDTO));
+        List<User> userList = userService.getUsers();
+
+        List<UserMinimalDTO> userMinimalDTOList = new ArrayList<>();
+        for (User user: userList){
+            UserMinimalDTO userMinimalDTO = UserMinimalDTO
+                    .builder()
+                    .id(user.getId())
+                    .firstName(user.getFirstName())
+                    .lastName(user.getLastName())
+                    .build();
+            userMinimalDTOList.add(userMinimalDTO);
+        }
+
+
+        return ResponseEntity.ok(userMinimalDTOList);
     }
 }
