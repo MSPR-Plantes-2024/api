@@ -13,6 +13,7 @@ public class CommentDTO {
 	private int id;
 	private String text;
 	private Date publishingDate;
-	private UserDTO publisher;
 	private List<CommentDTO> answers;
+	private UserDTO commentator;
+	private PlantDTO plant;
 }
