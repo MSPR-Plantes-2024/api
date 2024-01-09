@@ -9,25 +9,12 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "plant")
-public class Plant {
+@Table(name = "plant_condition")
+public class PlantCondition {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(nullable = false, length = 50)
 	private String name;
-
-	@Column(nullable = false)
-	private String description;
-
-	@OneToOne
-	private Picture picture;
-
-	@Column(nullable = false)
-	private String user;
-
-	@ManyToOne
-	private PlantCondition plantCondition;
-
 }
