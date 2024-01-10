@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.api.dto;
+package com.mspprarosaje.arosaje.api.dto.user;
 
 import lombok.Builder;
 import lombok.Data;
