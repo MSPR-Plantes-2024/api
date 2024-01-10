@@ -13,5 +13,6 @@ public class UserCreateDTO {
 	// private int phoneNumber;
 	private String email;
 	private String password;
-	private UserTypeDTO userType;
+	// private String userTypeDTO
+	private String userTypeUri;
 }
