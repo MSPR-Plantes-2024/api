@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "plant_condition")
 public class PlantCondition {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(nullable = false, length = 50)

@@ -12,9 +12,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.net.URI;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -57,18 +56,12 @@ public class UserController {
         user.setFirstName(userCreateDTO.getFirstName());
         user.setLastName(userCreateDTO.getLastName());
         user.setEmail(userCreateDTO.getEmail());
-        user.setPassword(user.getPassword());
+        user.setPassword(userCreateDTO.getPassword());
 
-        /*UserType userType = convertDtoToUserType(userCreateDTO.getUserType());
-        user.setUserType(userType);*/
+        UserType userType = convertDtoToUserType(userCreateDTO.getUserType());
+        user.setUserType(userType);
 
         User createdUser = userService.createUser(user);
-
-        URI userTypeUri = ServletUriComponentsBuilder
-                .fromCurrentContextPath()
-                .path("/api/v1/user_types/{id}")
-                .buildAndExpand(createdUser.getUserType().getId())
-                .toUri();
 
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(UserCreateDTO.builder()
@@ -77,7 +70,10 @@ public class UserController {
                         .email(createdUser.getEmail())
                         .password(createdUser.getPassword())
                         // Remarque : normalement, on ne renvoie pas le mot de passe
-                        .userTypeUri(userTypeUri.toString())
+                        .userType(UserTypeDTO.builder()
+                                .name(userType.getName())
+                                .id(userType.getId())
+                                .build())
                         .build());
     }
 
