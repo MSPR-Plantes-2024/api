@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "plant")
 public class Plant {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(nullable = false, length = 50)
@@ -24,8 +24,8 @@ public class Plant {
 	@OneToOne
 	private Picture picture;
 
-	@Column(nullable = false)
-	private String user;
+	@ManyToOne
+	private User user;
 
 	@ManyToOne
 	private PlantCondition plantCondition;

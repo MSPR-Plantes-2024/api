@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "comment")
 public class Comment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(nullable = false, length = 50)

@@ -6,7 +6,7 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PlantMapper.class})
 public interface PublicationMapper {
 		Publication fromDto(PublicationDTO publicationDto);
 
