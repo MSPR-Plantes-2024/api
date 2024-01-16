@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "address")
 public class Address {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(nullable = false)
@@ -23,4 +23,10 @@ public class Address {
 
 	@Column(nullable = false)
 	private int zipCode;
+
+	@Column(nullable = false)
+	private String otherInfo;
+
+	@ManyToOne
+	private User user;
 }

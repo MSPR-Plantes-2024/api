@@ -12,13 +12,9 @@ import lombok.Setter;
 @Table(name = "user_type")
 public class UserType {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(nullable = false, length = 20)
 	private String name;
-
-	@Column(nullable = false)
-	private String description;
-
 }

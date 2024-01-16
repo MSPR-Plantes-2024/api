@@ -15,18 +15,21 @@ import java.util.List;
 @Table(name = "comment")
 public class Comment {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false)
 	private String text;
 
 	@Column(nullable = false)
 	private Date publishingDate = new Date();
 
-	@ManyToOne
-	private User publisher;
-
 	@OneToMany
 	private List<Comment> answers;
+
+	@ManyToOne
+	private User commentator;
+
+	@ManyToOne
+	private Plant plant;
 }

@@ -12,7 +12,7 @@ import lombok.Setter;
 @Table(name = "user")
 public class User {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO) //GenerationType.AUTO à utiliser pour une BDD SQLite
 	private int id;
 
 	@Column(nullable = false, length = 50)
@@ -21,9 +21,10 @@ public class User {
 	@Column(nullable = false, length = 50)
 	private String lastName;
 
+	/* Mises en commentaire car sujet à théories sur de potentielles failles de sécurité
 	@Column(nullable = false, length = 10)
 	private int phoneNumber;
-
+	*/
 	@Column(nullable = false)
 	private String email;
 

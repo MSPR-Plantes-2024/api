@@ -2,7 +2,7 @@ package com.mspprarosaje.arosaje.api.mappers;
 
 import java.util.List;
 
-import com.mspprarosaje.arosaje.api.dto.UserDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
 import com.mspprarosaje.arosaje.model.User;
 import org.mapstruct.Mapper;
 
