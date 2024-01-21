@@ -4,6 +4,7 @@ import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserAccountDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserCreateDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
+import com.mspprarosaje.arosaje.api.mappers.UserMapper;
 import com.mspprarosaje.arosaje.model.User;
 import com.mspprarosaje.arosaje.model.UserType;
 import com.mspprarosaje.arosaje.services.UserService;
@@ -24,15 +25,11 @@ import java.util.Optional;
 public class UserController {
 
     private final UserService userService;
+    private final UserMapper userMapper;
 
     @GetMapping
     public ResponseEntity<List<UserMinimalDTO>> getUsers(){
-        return ResponseEntity.ok(
-                userService.getUsers()
-                        .stream()
-                        .map(this::mapToDto)
-                        .toList()
-        );
+        return ResponseEntity.ok(userMapper.toMinimalDtos(userService.getUsers()));
     }
 
     @GetMapping("account/{id}")
@@ -82,15 +79,6 @@ public class UserController {
         userType.setId(userTypeDTO.getId());
         userType.setName(userTypeDTO.getName());
         return userType;
-    }
-
-    private UserMinimalDTO mapToDto(User user){
-        return UserMinimalDTO
-                .builder()
-                .id(user.getId())
-                .firstName(user.getFirstName())
-                .lastName(user.getLastName())
-                .build();
     }
 
     private UserTypeDTO mapToUserTypeDto(UserType userType){

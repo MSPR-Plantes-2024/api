@@ -21,7 +21,7 @@ public class User {
 	@Column(nullable = false, length = 50)
 	private String lastName;
 
-	/* Mises en commentaire car sujet à théories sur de potentielles failles de sécurité
+	/* Mises en commentaire, car sujet à théories sur de potentielles failles de sécurité
 	@Column(nullable = false, length = 10)
 	private int phoneNumber;
 	*/
