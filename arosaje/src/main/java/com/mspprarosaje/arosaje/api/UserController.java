@@ -3,6 +3,7 @@ package com.mspprarosaje.arosaje.api;
 import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserAccountDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserCreateDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.api.mappers.UserMapper;
 import com.mspprarosaje.arosaje.model.User;
@@ -48,15 +49,32 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
-        log.atInfo().log("createUser");
-
-        User createdUser = userService.createUser(this.userMapper.fromDto(userCreateDTO));
+        User createdUser = userService.saveUser(this.userMapper.fromDto(userCreateDTO));
 
         // UserMapper va mapper l'ensemble de l'objet User, y compris UserType.
         UserCreateDTO createdUserDTO = userMapper.toCreateDto(createdUser);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(createdUserDTO);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UserDTO> updateUser(@PathVariable() Integer id, @RequestBody UserDTO userDTO){
+        if (!id.equals(userDTO.getId())) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .build();
+        }
+
+        if (this.userService.existsById(id)) {
+            return ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
+        };
+
+        User updatedUser = userService.saveUser(this.userMapper.fromDto(userDTO));
+        return ResponseEntity.ok(this.userMapper.toDto(updatedUser));
+    }
+
 
     private UserType convertDtoToUserType(UserTypeDTO userTypeDTO) {
         UserType userType = new UserType();
