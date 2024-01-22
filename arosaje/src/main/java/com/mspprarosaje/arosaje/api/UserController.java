@@ -49,29 +49,13 @@ public class UserController {
     @PostMapping
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
         log.atInfo().log("createUser");
-        User user = new User();
-        user.setFirstName(userCreateDTO.getFirstName());
-        user.setLastName(userCreateDTO.getLastName());
-        user.setEmail(userCreateDTO.getEmail());
-        user.setPassword(userCreateDTO.getPassword());
 
-        UserType userType = convertDtoToUserType(userCreateDTO.getUserType());
-        user.setUserType(userType);
+        User createdUser = userService.createUser(this.userMapper.fromDto(userCreateDTO));
 
-        User createdUser = userService.createUser(user);
+        // UserMapper va mapper l'ensemble de l'objet User, y compris UserType.
+        UserCreateDTO createdUserDTO = userMapper.toCreateDto(createdUser);
 
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(UserCreateDTO.builder()
-                        .firstName(createdUser.getFirstName())
-                        .lastName(createdUser.getLastName())
-                        .email(createdUser.getEmail())
-                        .password(createdUser.getPassword())
-                        // Remarque : normalement, on ne renvoie pas le mot de passe
-                        .userType(UserTypeDTO.builder()
-                                .name(userType.getName())
-                                .id(userType.getId())
-                                .build())
-                        .build());
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUserDTO);
     }
 
     private UserType convertDtoToUserType(UserTypeDTO userTypeDTO) {
