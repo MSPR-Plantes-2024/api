@@ -22,13 +22,23 @@ public class PlantController {
 
 	private final PlantService plantService;
 	private final PlantMapper plantMapper;
+
+	/**
+	 * Recovers all plants created
+	 * @return List of plantDTO
+	 */
 	@GetMapping
 	public ResponseEntity<List<PlantDTO>> getPlants() {
 		return ResponseEntity.ok(this.plantMapper.toDtos(this.plantService.getPlants()));
 	}
 
+	/**
+	 * Recover the plant corresponding to the id entered in parameter
+	 * @param id Plant id to be recovered
+	 * @return The plant as plantDTO object
+	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<PlantDTO> getPlant(@PathVariable() Integer id) {
+	public ResponseEntity<PlantDTO> getPlantById(@PathVariable() Integer id) {
 		Optional<Plant> plantOptional = this.plantService.getPlantById(id);
 		Optional<PlantDTO> plantDTOOptional = plantOptional.map(plant -> {
 			return PlantDTO.builder()
@@ -40,6 +50,17 @@ public class PlantController {
 		});
 		return ResponseEntity.of(plantDTOOptional);
 	}
+
+	/**
+	 * Retrieves the list of plants linked to a user
+	 * @param userId Id of the user
+	 * @return The List of plantDTO object linked with a userId
+	 */
+	@GetMapping("users/{userId}")
+	public ResponseEntity<List<PlantDTO>> getPlantByUserId(@PathVariable() Integer userId) {
+		return ResponseEntity.ok(this.plantMapper.toDtos(this.plantService.getPlantsByUserId(userId)));
+	}
+
 	@PostMapping()
 	public ResponseEntity<PlantDTO> createPlant(
 		@RequestBody PlantDTO plantDTO
@@ -53,6 +74,12 @@ public class PlantController {
 			.body(this.plantMapper.toDto(plant));
 	}
 
+	/***
+	 *
+	 * @param id  Plant id to be updated
+	 * @param plantDTO PlantDTO Object : model for updating
+	 * @return The updated plant as plantDTO object
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<PlantDTO> updatePlant(
 		@PathVariable() Integer id,
