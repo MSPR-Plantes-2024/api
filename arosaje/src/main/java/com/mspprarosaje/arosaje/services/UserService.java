@@ -10,6 +10,7 @@ public interface UserService {
 
     Optional<User> getUserAccountById(Integer id);
 
-    User saveUser(User user);
+    User saveUser(User user, int userTypeId);
     boolean existsById(Integer id);
+    void deleteById(Integer id);
 }

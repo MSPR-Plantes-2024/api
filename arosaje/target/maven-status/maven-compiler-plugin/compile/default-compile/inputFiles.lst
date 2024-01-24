@@ -5,7 +5,6 @@ C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\mappers\PublicationMapper.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\dto\UserTypeDTO.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\model\PlantCondition.java
-C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\mappers\UserMapper.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\dto\AddressDTO.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\dto\PublicationDTO.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\model\UserType.java
@@ -26,6 +25,9 @@ C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\model\Picture.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\UserController.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\model\Comment.java
+C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\mappers\user\UserCreateMapper.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\dto\user\UserMinimalDTO.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\model\Message.java
 C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\dto\CommentDTO.java
+C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\mappers\user\UserMapper.java
+C:\Users\thibl\OneDrive\Bureau\EPSI\B3-2\MSPR\code\api\arosaje\src\main\java\com\mspprarosaje\arosaje\api\mappers\user\UserMinimalMapper.java
