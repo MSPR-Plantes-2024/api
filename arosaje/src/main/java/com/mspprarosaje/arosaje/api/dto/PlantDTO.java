@@ -9,7 +9,6 @@ import lombok.Data;
 public class PlantDTO {
 
 	private int id;
-	private Picture picture;
 	private String name;
 	private String description;
 	private int picture_id;

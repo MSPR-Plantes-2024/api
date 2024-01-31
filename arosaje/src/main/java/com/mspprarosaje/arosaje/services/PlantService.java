@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.services;
 
+import com.mspprarosaje.arosaje.api.dto.PlantDTO;
 import com.mspprarosaje.arosaje.model.Plant;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public interface PlantService {
 
 	List<Plant> getPlants();
 	Optional<Plant>  getPlantById(Integer id);
-	Plant savePlant(Plant plant, int userId, int pictureId);
+	List<Plant> getPlantsByUserId(Integer userId);
+ 	Plant savePlant(Plant plant, int userId, int pictureId);
 	void deleteById(Integer id);
 }
