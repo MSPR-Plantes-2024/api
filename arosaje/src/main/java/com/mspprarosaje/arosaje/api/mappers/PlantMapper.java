@@ -10,13 +10,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PlantMapper {
 
-	@Mapping(ignore = true, target = "picture")
-	@Mapping(ignore = true, target = "user")
+	//@Mapping(ignore = true, target = "picture")
+	//@Mapping(ignore = true, target = "user")
 	Plant fromDto(PlantDTO plantDTO);
 
 	List<Plant> fromDtos(List<PlantDTO> plantsDTO);
 
-	@Mapping(source = "picture", target = "picture")
+	//@Mapping(source = "picture", target = "picture")
 	PlantDTO toDto(Plant plant);
 
 	List<PlantDTO> toDtos(List<Plant> plants);

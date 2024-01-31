@@ -45,7 +45,8 @@ public class PlantController {
 				.id(plant.getId())
 				.name(plant.getName())
 				.description(plant.getDescription())
-				.picture(plant.getPicture())
+				.picture_id(plant.getPicture().getId())
+					.user_id(plant.getUser().getId())
 				.build();
 		});
 		return ResponseEntity.of(plantDTOOptional);
@@ -61,6 +62,11 @@ public class PlantController {
 		return ResponseEntity.ok(this.plantMapper.toDtos(this.plantService.getPlantsByUserId(userId)));
 	}
 
+	/***
+	 * Create a plant in the database
+	 * @param plantDTO
+	 * @return plantDTO object created
+	 */
 	@PostMapping()
 	public ResponseEntity<PlantDTO> createPlant(
 		@RequestBody PlantDTO plantDTO
@@ -106,6 +112,12 @@ public class PlantController {
 	}
 
 	//TODO Remplacer la forêt de if par un try catch
+
+	/***
+	 * Deletes a plant from the database according to the id entered in parameter
+	 * @param id plant to delete
+	 * @return ResponseEntity to describe the successful deletion
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deletePower(
 		@PathVariable() Integer id

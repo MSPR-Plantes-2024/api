@@ -9,4 +9,5 @@ import java.util.Optional;
 
 public interface PlantRepository extends JpaRepository<Plant, Integer> {
     List<Plant> findByUserId(Integer userId);
+
 }
