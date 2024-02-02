@@ -3,6 +3,7 @@ com\mspprarosaje\arosaje\api\mappers\user\UserMapperImpl.class
 com\mspprarosaje\arosaje\api\mappers\UserTypeMapperImpl.class
 com\mspprarosaje\arosaje\model\PlantCondition.class
 com\mspprarosaje\arosaje\api\dto\PublicationDTO$PublicationDTOBuilder.class
+com\mspprarosaje\arosaje\api\dto\user\UserUpdateDTO.class
 com\mspprarosaje\arosaje\services\impl\UserTypeServiceImpl.class
 com\mspprarosaje\arosaje\api\dto\user\UserDTO.class
 com\mspprarosaje\arosaje\api\mappers\PublicationMapperImpl.class
@@ -12,12 +13,14 @@ com\mspprarosaje\arosaje\model\User.class
 com\mspprarosaje\arosaje\api\dto\user\UserAccountDTO.class
 com\mspprarosaje\arosaje\model\Address.class
 com\mspprarosaje\arosaje\model\Plant.class
+com\mspprarosaje\arosaje\api\dto\user\UserUpdateDTO$UserUpdateDTOBuilder.class
 com\mspprarosaje\arosaje\api\mappers\user\UserCreateMapperImpl.class
 com\mspprarosaje\arosaje\model\UserType.class
 com\mspprarosaje\arosaje\model\Publication.class
 com\mspprarosaje\arosaje\api\UserTypeController.class
 com\mspprarosaje\arosaje\api\dto\CommentDTO$CommentDTOBuilder.class
 com\mspprarosaje\arosaje\api\dto\user\UserCreateDTO.class
+com\mspprarosaje\arosaje\api\mappers\user\UserUpdateMapper.class
 com\mspprarosaje\arosaje\services\UserService.class
 com\mspprarosaje\arosaje\services\impl\UserServiceImpl.class
 com\mspprarosaje\arosaje\api\UserController.class
@@ -38,6 +41,7 @@ com\mspprarosaje\arosaje\api\dto\user\UserDTO$UserDTOBuilder.class
 com\mspprarosaje\arosaje\api\mappers\user\UserMapper.class
 com\mspprarosaje\arosaje\ArosajeApplication.class
 com\mspprarosaje\arosaje\api\dto\AddressDTO.class
+com\mspprarosaje\arosaje\api\mappers\user\UserUpdateMapperImpl.class
 com\mspprarosaje\arosaje\api\dto\UserTypeDTO.class
 com\mspprarosaje\arosaje\api\mappers\UserTypeMapper.class
 com\mspprarosaje\arosaje\api\dto\MessageDTO.class

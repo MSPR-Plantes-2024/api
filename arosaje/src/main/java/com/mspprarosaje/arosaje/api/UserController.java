@@ -1,13 +1,11 @@
 package com.mspprarosaje.arosaje.api;
 
 import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserAccountDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserCreateDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
+import com.mspprarosaje.arosaje.api.dto.user.*;
 import com.mspprarosaje.arosaje.api.mappers.user.UserCreateMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMinimalMapper;
+import com.mspprarosaje.arosaje.api.mappers.user.UserUpdateMapper;
 import com.mspprarosaje.arosaje.model.User;
 import com.mspprarosaje.arosaje.model.UserType;
 import com.mspprarosaje.arosaje.services.UserService;
@@ -31,13 +29,14 @@ public class UserController {
     private final UserMapper userMapper;
     private final UserMinimalMapper userMinimalMapper;
     private final UserCreateMapper userCreateMapper;
+    private final UserUpdateMapper userUpdateMapper;
 
     @GetMapping
     public ResponseEntity<List<UserMinimalDTO>> getUsers(){
         return ResponseEntity.ok(userMinimalMapper.toMinimalDtos(userService.getUsers()));
     }
 
-    @GetMapping("account/{id}")
+    @GetMapping("/account/{id}")
     public ResponseEntity<UserAccountDTO> getUserAccountById(@PathVariable() Integer id){
         log.atInfo().log("getUserAccountById {}", id);
         Optional<User> userOptional = userService.getUserAccountById(id);
@@ -62,9 +61,9 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> updateUser(@PathVariable() Integer id,
-                                              @RequestBody UserDTO userDTO){
-        if (!id.equals(userDTO.getId())) {
+    public ResponseEntity<UserUpdateDTO> updateUser(@PathVariable() Integer id,
+                                                        @RequestBody UserUpdateDTO userUpdateDTO){
+        if (!id.equals(userUpdateDTO.getId())) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .build();
@@ -76,8 +75,8 @@ public class UserController {
                     .build();
         }
 
-        User updatedUser = userService.saveUser(this.userMapper.fromDto(userDTO), userDTO.getUserType().getId());
-        return ResponseEntity.ok(this.userMapper.toDto(updatedUser));
+        User updatedUser = userService.saveUser(this.userUpdateMapper.fromDto(userUpdateDTO), userUpdateDTO.getUserType());
+        return ResponseEntity.ok(this.userUpdateMapper.toDto(updatedUser));
     }
 
 
