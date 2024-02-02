@@ -1,6 +1,5 @@
 package com.mspprarosaje.arosaje.services.impl;
 
-import com.mspprarosaje.arosaje.api.dto.PlantDTO;
 import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.repositories.PlantRepository;
 import com.mspprarosaje.arosaje.services.PlantService;
@@ -31,7 +30,7 @@ public class PlantServiceImpl implements PlantService {
 
 	@Override
 	//TODO utiliser le service User pour convertir user et picture en models
-	public Plant savePlant(Plant plant, int userId, int pictureId) {
+	public Plant savePlant(Plant plant, int userId) {
 		return this.plantRepository.save(plant);
 	}
 

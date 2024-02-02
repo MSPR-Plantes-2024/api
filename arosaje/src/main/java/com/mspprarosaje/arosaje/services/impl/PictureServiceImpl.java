@@ -2,14 +2,18 @@ package com.mspprarosaje.arosaje.services.impl;
 
 import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.services.PictureService;
+import com.mspprarosaje.arosaje.repositories.PictureRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class PictureServiceImpl implements PictureService {
+
+	final PictureRepository pictureRepository;
 
     /**
      * @param id
@@ -17,6 +21,21 @@ public class PictureServiceImpl implements PictureService {
      */
     @Override
     public Optional<Picture> getPictureById(Integer id) {
-        return Optional.empty();
+        return this.pictureRepository.findById(id);
     }
+
+	@Override
+	public Picture createPicture(Picture picture) {
+		return this.pictureRepository.save(picture);
+	}
+
+	@Override
+	public Picture updatePicture(Integer id, Picture picture) {
+		return this.pictureRepository.save(picture);
+	}
+
+	@Override
+	public List<Picture> getPictures() {
+		return this.pictureRepository.findAll();
+	}
 }

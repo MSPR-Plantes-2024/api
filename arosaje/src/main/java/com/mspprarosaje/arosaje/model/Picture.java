@@ -20,6 +20,12 @@ public class Picture {
 	@Column(nullable = false)
 	private String url;
 
-	@Column(nullable = false)
-	private Date creationDate = new Date();
+	@Temporal(TemporalType.DATE)
+	@Column(updatable = false)
+	private Date creationDate ;
+
+	@PrePersist
+	protected void onCreate() {
+		creationDate = new Date();
+	}
 }

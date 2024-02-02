@@ -29,7 +29,12 @@ public class PlantController {
 	 */
 	@GetMapping
 	public ResponseEntity<List<PlantDTO>> getPlants() {
-		return ResponseEntity.ok(this.plantMapper.toDtos(this.plantService.getPlants()));
+		ResponseEntity<List<PlantDTO>> responseEntity;
+		List<Plant> plants = this.plantService.getPlants();
+		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
+			responseEntity = ResponseEntity.ok(this.plantMapper.toDtos(plants));
+		};
+		return responseEntity;
 	}
 
 	/**
@@ -39,17 +44,12 @@ public class PlantController {
 	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<PlantDTO> getPlantById(@PathVariable() Integer id) {
+		ResponseEntity<PlantDTO> plantDTOResponseEntity;
 		Optional<Plant> plantOptional = this.plantService.getPlantById(id);
-		Optional<PlantDTO> plantDTOOptional = plantOptional.map(plant -> {
-			return PlantDTO.builder()
-				.id(plant.getId())
-				.name(plant.getName())
-				.description(plant.getDescription())
-				.picture_id(plant.getPicture().getId())
-					.user_id(plant.getUser().getId())
-				.build();
-		});
-		return ResponseEntity.of(plantDTOOptional);
+		if(plantOptional.isEmpty()){plantDTOResponseEntity = ResponseEntity.notFound().build();} else {
+			plantDTOResponseEntity = ResponseEntity.ok(this.plantMapper.toDto(plantOptional.get()));
+		};
+		return plantDTOResponseEntity;
 	}
 
 	/**
@@ -59,7 +59,12 @@ public class PlantController {
 	 */
 	@GetMapping("users/{userId}")
 	public ResponseEntity<List<PlantDTO>> getPlantByUserId(@PathVariable() Integer userId) {
-		return ResponseEntity.ok(this.plantMapper.toDtos(this.plantService.getPlantsByUserId(userId)));
+		ResponseEntity<List<PlantDTO>> responseEntity;
+		List<Plant> plants = this.plantService.getPlantsByUserId(userId);
+		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
+			responseEntity = ResponseEntity.ok(this.plantMapper.toDtos(plants));
+		};
+		return responseEntity;
 	}
 
 	/***
@@ -71,13 +76,21 @@ public class PlantController {
 	public ResponseEntity<PlantDTO> createPlant(
 		@RequestBody PlantDTO plantDTO
 	) {
-		Plant plant = plantService.savePlant(
-			this.plantMapper.fromDto(plantDTO), plantDTO.getUser_id(), plantDTO.getPicture_id()
-		);
+		ResponseEntity<PlantDTO> responseEntity;
 
-		return ResponseEntity
-			.status(HttpStatus.CREATED)
-			.body(this.plantMapper.toDto(plant));
+		Plant plant = plantService.savePlant(
+			this.plantMapper.fromDto(plantDTO), plantDTO.getUser_id());
+
+		if (plant == null) {
+			responseEntity = ResponseEntity
+				.status(HttpStatus.INTERNAL_SERVER_ERROR)
+				.build();
+		} else {
+			responseEntity = ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(this.plantMapper.toDto(plant));
+		}
+		return responseEntity;
 	}
 
 	/***
@@ -103,7 +116,7 @@ public class PlantController {
 				.build();
 		} else {
 			Plant updatedPlant = plantService.savePlant(
-				this.plantMapper.fromDto(plantDTO), plantDTO.getUser_id(), plantDTO.getPicture_id());
+				this.plantMapper.fromDto(plantDTO), plantDTO.getUser_id());
 			responseEntity = ResponseEntity
 				.ok(this.plantMapper.toDto(updatedPlant));
 		}

@@ -11,7 +11,7 @@ public class PlantDTO {
 	private int id;
 	private String name;
 	private String description;
-	private int picture_id;
+	private PictureDTO pictureDTO;
 	private int user_id;
 
 
