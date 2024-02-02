@@ -24,7 +24,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User createUser(User user){
+    public User saveUser(User user, int userTypeId){
         return this.userRepository.save(user);
     }
+
+    @Override
+    public boolean existsById(Integer id) {
+        return this.userRepository.existsById(id);
+    }
+
+    @Override
+    public void deleteById(Integer id){
+        this.userRepository.deleteById(id);
+    }
+
 }
