@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Setter
 @Getter
@@ -29,4 +32,7 @@ public class User {
 
 	@ManyToOne
 	private UserType userType;
+
+	@OneToMany(mappedBy = "user")
+	private List<Address> addresses = new ArrayList<>();
 }
