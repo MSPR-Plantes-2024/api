@@ -22,9 +22,9 @@ public class Address {
 	private String city;
 
 	@Column(nullable = false)
-	private int zipCode;
+	private String zipCode;
 
-	@Column(nullable = false)
+	@Column
 	private String otherInfo;
 
 	@ManyToOne

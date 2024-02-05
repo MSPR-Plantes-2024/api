@@ -36,24 +36,16 @@ public class UserController {
         return ResponseEntity.ok(userMinimalMapper.toMinimalDtos(userService.getUsers()));
     }
 
-    @GetMapping("/account/{id}")
-    public ResponseEntity<UserAccountDTO> getUserAccountById(@PathVariable() Integer id){
-        log.atInfo().log("getUserAccountById {}", id);
-        Optional<User> userOptional = userService.getUserAccountById(id);
-        Optional<UserAccountDTO> userAccountDTOOptional = userOptional.map(user -> UserAccountDTO.builder()
-                    .id(user.getId())
-                    .firstName(user.getFirstName())
-                    .lastName(user.getLastName())
-                    .userType(this.mapToUserTypeDto(user.getUserType()))
-                    .build());
-
-        return ResponseEntity.of(userAccountDTOOptional);
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDTO> getUserAccountById(@PathVariable() Integer id){
+        return ResponseEntity.of(this.userService.getUserAccountById(id).map(this.userMapper::toDto));
     }
 
     @PostMapping
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
         User createdUser = userService.saveUser(
                 this.userCreateMapper.fromDto(userCreateDTO),
+                //userCreateDTO.getUserType().getId()
                 userCreateDTO.getUserType()
         );
 
@@ -90,12 +82,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-    }
-
-    private UserTypeDTO mapToUserTypeDto(UserType userType){
-        return UserTypeDTO.builder()
-                .id(userType.getId())
-                .name(userType.getName())
-                .build();
     }
 }
