@@ -7,9 +7,8 @@ import java.util.Optional;
 
 public interface AddressService {
     List<Address> getAddresses();
-    Optional<Address> getAddressById(Integer id);
+    Optional<Address> getAddressById(int id);
     Address saveAddress(Address address, int userId);
-
     boolean existsById(Integer id);
     void deleteById(Integer id);
 }

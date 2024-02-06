@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-02T17:15:20+0100",
+    date = "2024-02-06T16:48:25+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
@@ -36,6 +36,20 @@ public class AddressMapperImpl implements AddressMapper {
     }
 
     @Override
+    public List<Address> fromDtos(List<AddressDTO> addressDto) {
+        if ( addressDto == null ) {
+            return null;
+        }
+
+        List<Address> list = new ArrayList<Address>( addressDto.size() );
+        for ( AddressDTO addressDTO : addressDto ) {
+            list.add( fromDto( addressDTO ) );
+        }
+
+        return list;
+    }
+
+    @Override
     public AddressDTO toDto(Address address) {
         if ( address == null ) {
             return null;
@@ -54,14 +68,14 @@ public class AddressMapperImpl implements AddressMapper {
     }
 
     @Override
-    public List<AddressDTO> toDtos(List<Address> address) {
-        if ( address == null ) {
+    public List<AddressDTO> toDtos(List<Address> addresses) {
+        if ( addresses == null ) {
             return null;
         }
 
-        List<AddressDTO> list = new ArrayList<AddressDTO>( address.size() );
-        for ( Address address1 : address ) {
-            list.add( toDto( address1 ) );
+        List<AddressDTO> list = new ArrayList<AddressDTO>( addresses.size() );
+        for ( Address address : addresses ) {
+            list.add( toDto( address ) );
         }
 
         return list;

@@ -7,9 +7,7 @@ import java.util.Optional;
 
 public interface UserService {
     List<User> getUsers();
-
     Optional<User> getUserAccountById(Integer id);
-
     User saveUser(User user, int userTypeId);
     boolean existsById(Integer id);
     void deleteById(Integer id);

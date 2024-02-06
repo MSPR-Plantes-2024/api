@@ -7,7 +7,6 @@ import com.mspprarosaje.arosaje.api.mappers.address.AddressCreateMapper;
 import com.mspprarosaje.arosaje.api.mappers.address.AddressMapper;
 import com.mspprarosaje.arosaje.api.mappers.address.AddressUpdateMapper;
 import com.mspprarosaje.arosaje.model.Address;
-import com.mspprarosaje.arosaje.model.User;
 import com.mspprarosaje.arosaje.services.AddressService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -62,7 +61,10 @@ public class AddressController {
                     .build();
         }
 
-        Address updatedAddress = addressService.saveAddress(this.addressUpdateMapper.fromDto(addressUpdateDTO), addressUpdateDTO.getUser().getId());
+        Address updatedAddress = addressService.saveAddress(
+                this.addressUpdateMapper.fromDto(addressUpdateDTO),
+                addressUpdateDTO.getUser().getId()
+        );
         return ResponseEntity.ok(this.addressUpdateMapper.toDto(updatedAddress));
     }
 

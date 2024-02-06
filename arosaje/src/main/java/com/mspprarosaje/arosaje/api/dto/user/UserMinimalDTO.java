@@ -1,10 +1,14 @@
 package com.mspprarosaje.arosaje.api.dto.user;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserMinimalDTO {
 	private int id;
 	private String firstName;
