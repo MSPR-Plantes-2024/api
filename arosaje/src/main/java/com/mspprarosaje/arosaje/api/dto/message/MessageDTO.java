@@ -1,6 +1,6 @@
-package com.mspprarosaje.arosaje.api.dto;
+package com.mspprarosaje.arosaje.api.dto.message;
 
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,6 +12,6 @@ public class MessageDTO {
     private int id;
     private String text;
     private Date publishingDate;
-    private UserDTO sender;
-    private UserDTO receiver;
+    private UserMinimalDTO sender;
+    private UserMinimalDTO receiver;
 }

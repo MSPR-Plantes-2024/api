@@ -10,7 +10,7 @@ import java.util.List;
 public interface AddressCreateMapper {
     Address fromDto(AddressCreateDTO addressCreateDto);
 
-    //List<Address> fromDtos(List<AddressDTO> addressCreateDto);
+    List<Address> fromDtos(List<AddressCreateDTO> addressCreateDto);
 
     AddressCreateDTO toDto(Address address);
 

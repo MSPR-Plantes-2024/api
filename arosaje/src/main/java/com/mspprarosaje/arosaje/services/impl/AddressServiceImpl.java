@@ -4,7 +4,6 @@ import com.mspprarosaje.arosaje.model.Address;
 import com.mspprarosaje.arosaje.repositories.AddressRepository;
 import com.mspprarosaje.arosaje.services.AddressService;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Optional<Address> getAddressById(Integer id) {
+    public Optional<Address> getAddressById(int id) {
         return addressRepository.findById(id);
     }
 

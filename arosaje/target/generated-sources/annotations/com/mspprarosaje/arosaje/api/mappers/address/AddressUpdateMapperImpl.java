@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-02T17:15:19+0100",
+    date = "2024-02-06T16:48:25+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
@@ -35,6 +35,20 @@ public class AddressUpdateMapperImpl implements AddressUpdateMapper {
         address.setUser( userDTOToUser( addressUpdateDto.getUser() ) );
 
         return address;
+    }
+
+    @Override
+    public List<Address> fromDtos(List<AddressUpdateDTO> addressDto) {
+        if ( addressDto == null ) {
+            return null;
+        }
+
+        List<Address> list = new ArrayList<Address>( addressDto.size() );
+        for ( AddressUpdateDTO addressUpdateDTO : addressDto ) {
+            list.add( fromDto( addressUpdateDTO ) );
+        }
+
+        return list;
     }
 
     @Override
