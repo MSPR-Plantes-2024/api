@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserAccountById(Integer id){
+    public Optional<User> getUserAccountById(int id){
         return userRepository.findById(id);
     }
 
@@ -29,12 +29,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean existsById(Integer id) {
+    public boolean existsById(int id) {
         return this.userRepository.existsById(id);
     }
 
     @Override
-    public void deleteById(Integer id){
+    public void deleteById(int id){
         this.userRepository.deleteById(id);
     }
 

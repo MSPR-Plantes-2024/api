@@ -5,5 +5,5 @@ import com.mspprarosaje.arosaje.model.UserType;
 import java.util.Optional;
 
 public interface UserTypeService {
-    Optional<UserType> getUserTypeById(Integer id);
+    Optional<UserType> getUserTypeById(int id);
 }
