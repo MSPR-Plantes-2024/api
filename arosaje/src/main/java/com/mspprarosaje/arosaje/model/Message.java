@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
@@ -21,7 +21,7 @@ public class Message {
     private String text;
 
     @Column(nullable = false)
-    private Date publishingDate = new Date();
+    private LocalDateTime publishingDate = LocalDateTime.now();
 
     @ManyToOne
     private User sender;

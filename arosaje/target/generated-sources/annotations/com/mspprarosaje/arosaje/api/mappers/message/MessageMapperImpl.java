@@ -1,0 +1,117 @@
+package com.mspprarosaje.arosaje.api.mappers.message;
+
+import com.mspprarosaje.arosaje.api.dto.message.MessageDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
+import com.mspprarosaje.arosaje.model.Message;
+import com.mspprarosaje.arosaje.model.User;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2024-02-06T16:48:25+0100",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
+)
+@Component
+public class MessageMapperImpl implements MessageMapper {
+
+    @Override
+    public Message fromDto(MessageDTO messageDTO) {
+        if ( messageDTO == null ) {
+            return null;
+        }
+
+        Message message = new Message();
+
+        message.setId( messageDTO.getId() );
+        message.setText( messageDTO.getText() );
+        if ( messageDTO.getPublishingDate() != null ) {
+            message.setPublishingDate( LocalDateTime.ofInstant( messageDTO.getPublishingDate().toInstant(), ZoneId.of( "UTC" ) ) );
+        }
+        message.setSender( userMinimalDTOToUser( messageDTO.getSender() ) );
+        message.setReceiver( userMinimalDTOToUser( messageDTO.getReceiver() ) );
+
+        return message;
+    }
+
+    @Override
+    public List<Message> fromDtos(List<MessageDTO> messageDto) {
+        if ( messageDto == null ) {
+            return null;
+        }
+
+        List<Message> list = new ArrayList<Message>( messageDto.size() );
+        for ( MessageDTO messageDTO : messageDto ) {
+            list.add( fromDto( messageDTO ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public MessageDTO toDto(Message message) {
+        if ( message == null ) {
+            return null;
+        }
+
+        MessageDTO.MessageDTOBuilder messageDTO = MessageDTO.builder();
+
+        messageDTO.id( message.getId() );
+        messageDTO.text( message.getText() );
+        if ( message.getPublishingDate() != null ) {
+            messageDTO.publishingDate( Date.from( message.getPublishingDate().toInstant( ZoneOffset.UTC ) ) );
+        }
+        messageDTO.sender( userToUserMinimalDTO( message.getSender() ) );
+        messageDTO.receiver( userToUserMinimalDTO( message.getReceiver() ) );
+
+        return messageDTO.build();
+    }
+
+    @Override
+    public List<MessageDTO> toDtos(List<Message> messages) {
+        if ( messages == null ) {
+            return null;
+        }
+
+        List<MessageDTO> list = new ArrayList<MessageDTO>( messages.size() );
+        for ( Message message : messages ) {
+            list.add( toDto( message ) );
+        }
+
+        return list;
+    }
+
+    protected User userMinimalDTOToUser(UserMinimalDTO userMinimalDTO) {
+        if ( userMinimalDTO == null ) {
+            return null;
+        }
+
+        User user = new User();
+
+        user.setId( userMinimalDTO.getId() );
+        user.setFirstName( userMinimalDTO.getFirstName() );
+        user.setLastName( userMinimalDTO.getLastName() );
+
+        return user;
+    }
+
+    protected UserMinimalDTO userToUserMinimalDTO(User user) {
+        if ( user == null ) {
+            return null;
+        }
+
+        UserMinimalDTO.UserMinimalDTOBuilder userMinimalDTO = UserMinimalDTO.builder();
+
+        userMinimalDTO.id( user.getId() );
+        userMinimalDTO.firstName( user.getFirstName() );
+        userMinimalDTO.lastName( user.getLastName() );
+
+        return userMinimalDTO.build();
+    }
+}
