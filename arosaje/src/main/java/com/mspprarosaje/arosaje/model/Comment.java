@@ -5,7 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,14 +19,17 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	private String text;
 
 	@Column(nullable = false)
-	private Date publishingDate = new Date();
+	private LocalDateTime publishingDate = LocalDateTime.now();
 
-	@OneToMany
-	private List<Comment> answers;
+	@ManyToOne
+	private Comment comment;
+
+	@OneToMany(mappedBy = "comment")
+	private List<Comment> answers = new ArrayList<>();
 
 	@ManyToOne
 	private User commentator;
