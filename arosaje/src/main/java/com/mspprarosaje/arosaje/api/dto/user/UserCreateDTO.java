@@ -4,10 +4,12 @@ import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 public class UserCreateDTO {
 
 	private String firstName;
@@ -15,6 +17,6 @@ public class UserCreateDTO {
 	// private int phoneNumber;
 	private String email;
 	private String password;
-	//private UserTypeDTO userType;
-	private int userType;
+	private UserTypeDTO userType;
+	//private int userType;
 }

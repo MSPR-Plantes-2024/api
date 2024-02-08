@@ -1,7 +1,9 @@
 package com.mspprarosaje.arosaje.api.mappers.user;
 
+import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserUpdateDTO;
 import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,42 +11,26 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-08T14:16:25+0100",
+    date = "2024-02-08T16:22:07+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
 public class UserUpdateMapperImpl implements UserUpdateMapper {
 
     @Override
-    public User fromDto(UserUpdateDTO userUpdateDTO) {
-        if ( userUpdateDTO == null ) {
+    public User fromDto(UserUpdateDTO userUpdateDto) {
+        if ( userUpdateDto == null ) {
             return null;
         }
 
         User user = new User();
 
-        user.setId( userUpdateDTO.getId() );
-        user.setFirstName( userUpdateDTO.getFirstName() );
-        user.setLastName( userUpdateDTO.getLastName() );
-        user.setEmail( userUpdateDTO.getEmail() );
-        user.setPassword( userUpdateDTO.getPassword() );
-
-        return user;
-    }
-
-    @Override
-    public User fromDtos(UserUpdateDTO userUpdateDTO) {
-        if ( userUpdateDTO == null ) {
-            return null;
-        }
-
-        User user = new User();
-
-        user.setId( userUpdateDTO.getId() );
-        user.setFirstName( userUpdateDTO.getFirstName() );
-        user.setLastName( userUpdateDTO.getLastName() );
-        user.setEmail( userUpdateDTO.getEmail() );
-        user.setPassword( userUpdateDTO.getPassword() );
+        user.setId( userUpdateDto.getId() );
+        user.setFirstName( userUpdateDto.getFirstName() );
+        user.setLastName( userUpdateDto.getLastName() );
+        user.setEmail( userUpdateDto.getEmail() );
+        user.setPassword( userUpdateDto.getPassword() );
+        user.setUserType( userTypeDTOToUserType( userUpdateDto.getUserType() ) );
 
         return user;
     }
@@ -62,12 +48,13 @@ public class UserUpdateMapperImpl implements UserUpdateMapper {
         userUpdateDTO.lastName( user.getLastName() );
         userUpdateDTO.email( user.getEmail() );
         userUpdateDTO.password( user.getPassword() );
+        userUpdateDTO.userType( userTypeToUserTypeDTO( user.getUserType() ) );
 
         return userUpdateDTO.build();
     }
 
     @Override
-    public List<UserUpdateDTO> toMinimalDtos(List<User> users) {
+    public List<UserUpdateDTO> toDtos(List<User> users) {
         if ( users == null ) {
             return null;
         }
@@ -78,5 +65,31 @@ public class UserUpdateMapperImpl implements UserUpdateMapper {
         }
 
         return list;
+    }
+
+    protected UserType userTypeDTOToUserType(UserTypeDTO userTypeDTO) {
+        if ( userTypeDTO == null ) {
+            return null;
+        }
+
+        UserType userType = new UserType();
+
+        userType.setId( userTypeDTO.getId() );
+        userType.setName( userTypeDTO.getName() );
+
+        return userType;
+    }
+
+    protected UserTypeDTO userTypeToUserTypeDTO(UserType userType) {
+        if ( userType == null ) {
+            return null;
+        }
+
+        UserTypeDTO.UserTypeDTOBuilder userTypeDTO = UserTypeDTO.builder();
+
+        userTypeDTO.id( userType.getId() );
+        userTypeDTO.name( userType.getName() );
+
+        return userTypeDTO.build();
     }
 }

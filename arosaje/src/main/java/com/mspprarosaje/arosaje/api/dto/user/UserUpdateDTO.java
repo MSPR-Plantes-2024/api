@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.api.dto.user;
 
+import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,5 +18,5 @@ public class UserUpdateDTO {
 	// private int phoneNumber;
 	private String email;
 	private String password;
-	private int userType;
+	private UserTypeDTO userType;
 }

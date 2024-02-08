@@ -1,7 +1,9 @@
 package com.mspprarosaje.arosaje.api.mappers.user;
 
+import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserCreateDTO;
 import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -9,40 +11,25 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-08T14:16:25+0100",
+    date = "2024-02-08T16:21:36+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
 public class UserCreateMapperImpl implements UserCreateMapper {
 
     @Override
-    public User fromDto(UserCreateDTO userCreateDTO) {
-        if ( userCreateDTO == null ) {
+    public User fromDto(UserCreateDTO userCreateDto) {
+        if ( userCreateDto == null ) {
             return null;
         }
 
         User user = new User();
 
-        user.setFirstName( userCreateDTO.getFirstName() );
-        user.setLastName( userCreateDTO.getLastName() );
-        user.setEmail( userCreateDTO.getEmail() );
-        user.setPassword( userCreateDTO.getPassword() );
-
-        return user;
-    }
-
-    @Override
-    public User fromDtos(UserCreateDTO userCreateDTOs) {
-        if ( userCreateDTOs == null ) {
-            return null;
-        }
-
-        User user = new User();
-
-        user.setFirstName( userCreateDTOs.getFirstName() );
-        user.setLastName( userCreateDTOs.getLastName() );
-        user.setEmail( userCreateDTOs.getEmail() );
-        user.setPassword( userCreateDTOs.getPassword() );
+        user.setFirstName( userCreateDto.getFirstName() );
+        user.setLastName( userCreateDto.getLastName() );
+        user.setEmail( userCreateDto.getEmail() );
+        user.setPassword( userCreateDto.getPassword() );
+        user.setUserType( userTypeDTOToUserType( userCreateDto.getUserType() ) );
 
         return user;
     }
@@ -59,12 +46,13 @@ public class UserCreateMapperImpl implements UserCreateMapper {
         userCreateDTO.lastName( user.getLastName() );
         userCreateDTO.email( user.getEmail() );
         userCreateDTO.password( user.getPassword() );
+        userCreateDTO.userType( userTypeToUserTypeDTO( user.getUserType() ) );
 
         return userCreateDTO.build();
     }
 
     @Override
-    public List<UserCreateDTO> toMinimalDtos(List<User> users) {
+    public List<UserCreateDTO> toDtos(List<User> users) {
         if ( users == null ) {
             return null;
         }
@@ -75,5 +63,31 @@ public class UserCreateMapperImpl implements UserCreateMapper {
         }
 
         return list;
+    }
+
+    protected UserType userTypeDTOToUserType(UserTypeDTO userTypeDTO) {
+        if ( userTypeDTO == null ) {
+            return null;
+        }
+
+        UserType userType = new UserType();
+
+        userType.setId( userTypeDTO.getId() );
+        userType.setName( userTypeDTO.getName() );
+
+        return userType;
+    }
+
+    protected UserTypeDTO userTypeToUserTypeDTO(UserType userType) {
+        if ( userType == null ) {
+            return null;
+        }
+
+        UserTypeDTO.UserTypeDTOBuilder userTypeDTO = UserTypeDTO.builder();
+
+        userTypeDTO.id( userType.getId() );
+        userTypeDTO.name( userType.getName() );
+
+        return userTypeDTO.build();
     }
 }

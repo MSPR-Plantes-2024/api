@@ -13,7 +13,7 @@ import java.util.Optional;
 public class UserTypeServiceImpl implements UserTypeService {
     private final UserTypeRepository userTypeRepository;
     @Override
-    public Optional<UserType> getUserTypeById(Integer id){
+    public Optional<UserType> getUserTypeById(int id){
         return userTypeRepository.findById(id);
     }
 }
