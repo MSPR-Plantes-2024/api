@@ -4,14 +4,14 @@ import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Builder
 public class MessageDTO {
     private int id;
     private String text;
-    private Date publishingDate;
+    private LocalDateTime publishingDate;
     private UserMinimalDTO sender;
     private UserMinimalDTO receiver;
 }

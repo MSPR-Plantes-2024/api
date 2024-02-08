@@ -5,12 +5,12 @@ import com.mspprarosaje.arosaje.api.dto.message.MessageDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.model.Message;
 import com.mspprarosaje.arosaje.model.User;
+
 import com.mspprarosaje.arosaje.model.UserType;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
@@ -33,9 +33,7 @@ public class MessageMapperImpl implements MessageMapper {
 
         message.setId( messageDTO.getId() );
         message.setText( messageDTO.getText() );
-        if ( messageDTO.getPublishingDate() != null ) {
-            message.setPublishingDate( LocalDateTime.ofInstant( messageDTO.getPublishingDate().toInstant(), ZoneId.of( "UTC" ) ) );
-        }
+        message.setPublishingDate( messageDTO.getPublishingDate() );
         message.setSender( userMinimalDTOToUser( messageDTO.getSender() ) );
         message.setReceiver( userMinimalDTOToUser( messageDTO.getReceiver() ) );
 
@@ -66,9 +64,7 @@ public class MessageMapperImpl implements MessageMapper {
 
         messageDTO.id( message.getId() );
         messageDTO.text( message.getText() );
-        if ( message.getPublishingDate() != null ) {
-            messageDTO.publishingDate( Date.from( message.getPublishingDate().toInstant( ZoneOffset.UTC ) ) );
-        }
+        messageDTO.publishingDate( message.getPublishingDate() );
         messageDTO.sender( userToUserMinimalDTO( message.getSender() ) );
         messageDTO.receiver( userToUserMinimalDTO( message.getReceiver() ) );
 
