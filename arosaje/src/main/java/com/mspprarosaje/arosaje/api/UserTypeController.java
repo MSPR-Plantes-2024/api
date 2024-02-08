@@ -1,7 +1,7 @@
 package com.mspprarosaje.arosaje.api;
 
 import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
-import com.mspprarosaje.arosaje.model.UserType;
+import com.mspprarosaje.arosaje.api.mappers.UserTypeMapper;
 import com.mspprarosaje.arosaje.services.UserTypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,16 +19,10 @@ import java.util.Optional;
 @Slf4j
 public class UserTypeController {
     private final UserTypeService userTypeService;
+    private final UserTypeMapper userTypeMapper;
 
     @GetMapping("/{id}")
     public ResponseEntity<UserTypeDTO> getUserTypeById(@PathVariable() Integer id){
-        log.atInfo().log("getUserTypeById {}", id);
-        Optional<UserType> userTypeOptional = userTypeService.getUserTypeById(id);
-        Optional<UserTypeDTO> userTypeDTOOptional = userTypeOptional.map(user -> UserTypeDTO.builder()
-                .id(user.getId())
-                .name(user.getName())
-                .build());
-
-        return ResponseEntity.of(userTypeDTOOptional);
+        return ResponseEntity.of(this.userTypeService.getUserTypeById(id).map(this.userTypeMapper::toDto));
     }
 }

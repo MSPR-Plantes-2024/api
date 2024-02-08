@@ -1,13 +1,11 @@
 package com.mspprarosaje.arosaje.api;
 
-import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.*;
 import com.mspprarosaje.arosaje.api.mappers.user.UserCreateMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMinimalMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserUpdateMapper;
 import com.mspprarosaje.arosaje.model.User;
-import com.mspprarosaje.arosaje.model.UserType;
 import com.mspprarosaje.arosaje.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/users")
@@ -45,8 +42,8 @@ public class UserController {
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
         User createdUser = userService.saveUser(
                 this.userCreateMapper.fromDto(userCreateDTO),
-                //userCreateDTO.getUserType().getId()
-                userCreateDTO.getUserType()
+                userCreateDTO.getUserType().getId()
+                //userCreateDTO.getUserType()
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userCreateMapper.toDto(createdUser));
@@ -67,7 +64,10 @@ public class UserController {
                     .build();
         }
 
-        User updatedUser = userService.saveUser(this.userUpdateMapper.fromDto(userUpdateDTO), userUpdateDTO.getUserType());
+        User updatedUser = userService.saveUser(
+                this.userUpdateMapper.fromDto(userUpdateDTO),
+                userUpdateDTO.getUserType().getId()
+        );
         return ResponseEntity.ok(this.userUpdateMapper.toDto(updatedUser));
     }
 
