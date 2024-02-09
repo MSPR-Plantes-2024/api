@@ -8,11 +8,9 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface CommentUpdateMapper {
-    Comment fromDto(CommentUpdateDTO commentUpdateDTO);
-
-    List<Comment> fromDtos(List<CommentUpdateDTO> commentUpdateDto);
-
-    CommentUpdateDTO toDto(Comment comment);
-
-    List<CommentUpdateDTO> toDtos(List<Comment> comments);
+    //Todo : décommenter après ajout de plants
+    //Comment fromDto(CommentUpdateDTO commentUpdateDTO);
+    //List<Comment> fromDtos(List<CommentUpdateDTO> commentUpdateDto);
+    //CommentUpdateDTO toDto(Comment comment);
+    //List<CommentUpdateDTO> toDtos(List<Comment> comments);
 }
