@@ -1,9 +1,6 @@
 package com.mspprarosaje.arosaje.api.mappers;
 
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
-import com.mspprarosaje.arosaje.api.dto.PlantDTO;
 import com.mspprarosaje.arosaje.model.Picture;
-import com.mspprarosaje.arosaje.model.Plant;
 import org.mapstruct.Mapper;
 
 import java.util.List;

@@ -1,12 +1,10 @@
 package com.mspprarosaje.arosaje.api;
 
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
 import com.mspprarosaje.arosaje.api.mappers.PictureMapper;
 import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.services.PictureService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.hibernate.Hibernate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

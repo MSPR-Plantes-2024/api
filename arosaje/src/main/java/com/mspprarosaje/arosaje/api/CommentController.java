@@ -21,8 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class CommentController {
-    /*
-    Todo : décommenter après ajout de plants
+
     private final CommentService commentService;
     private final CommentMapper commentMapper;
     private final CommentCreateMapper commentCreateMapper;
@@ -76,5 +75,4 @@ public class CommentController {
         }
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
-     */
 }
