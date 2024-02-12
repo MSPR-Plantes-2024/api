@@ -1,8 +1,5 @@
 package com.mspprarosaje.arosaje.api.dto;
 
-import com.mspprarosaje.arosaje.api.dto.address.AddressDTO;
-import com.mspprarosaje.arosaje.api.dto.comment.CommentDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
 import lombok.Builder;
 import lombok.Data;
 

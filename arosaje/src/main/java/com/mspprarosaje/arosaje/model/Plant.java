@@ -24,8 +24,8 @@ public class Plant {
 	@OneToOne
 	private Picture picture;
 
-	@Column(nullable = false)
-	private String user;
+	@ManyToOne
+	private User user;
 
 	@ManyToOne
 	private PlantCondition plantCondition;

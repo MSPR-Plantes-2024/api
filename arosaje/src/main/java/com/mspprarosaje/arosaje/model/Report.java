@@ -11,21 +11,19 @@ import java.util.Date;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "picture")
-public class Picture {
+@Table(name = "report")
+public class Report {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
 	@Column(nullable = false)
-	private String url;
+	private Date publishingDate = new Date();
 
-	@Temporal(TemporalType.DATE)
-	@Column(updatable = false)
-	private Date creationDate ;
+	@ManyToOne
+	private Publication publication;
 
-	@PrePersist
-	protected void onCreate() {
-		creationDate = new Date();
-	}
+	@Column(nullable = false)
+	private String text;
+
 }
