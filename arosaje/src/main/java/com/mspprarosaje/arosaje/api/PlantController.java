@@ -33,7 +33,7 @@ public class PlantController {
 		List<Plant> plants = this.plantService.getPlants();
 		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
 			responseEntity = ResponseEntity.ok(this.plantMapper.toDtos(plants));
-		};
+		}
 		return responseEntity;
 	}
 
@@ -46,9 +46,9 @@ public class PlantController {
 	public ResponseEntity<PlantDTO> getPlantById(@PathVariable() Integer id) {
 		ResponseEntity<PlantDTO> plantDTOResponseEntity;
 		Optional<Plant> plantOptional = this.plantService.getPlantById(id);
-		if(plantOptional.isEmpty()){plantDTOResponseEntity = ResponseEntity.notFound().build();} else {
-			plantDTOResponseEntity = ResponseEntity.ok(this.plantMapper.toDto(plantOptional.get()));
-		};
+		plantDTOResponseEntity = plantOptional
+				.map(plant -> ResponseEntity.ok(this.plantMapper.toDto(plant)))
+				.orElseGet(() -> ResponseEntity.notFound().build());
 		return plantDTOResponseEntity;
 	}
 
@@ -63,7 +63,7 @@ public class PlantController {
 		List<Plant> plants = this.plantService.getPlantsByUserId(userId);
 		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
 			responseEntity = ResponseEntity.ok(this.plantMapper.toDtos(plants));
-		};
+		}
 		return responseEntity;
 	}
 
@@ -153,7 +153,7 @@ public class PlantController {
 			responseEntity = ResponseEntity
 				.status(HttpStatus.NO_CONTENT)
 				.build();
-		};
+		}
 
 		return responseEntity;
 	}

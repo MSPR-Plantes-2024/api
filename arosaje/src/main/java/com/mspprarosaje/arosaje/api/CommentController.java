@@ -48,7 +48,7 @@ public class CommentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CommentUpdateDTO> updateAddress(@PathVariable("id") Integer id,
+    public ResponseEntity<CommentUpdateDTO> updateComment(@PathVariable("id") Integer id,
                                                           @RequestBody CommentUpdateDTO commentUpdateDTO){
         if (!id.equals((commentUpdateDTO.getId()))){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

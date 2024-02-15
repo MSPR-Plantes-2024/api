@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Setter
@@ -26,14 +24,8 @@ public class Comment {
 	private LocalDateTime publishingDate = LocalDateTime.now();
 
 	@ManyToOne
-	private Comment comment;
-
-	@OneToMany(mappedBy = "comment")
-	private List<Comment> answers = new ArrayList<>();
-
-	@ManyToOne
 	private User commentator;
 
 	@ManyToOne
-	private Plant plant;
+	private Report report;
 }

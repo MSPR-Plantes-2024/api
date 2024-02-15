@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.api.mappers;
 
+import com.mspprarosaje.arosaje.api.dto.PictureDTO;
 import com.mspprarosaje.arosaje.model.Picture;
 import org.mapstruct.Mapper;
 
@@ -7,6 +8,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface PictureMapper {
+    //Todo : à modifier en cas de conflit avec le travail d'Alex
     Picture fromDto(PictureDTO pictureDTO);
 
     List<Picture> fromDtos(List<PictureDTO> picturesDTO);

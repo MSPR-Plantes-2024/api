@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.api;
 
+import com.mspprarosaje.arosaje.api.dto.PictureDTO;
 import com.mspprarosaje.arosaje.api.mappers.PictureMapper;
 import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.services.PictureService;
@@ -16,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class PictureController {
-
+	//Todo : à modifier en cas de conflit avec le travail d'Alex
     private final PictureService pictureService;
     private final PictureMapper pictureMapper;
 
@@ -34,9 +35,7 @@ public class PictureController {
 	public ResponseEntity<PictureDTO> getPictureById(@PathVariable() Integer id) {
 		ResponseEntity<PictureDTO> pictureDTOResponseEntity;
 		Optional<Picture> pictureOptional = this.pictureService.getPictureById(id);
-		if(pictureOptional.isEmpty()){pictureDTOResponseEntity = ResponseEntity.notFound().build();} else {
-			pictureDTOResponseEntity = ResponseEntity.ok(this.pictureMapper.toDto(pictureOptional.get()));
-		};
+		pictureDTOResponseEntity = pictureOptional.map(picture -> ResponseEntity.ok(this.pictureMapper.toDto(picture))).orElseGet(() -> ResponseEntity.notFound().build());
 		return pictureDTOResponseEntity;
 	}
 
