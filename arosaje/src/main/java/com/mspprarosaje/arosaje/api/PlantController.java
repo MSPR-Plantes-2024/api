@@ -132,7 +132,7 @@ public class PlantController {
 	 * @return ResponseEntity to describe the successful deletion
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletePower(
+	public ResponseEntity<Void> deleteReport(
 		@PathVariable() Integer id
 	) {
 		ResponseEntity<Void> responseEntity;

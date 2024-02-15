@@ -1,6 +1,7 @@
 package com.mspprarosaje.arosaje.api.dto;
 
 import com.mspprarosaje.arosaje.model.Picture;
+import com.mspprarosaje.arosaje.model.PlantCondition;
 import lombok.Builder;
 import lombok.Data;
 
@@ -11,8 +12,8 @@ public class PlantDTO {
 	private int id;
 	private String name;
 	private String description;
-	private PictureDTO pictureDTO;
+	private PictureDTO picture;
+	private PlantConditionDTO plantCondition;
 	private int user_id;
-
 
 }

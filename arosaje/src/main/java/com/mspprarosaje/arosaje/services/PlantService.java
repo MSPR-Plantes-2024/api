@@ -7,7 +7,6 @@ import java.util.Optional;
 
 
 public interface PlantService {
-
 	List<Plant> getPlants();
 	Optional<Plant> getPlantById(Integer id);
 	List<Plant> getPlantsByUserId(Integer userId);
