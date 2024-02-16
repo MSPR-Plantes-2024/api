@@ -8,6 +8,7 @@ import java.util.Optional;
 public interface MessageService {
     List<Message> getMessages();
     Optional<Message> getMessageById(int id);
+    List<Message> getMessagesBetweenTwoUsers(int senderId, int receiverId);
     Message saveMessage(Message message, int senderId);
     boolean existsById(int id);
     void deleteById(int id);
