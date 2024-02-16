@@ -1,0 +1,21 @@
+package com.mspprarosaje.arosaje.api.dto.report;
+
+import com.mspprarosaje.arosaje.api.dto.PictureDTO;
+import com.mspprarosaje.arosaje.api.dto.PublicationDTO;
+import com.mspprarosaje.arosaje.model.Publication;
+import lombok.Builder;
+import lombok.Data;
+
+import java.util.Date;
+import java.util.List;
+
+@Data
+@Builder
+public class ReportDTO {
+	private int id;
+	private String title;
+	private String text;
+	private Date publishingDate;
+	private PublicationDTO publication;
+	private List<PictureDTO> pictures;
+}

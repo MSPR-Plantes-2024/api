@@ -6,9 +6,9 @@ import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PlantMapper.class})
 public interface PublicationMapper {
-		/*Publication fromDto(PublicationDTO publicationDto);
+		Publication fromDto(PublicationDTO publicationDto);
 
 		List<Publication> fromDtos(List<PublicationDTO> publicationsDto);
 
@@ -16,5 +16,4 @@ public interface PublicationMapper {
 
 		List<PublicationDTO> toDtos(List<Publication> publications);
 
-		 */
 	}
