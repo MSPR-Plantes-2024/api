@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/messages")
@@ -34,6 +35,15 @@ public class MessageController {
     @GetMapping("/{id}")
     public ResponseEntity<MessageDTO> getMessageById(@PathVariable("id") int id){
         return ResponseEntity.of(this.messageService.getMessageById(id).map(this.messageMapper::toDto));
+    }
+
+    @GetMapping("/messages")
+    public ResponseEntity<List<MessageDTO>> getMessagesBetweenTwoUsers(
+            @RequestParam("senderId") int senderId,
+            @RequestParam("receiverId") int receiverId){
+        List<Message> messages = this.messageService.getMessagesBetweenTwoUsers(senderId, receiverId);
+        List<MessageDTO> dtos = messages.stream().map(this.messageMapper::toDto).collect(Collectors.toList());
+        return ResponseEntity.ok(dtos);
     }
 
     @PostMapping()

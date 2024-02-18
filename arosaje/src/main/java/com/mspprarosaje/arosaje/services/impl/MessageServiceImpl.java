@@ -25,6 +25,11 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
+    public List<Message> getMessagesBetweenTwoUsers(int senderId, int receiverId) {
+        return messageRepository.findMessagesBetweenTwoUsers(senderId, receiverId);
+    }
+
+    @Override
     public Message saveMessage(Message message, int senderId) {
         return this.messageRepository.save(message);
     }
