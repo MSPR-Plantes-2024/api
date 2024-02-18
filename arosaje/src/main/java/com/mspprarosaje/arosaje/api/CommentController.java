@@ -21,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class CommentController {
+
     private final CommentService commentService;
     private final CommentMapper commentMapper;
     private final CommentCreateMapper commentCreateMapper;
@@ -47,7 +48,7 @@ public class CommentController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<CommentUpdateDTO> updateAddress(@PathVariable("id") Integer id,
+    public ResponseEntity<CommentUpdateDTO> updateComment(@PathVariable("id") Integer id,
                                                           @RequestBody CommentUpdateDTO commentUpdateDTO){
         if (!id.equals((commentUpdateDTO.getId()))){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

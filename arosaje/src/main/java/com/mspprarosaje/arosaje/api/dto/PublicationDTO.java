@@ -12,7 +12,7 @@ import java.util.List;
 @Data
 @Builder
 public class PublicationDTO {
-
+	//Todo : à modifier en cas de conflit avec le travail d'Alex
 	private int id;
 	private String title;
 	private String description;
