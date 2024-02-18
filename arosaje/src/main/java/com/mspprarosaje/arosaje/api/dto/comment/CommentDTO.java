@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.api.dto.comment;
 
-import com.mspprarosaje.arosaje.api.dto.PlantDTO;
+import com.mspprarosaje.arosaje.api.dto.plant.PlantDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import lombok.Builder;
 import lombok.Data;

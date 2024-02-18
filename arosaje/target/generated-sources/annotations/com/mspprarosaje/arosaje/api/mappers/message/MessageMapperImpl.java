@@ -5,11 +5,7 @@ import com.mspprarosaje.arosaje.api.dto.message.MessageDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.model.Message;
 import com.mspprarosaje.arosaje.model.User;
-
 import com.mspprarosaje.arosaje.model.UserType;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -17,8 +13,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-08T16:21:36+0100",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
+    date = "2024-02-18T20:40:26+0100",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.2 (Oracle Corporation)"
 )
 @Component
 public class MessageMapperImpl implements MessageMapper {

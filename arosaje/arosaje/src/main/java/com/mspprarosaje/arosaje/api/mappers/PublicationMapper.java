@@ -1,6 +1,5 @@
 package com.mspprarosaje.arosaje.api.mappers;
 
-import com.mspprarosaje.arosaje.api.dto.PublicationDTO;
 import com.mspprarosaje.arosaje.model.Publication;
 import org.mapstruct.Mapper;
 

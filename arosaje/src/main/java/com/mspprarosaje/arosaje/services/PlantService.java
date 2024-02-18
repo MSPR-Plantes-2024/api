@@ -10,6 +10,7 @@ public interface PlantService {
 	List<Plant> getPlants();
 	Optional<Plant> getPlantById(Integer id);
 	List<Plant> getPlantsByUserId(Integer userId);
- 	Plant savePlant(Plant plant, int userId);
+	List<Plant> getPlantsByAddressId(Integer addressId);
+ 	Plant savePlant(Plant plant);
 	void deleteById(Integer id);
 }

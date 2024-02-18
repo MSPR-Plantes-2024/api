@@ -9,7 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Hibernate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +47,7 @@ public class PictureController {
 	}
 
 @PostMapping
-	public ResponseEntity<PictureDTO> createPicture(@RequestBody PictureDTO pictureDTO) {
+	public ResponseEntity<PictureDTO> createPicture(@RequestBody PictureDTO pictureDTO){
 		ResponseEntity<PictureDTO> pictureDTOResponseEntity;
 		Picture picture = this.pictureMapper.fromDto(pictureDTO);
 		Picture pictureCreated = this.pictureService.createPicture(picture);
@@ -51,6 +55,11 @@ public class PictureController {
 			pictureDTOResponseEntity = ResponseEntity.ok(this.pictureMapper.toDto(pictureCreated));
 		};
 		return pictureDTOResponseEntity;
+	/**
+		MultipartFile file1 = (MultipartFile) file;
+		file1.transferTo(Path.of("D:/Developpement/arosajeDir/api/arosaje/assets"));
+
+		return null; **/
 	}
 
 	@PutMapping("/{id}")
