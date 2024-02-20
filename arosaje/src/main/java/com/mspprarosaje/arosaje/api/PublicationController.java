@@ -1,13 +1,12 @@
 package com.mspprarosaje.arosaje.api;
 
-import com.mspprarosaje.arosaje.api.dto.plant.PlantDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationCreateDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationMinimalDTO;
+import com.mspprarosaje.arosaje.api.dto.publication.PublicationUpdateDTO;
 import com.mspprarosaje.arosaje.api.mappers.publication.PublicationCreateMapper;
 import com.mspprarosaje.arosaje.api.mappers.publication.PublicationMapper;
 import com.mspprarosaje.arosaje.api.mappers.publication.PublicationMinimalMapper;
-import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.model.Publication;
 import com.mspprarosaje.arosaje.services.PublicationService;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +24,10 @@ import java.util.List;
 @Slf4j
 public class PublicationController {
 
+    final PublicationService publicationService;
+
     @Autowired
     final PublicationCreateMapper publicationCreateMapper;
-    final PublicationService publicationService;
     final PublicationMapper publicationMapper;
     final PublicationMinimalMapper publicationMinimalMapper;
 
@@ -49,6 +49,27 @@ public class PublicationController {
             publicationDTOResponseEntity = ResponseEntity.ok(this.publicationMinimalMapper.toDto(publication));
         };
         return publicationDTOResponseEntity;
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PublicationDTO> updatePublication(
+            @PathVariable() Integer id,
+            @RequestBody PublicationUpdateDTO publicationUpdateDTO
+    ) {
+        ResponseEntity<PublicationDTO> responseEntity;
+        Publication publication = this.publicationService.getPublicationById(id);
+        if (publication == null || publicationUpdateDTO == null ) {
+            responseEntity = ResponseEntity
+                    .status(HttpStatus.NOT_FOUND)
+                    .build();
+        } else {
+            publication.setDescription(publicationUpdateDTO.getDescription());
+            publication = this.publicationService.savePublication(publication);
+            responseEntity = ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(this.publicationMapper.toDto(publication));
+        }
+        return responseEntity;
     }
 
     @PostMapping()
