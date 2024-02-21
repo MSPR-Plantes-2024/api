@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.api.dto;
+package com.mspprarosaje.arosaje.api.dto.picture;
 
 import jakarta.persistence.Column;
 import lombok.Builder;
@@ -9,7 +9,6 @@ import java.util.Date;
 @Builder
 public class PictureDTO {
     private int id;
-    private String url;
     private Date creationDate;
-	private String pictureData;
+	private String data;
 }

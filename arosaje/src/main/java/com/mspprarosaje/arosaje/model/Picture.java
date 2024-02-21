@@ -17,9 +17,6 @@ public class Picture {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(nullable = false)
-	private String url;
-
 	@Temporal(TemporalType.DATE)
 	@Column(updatable = false)
 	private Date creationDate ;

@@ -14,5 +14,7 @@ public interface PictureService {
 	Picture updatePicture(Integer id, Picture picture);
 
     List<Picture> getPictures();
+
+	void deletePicture(int id);
 }
 

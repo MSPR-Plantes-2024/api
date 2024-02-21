@@ -1,20 +1,15 @@
 package com.mspprarosaje.arosaje.services.impl;
 
 import com.mspprarosaje.arosaje.AppConfig;
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
-import com.mspprarosaje.arosaje.model.Picture;
+import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import com.mspprarosaje.arosaje.services.PictureStreamService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Properties;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
@@ -30,7 +25,7 @@ public class PictureStreamServiceImpl implements PictureStreamService {
 		boolean pictureIsUpload = false;
 		try
 		{
-			byte[] data = picture.getPictureData().getBytes();
+			byte[] data = picture.getData().getBytes();
 			data = compressImage(data);
 			Files.write(Path.of(appConfig.picturesPath() + picture.getId() +".jpg"), data);
 			if (Files.exists(Path.of(appConfig.picturesPath() + picture.getId() +".jpg"))) {
@@ -93,5 +88,10 @@ public class PictureStreamServiceImpl implements PictureStreamService {
 		} catch (Exception ignored) {
 		}
 		return outputStream.toByteArray();
+	}
+
+	@Override
+	public boolean deletePicture(PictureDTO pictureDTO) {
+		return new File(appConfig.picturesPath() + pictureDTO.getId() + ".jpg").delete();
 	}
 }

@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.api.dto.report;
 
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
+import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationDTO;
 import lombok.Builder;
 import lombok.Data;

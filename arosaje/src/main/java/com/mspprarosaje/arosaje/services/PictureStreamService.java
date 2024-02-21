@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.services;
 
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
+import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 
 public interface PictureStreamService {
 
@@ -31,4 +31,11 @@ public interface PictureStreamService {
 	 * @return the decompressed picture in byte format
 	 */
 	byte[] decompressImage(byte[] picture);
+
+	/**
+	 * Delete a picture from the file system
+	 * @param pictureDTO picture to delete
+	 * @return true if the picture is deleted, false otherwise
+	 */
+	boolean deletePicture(PictureDTO pictureDTO);
 }

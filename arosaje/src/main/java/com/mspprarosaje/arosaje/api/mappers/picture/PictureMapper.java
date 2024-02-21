@@ -1,6 +1,6 @@
-package com.mspprarosaje.arosaje.api.mappers;
+package com.mspprarosaje.arosaje.api.mappers.picture;
 
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
+import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import com.mspprarosaje.arosaje.model.Picture;
 import org.mapstruct.Mapper;
 

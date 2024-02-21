@@ -15,10 +15,6 @@ public class PictureServiceImpl implements PictureService {
 
 	final PictureRepository pictureRepository;
 
-    /**
-     * @param id
-     * @return
-     */
     @Override
     public Optional<Picture> getPictureById(Integer id) {
         return this.pictureRepository.findById(id);
@@ -38,4 +34,10 @@ public class PictureServiceImpl implements PictureService {
 	public List<Picture> getPictures() {
 		return this.pictureRepository.findAll();
 	}
+
+	/**
+	 * @param id
+	 */
+	@Override
+	public void deletePicture(int id) {this.pictureRepository.deleteById(id);}
 }

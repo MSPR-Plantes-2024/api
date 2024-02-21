@@ -1,14 +1,11 @@
 package com.mspprarosaje.arosaje.api.dto.report;
 
 import com.mspprarosaje.arosaje.api.PictureController;
-import com.mspprarosaje.arosaje.api.dto.PictureDTO;
+import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 @Data
 @Builder
