@@ -4,9 +4,11 @@ import com.mspprarosaje.arosaje.api.dto.PictureDTO;
 import com.mspprarosaje.arosaje.api.mappers.PictureMapper;
 import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.services.PictureService;
+import com.mspprarosaje.arosaje.services.PictureStreamService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Hibernate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,6 +27,7 @@ public class PictureController {
 
     private final PictureService pictureService;
     private final PictureMapper pictureMapper;
+	private final PictureStreamService pictureStreamService;
 
 	@GetMapping
 	public ResponseEntity<List<PictureDTO>> getPictures() {
@@ -54,12 +57,8 @@ public class PictureController {
 		if(pictureCreated == null){pictureDTOResponseEntity = ResponseEntity.badRequest().build();} else {
 			pictureDTOResponseEntity = ResponseEntity.ok(this.pictureMapper.toDto(pictureCreated));
 		};
+		pictureStreamService.uploadPicture(pictureDTO);
 		return pictureDTOResponseEntity;
-	/**
-		MultipartFile file1 = (MultipartFile) file;
-		file1.transferTo(Path.of("D:/Developpement/arosajeDir/api/arosaje/assets"));
-
-		return null; **/
 	}
 
 	@PutMapping("/{id}")

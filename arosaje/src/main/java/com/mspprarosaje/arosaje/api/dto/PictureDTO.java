@@ -11,4 +11,5 @@ public class PictureDTO {
     private int id;
     private String url;
     private Date creationDate;
+	private String pictureData;
 }
