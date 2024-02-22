@@ -1,9 +1,7 @@
 package com.mspprarosaje.arosaje.api.mappers.user;
 
-import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
 import com.mspprarosaje.arosaje.model.User;
-import com.mspprarosaje.arosaje.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-20T13:31:38+0100",
+    date = "2024-02-22T22:23:22+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
@@ -23,16 +21,16 @@ public class UserMapperImpl implements UserMapper {
             return null;
         }
 
-        User user = new User();
+        User.UserBuilder user = User.builder();
 
-        user.setId( userDTO.getId() );
-        user.setFirstName( userDTO.getFirstName() );
-        user.setLastName( userDTO.getLastName() );
-        user.setEmail( userDTO.getEmail() );
-        user.setPassword( userDTO.getPassword() );
-        user.setUserType( userTypeDTOToUserType( userDTO.getUserType() ) );
+        user.id( userDTO.getId() );
+        user.firstName( userDTO.getFirstName() );
+        user.lastName( userDTO.getLastName() );
+        user.email( userDTO.getEmail() );
+        user.password( userDTO.getPassword() );
+        user.userType( userDTO.getUserType() );
 
-        return user;
+        return user.build();
     }
 
     @Override
@@ -62,7 +60,7 @@ public class UserMapperImpl implements UserMapper {
         userDTO.lastName( user.getLastName() );
         userDTO.email( user.getEmail() );
         userDTO.password( user.getPassword() );
-        userDTO.userType( userTypeToUserTypeDTO( user.getUserType() ) );
+        userDTO.userType( user.getUserType() );
 
         return userDTO.build();
     }
@@ -79,31 +77,5 @@ public class UserMapperImpl implements UserMapper {
         }
 
         return list;
-    }
-
-    protected UserType userTypeDTOToUserType(UserTypeDTO userTypeDTO) {
-        if ( userTypeDTO == null ) {
-            return null;
-        }
-
-        UserType userType = new UserType();
-
-        userType.setId( userTypeDTO.getId() );
-        userType.setName( userTypeDTO.getName() );
-
-        return userType;
-    }
-
-    protected UserTypeDTO userTypeToUserTypeDTO(UserType userType) {
-        if ( userType == null ) {
-            return null;
-        }
-
-        UserTypeDTO.UserTypeDTOBuilder userTypeDTO = UserTypeDTO.builder();
-
-        userTypeDTO.id( userType.getId() );
-        userTypeDTO.name( userType.getName() );
-
-        return userTypeDTO.build();
     }
 }

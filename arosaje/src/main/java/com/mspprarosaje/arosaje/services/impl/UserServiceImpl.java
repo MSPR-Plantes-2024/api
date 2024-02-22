@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.services.impl;
 
+import com.mspprarosaje.arosaje.api.enumerated.UserType;
 import com.mspprarosaje.arosaje.model.User;
 import com.mspprarosaje.arosaje.repositories.UserRepository;
 import com.mspprarosaje.arosaje.services.UserService;
@@ -23,8 +24,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id);
     }
 
-    @Override
+/*    @Override
     public User saveUser(User user, int userTypeId){
+        return this.userRepository.save(user);
+    }*/
+    @Override
+    public User saveUser(User user, UserType userType){
         return this.userRepository.save(user);
     }
 

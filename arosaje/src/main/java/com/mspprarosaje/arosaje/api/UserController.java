@@ -42,8 +42,8 @@ public class UserController {
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
         User createdUser = userService.saveUser(
                 this.userCreateMapper.fromDto(userCreateDTO),
-                userCreateDTO.getUserType().getId()
-                //userCreateDTO.getUserType()
+                userCreateDTO.getUserType()
+                        //.getId()
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userCreateMapper.toDto(createdUser));
@@ -66,7 +66,8 @@ public class UserController {
 
         User updatedUser = userService.saveUser(
                 this.userUpdateMapper.fromDto(userUpdateDTO),
-                userUpdateDTO.getUserType().getId()
+                userUpdateDTO.getUserType()
+                        //.getId()
         );
         return ResponseEntity.ok(this.userUpdateMapper.toDto(updatedUser));
     }

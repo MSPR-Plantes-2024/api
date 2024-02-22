@@ -1,9 +1,7 @@
 package com.mspprarosaje.arosaje.api.mappers.user;
 
-import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserCreateDTO;
 import com.mspprarosaje.arosaje.model.User;
-import com.mspprarosaje.arosaje.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -11,7 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-20T13:31:38+0100",
+    date = "2024-02-22T22:23:22+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
@@ -23,15 +21,15 @@ public class UserCreateMapperImpl implements UserCreateMapper {
             return null;
         }
 
-        User user = new User();
+        User.UserBuilder user = User.builder();
 
-        user.setFirstName( userCreateDto.getFirstName() );
-        user.setLastName( userCreateDto.getLastName() );
-        user.setEmail( userCreateDto.getEmail() );
-        user.setPassword( userCreateDto.getPassword() );
-        user.setUserType( userTypeDTOToUserType( userCreateDto.getUserType() ) );
+        user.firstName( userCreateDto.getFirstName() );
+        user.lastName( userCreateDto.getLastName() );
+        user.email( userCreateDto.getEmail() );
+        user.password( userCreateDto.getPassword() );
+        user.userType( userCreateDto.getUserType() );
 
-        return user;
+        return user.build();
     }
 
     @Override
@@ -46,7 +44,7 @@ public class UserCreateMapperImpl implements UserCreateMapper {
         userCreateDTO.lastName( user.getLastName() );
         userCreateDTO.email( user.getEmail() );
         userCreateDTO.password( user.getPassword() );
-        userCreateDTO.userType( userTypeToUserTypeDTO( user.getUserType() ) );
+        userCreateDTO.userType( user.getUserType() );
 
         return userCreateDTO.build();
     }
@@ -63,31 +61,5 @@ public class UserCreateMapperImpl implements UserCreateMapper {
         }
 
         return list;
-    }
-
-    protected UserType userTypeDTOToUserType(UserTypeDTO userTypeDTO) {
-        if ( userTypeDTO == null ) {
-            return null;
-        }
-
-        UserType userType = new UserType();
-
-        userType.setId( userTypeDTO.getId() );
-        userType.setName( userTypeDTO.getName() );
-
-        return userType;
-    }
-
-    protected UserTypeDTO userTypeToUserTypeDTO(UserType userType) {
-        if ( userType == null ) {
-            return null;
-        }
-
-        UserTypeDTO.UserTypeDTOBuilder userTypeDTO = UserTypeDTO.builder();
-
-        userTypeDTO.id( userType.getId() );
-        userTypeDTO.name( userType.getName() );
-
-        return userTypeDTO.build();
     }
 }
