@@ -32,6 +32,10 @@ public class PublicationController {
     final PublicationMapper publicationMapper;
     final PublicationMinimalMapper publicationMinimalMapper;
 
+	/**
+	 * Get all publications
+	 * @return list of publications
+	 */
 	@ApiOperation(value = "Get all users", notes = "Retrieves the list of all users.")
     @GetMapping
     public ResponseEntity<List<PublicationDTO>> getPublications() {
@@ -43,6 +47,11 @@ public class PublicationController {
         return responseEntity;
     }
 
+	/**
+	 * Get publication by id
+	 * @param id publication id
+	 * @return publication
+	 */
     @GetMapping("/{id}")
     public ResponseEntity<PublicationMinimalDTO> getPublicationById(@PathVariable() Integer id) {
         ResponseEntity<PublicationMinimalDTO> publicationDTOResponseEntity;
@@ -53,71 +62,101 @@ public class PublicationController {
         return publicationDTOResponseEntity;
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<PublicationDTO> updatePublication(
-            @PathVariable() Integer id,
-            @RequestBody PublicationUpdateDTO publicationUpdateDTO
-    ) {
-        ResponseEntity<PublicationDTO> responseEntity;
-        Publication publication = this.publicationService.getPublicationById(id);
-        if (publication == null || publicationUpdateDTO == null ) {
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .build();
-        } else {
-            publication.setDescription(publicationUpdateDTO.getDescription());
-            publication = this.publicationService.savePublication(publication);
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(this.publicationMapper.toDto(publication));
-        }
-        return responseEntity;
-    }
+	/**
+	 * Get all publications by user id
+	 * @param id user id
+	 * @return list of publications
+	 */
+	@GetMapping("/users/{id}")
+	public ResponseEntity<List<PublicationDTO>> getPublicationsByUserId(@PathVariable() Integer id) {
+		ResponseEntity<List<PublicationDTO>> responseEntity;
+		List<Publication> publications = this.publicationService.getPublicationsByUserId(id);
+		if(publications.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
+			responseEntity = ResponseEntity.ok(this.publicationMapper.toDtos(publications));
+		};
+		return responseEntity;
+	}
 
-    @PostMapping()
-    public ResponseEntity<PublicationDTO> createPublication(
-            @RequestBody PublicationCreateDTO publicationCreateDTO
-    ) {
-        ResponseEntity<PublicationDTO> responseEntity;
+	/**
+	 * Update publication
+	 * @param id publication id
+	 * @param publicationUpdateDTO publication update dto
+	 * @return updated publication
+	 */
+	@PutMapping("/{id}")
+	public ResponseEntity<PublicationDTO> updatePublication(
+			@PathVariable() Integer id,
+			@RequestBody PublicationUpdateDTO publicationUpdateDTO
+	) {
+		ResponseEntity<PublicationDTO> responseEntity;
+		Publication publication = this.publicationService.getPublicationById(id);
+		if (publication == null || publicationUpdateDTO == null ) {
+			responseEntity = ResponseEntity
+					.status(HttpStatus.NOT_FOUND)
+					.build();
+		} else {
+			publication.setDescription(publicationUpdateDTO.getDescription());
+			publication = this.publicationService.savePublication(publication);
+			responseEntity = ResponseEntity
+					.status(HttpStatus.OK)
+					.body(this.publicationMapper.toDto(publication));
+		}
+		return responseEntity;
+	}
 
-        Publication publication = publicationService.savePublication(
-                this.publicationCreateMapper.fromDto(publicationCreateDTO));
+	/**
+	 * Create publication
+	 * @param publicationCreateDTO publication create dto
+	 * @return created publication
+	 */
+	@PostMapping()
+	public ResponseEntity<PublicationDTO> createPublication(
+			@RequestBody PublicationCreateDTO publicationCreateDTO
+	) {
+		ResponseEntity<PublicationDTO> responseEntity;
 
-        if (publication == null) {
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .build();
-        } else {
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.CREATED)
-                    .body(this.publicationMapper.toDto(publication));
-        }
-        return responseEntity;
-    }
+		Publication publication = publicationService.savePublication(
+				this.publicationCreateMapper.fromDto(publicationCreateDTO));
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePublication(@PathVariable() Integer id) {
-        ResponseEntity<Void> responseEntity;
+		if (publication == null) {
+			responseEntity = ResponseEntity
+					.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.build();
+		} else {
+			responseEntity = ResponseEntity
+					.status(HttpStatus.CREATED)
+					.body(this.publicationMapper.toDto(publication));
+		}
+		return responseEntity;
+	}
 
-        if (this.publicationService.getPublicationById(id) == null) {
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .build();
-        } else {
-            this.publicationService.deleteById(id);
-        }
+	/**
+	 * Delete publication
+	 * @param id publication id
+	 * @return response entity
+	 */
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deletePublication(@PathVariable() Integer id) {
+		ResponseEntity<Void> responseEntity;
 
-        if (this.publicationService.getPublicationById(id) != null) {
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .build();
-        } else {
-            responseEntity = ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
-                    .build();
-        };
+		if (this.publicationService.getPublicationById(id) == null) {
+			responseEntity = ResponseEntity
+					.status(HttpStatus.NOT_FOUND)
+					.build();
+		} else {
+			this.publicationService.deleteById(id);
+		}
 
-        return responseEntity;
-    }
+		if (this.publicationService.getPublicationById(id) != null) {
+			responseEntity = ResponseEntity
+					.status(HttpStatus.INTERNAL_SERVER_ERROR)
+					.build();
+		} else {
+			responseEntity = ResponseEntity
+					.status(HttpStatus.NO_CONTENT)
+					.build();
+		};
 
+		return responseEntity;
+	}
 }

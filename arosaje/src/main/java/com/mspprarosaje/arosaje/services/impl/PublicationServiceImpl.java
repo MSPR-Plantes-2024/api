@@ -31,4 +31,9 @@ public class PublicationServiceImpl implements PublicationService {
 
     @Override
     public void deleteById(Integer id) { this.publicationRepository.deleteById(id);}
+
+	@Override
+	public List<Publication> getPublicationsByUserId(Integer id) {
+		return this.publicationRepository.findByPublisherId(id);
+	}
 }

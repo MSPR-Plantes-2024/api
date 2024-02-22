@@ -9,4 +9,5 @@ public interface PublicationService {
     Publication getPublicationById(int id);
     Publication savePublication(Publication publication);
     void deleteById(Integer id);
+    List<Publication> getPublicationsByUserId(Integer id);
 }

@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add Upload and Download pictures. Add AppConfig to setup pictures path in properties files.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/picture/PictureCreateDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdd/arosaje.bd" beforeDir="false" afterPath="$PROJECT_DIR$/bdd/arosaje.bd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PictureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PictureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/PictureDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/picture/PictureDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantLessUserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantLessUserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantMinimalDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantMinimalDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/report/ReportCreateDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/report/ReportCreateDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/report/ReportDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/report/ReportDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/PictureMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/picture/PictureMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureStreamService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureStreamService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureStreamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureStreamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PublicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PublicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/PublicationRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/PublicationRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PublicationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PublicationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PublicationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PublicationServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "feature/publications",
-    "last_opened_file_path": "C:/Users/alexr/Documents/GitHub/mspr-arosaje/api/arosaje/pictures",
+    "last_opened_file_path": "C:/Users/alexr/Documents/GitHub/TestUnitaire",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -103,6 +92,7 @@
       <updated>1708503171995</updated>
       <workItem from="1708503172965" duration="20337000" />
       <workItem from="1708539231105" duration="16613000" />
+      <workItem from="1708589532428" duration="2362000" />
     </task>
     <task id="LOCAL-00001" summary="Add Upload and Download pictures. Add AppConfig to setup pictures path in properties files.">
       <option name="closed" value="true" />
