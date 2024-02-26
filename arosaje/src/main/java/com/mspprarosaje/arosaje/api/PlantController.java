@@ -94,7 +94,7 @@ public class PlantController {
 
 	/***
 	 * Create a plant in the database
-	 * @param plantCreateDTO
+	 * @param plantCreateDTO PlantCreateDTO object : model for creation
 	 * @return plantDTO object created
 	 */
 	@PostMapping()
@@ -121,7 +121,7 @@ public class PlantController {
 	/***
 	 *
 	 * @param id  Plant id to be updated
-	 * @param plantDTO PlantDTO Object : model for updating
+	 * @param plantMinimalDTO PlantDTO Object : model for updating
 	 * @return The updated plant as plantDTO object
 	 */
 	@PutMapping("/{id}")
@@ -149,7 +149,6 @@ public class PlantController {
 		return responseEntity;
 	}
 
-	//TODO Remplacer la forêt de if par un try catch
 	/***
 	 * Deletes a plant from the database according to the id entered in parameter
 	 * @param id plant to delete

@@ -26,6 +26,10 @@ public class PictureController {
     private final PictureMapper pictureMapper;
 	private final PictureStreamService pictureStreamService;
 
+	/**
+	 * Get all pictures
+	 * @return list of pictures
+	 */
 	@GetMapping
 	public ResponseEntity<List<PictureDTO>> getPictures() {
 		ResponseEntity<List<PictureDTO>> responseEntity;
@@ -44,6 +48,11 @@ public class PictureController {
 		return responseEntity;
 	}
 
+	/**
+	 * Get picture by id
+	 * @param id picture id
+	 * @return picture
+	 */
 @GetMapping("/{id}")
 	public ResponseEntity<PictureDTO> getPictureById(@PathVariable() Integer id) {
 		ResponseEntity<PictureDTO> pictureDTOResponseEntity;
@@ -57,6 +66,11 @@ public class PictureController {
 		return pictureDTOResponseEntity;
 	}
 
+	/**
+	 * Create a picture
+	 * @param pictureCreateDTO picture to be created
+	 * @return picture
+	 */
 @PostMapping
 	public ResponseEntity<PictureDTO> createPicture(@RequestBody PictureCreateDTO pictureCreateDTO){
 		ResponseEntity<PictureDTO> pictureDTOResponseEntity;
@@ -75,6 +89,11 @@ public class PictureController {
 		return pictureDTOResponseEntity;
 	}
 
+	/**
+	 * Update picture
+	 * @param id picture id
+	 * @return picture
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<PictureDTO> deletePicture(@PathVariable() Integer id){
 		ResponseEntity<PictureDTO> pictureDTOResponseEntity;

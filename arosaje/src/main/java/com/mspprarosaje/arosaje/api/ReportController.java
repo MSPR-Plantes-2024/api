@@ -23,6 +23,10 @@ public class ReportController {
 	private final ReportService reportService;
 	private final ReportMapper reportMapper;
 
+	/**
+	 * Get all reports
+	 * @return list of reports
+	 */
 	@GetMapping
 	public ResponseEntity<List<ReportDTO>> getReports() {
 		ResponseEntity<List<ReportDTO>> responseEntity;
@@ -33,6 +37,11 @@ public class ReportController {
 		return responseEntity;
 	}
 
+	/**
+	 * Get report by id
+	 * @param id report id
+	 * @return report
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<ReportDTO> getReportById(@PathVariable() Integer id) {
 		ResponseEntity<ReportDTO> reportDTOResponseEntity;
@@ -42,6 +51,12 @@ public class ReportController {
 		};
 		return reportDTOResponseEntity;
 	}
+
+	/**
+	 * Create a report
+	 * @param reportDTO report to be created
+	 * @return report
+	 */
 	@PostMapping()
 	public ResponseEntity<ReportDTO> createReport(
 		@RequestBody ReportDTO reportDTO
@@ -63,6 +78,12 @@ public class ReportController {
 		return responseEntity;
 	}
 
+	/**
+	 * Update report
+	 * @param id report id
+	 * @param reportDTO report to be updated
+	 * @return updated report
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<ReportDTO> updateReport(
 		@PathVariable() Integer id,
@@ -89,6 +110,11 @@ public class ReportController {
 	}
 
 
+	/**
+	 * Delete report
+	 * @param id report id
+	 * @return response entity
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteReport(
 		@PathVariable() Integer id

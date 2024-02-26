@@ -35,9 +35,6 @@ public class PictureServiceImpl implements PictureService {
 		return this.pictureRepository.findAll();
 	}
 
-	/**
-	 * @param id
-	 */
 	@Override
 	public void deletePicture(int id) {this.pictureRepository.deleteById(id);}
 }
