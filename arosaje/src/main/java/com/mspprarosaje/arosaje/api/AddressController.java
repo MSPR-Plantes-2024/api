@@ -36,6 +36,18 @@ public class AddressController {
         return ResponseEntity.of(this.addressService.getAddressById(id).map(this.addressMapper::toDto));
     }
 
+	@GetMapping("/user/{id}")
+	public ResponseEntity<List<AddressDTO>> getAddressesByUserId(@PathVariable() int id) {
+		ResponseEntity<List<AddressDTO>> responseEntity;
+		List<Address> addresses = this.addressService.getAddressesByUserId(id);
+		if (addresses.isEmpty()) {
+			responseEntity = ResponseEntity.notFound().build();
+		} else {
+			responseEntity = ResponseEntity.ok(this.addressMapper.toDtos(addresses));
+		}
+		return responseEntity;
+	}
+
     @PostMapping()
     public ResponseEntity<AddressCreateDTO> saveAddress(@RequestBody AddressCreateDTO addressCreateDTO) {
         Address createdAddress = addressService.saveAddress(
