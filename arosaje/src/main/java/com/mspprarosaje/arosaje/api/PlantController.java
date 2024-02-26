@@ -1,12 +1,19 @@
 package com.mspprarosaje.arosaje.api;
 
 
-import com.mspprarosaje.arosaje.api.dto.PlantDTO;
-import com.mspprarosaje.arosaje.api.mappers.PlantMapper;
+import com.mspprarosaje.arosaje.api.dto.plant.PlantCreateDTO;
+import com.mspprarosaje.arosaje.api.dto.plant.PlantDTO;
+import com.mspprarosaje.arosaje.api.dto.plant.PlantLessUserDTO;
+import com.mspprarosaje.arosaje.api.dto.plant.PlantMinimalDTO;
+import com.mspprarosaje.arosaje.api.mappers.plant.PlantCreateMapper;
+import com.mspprarosaje.arosaje.api.mappers.plant.PlantLessUserMapper;
+import com.mspprarosaje.arosaje.api.mappers.plant.PlantMapper;
+import com.mspprarosaje.arosaje.api.mappers.plant.PlantMinimalMapper;
 import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.services.PlantService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +29,9 @@ public class PlantController {
 
 	private final PlantService plantService;
 	private final PlantMapper plantMapper;
+	private final PlantMinimalMapper plantMinimalMapper;
+	private final PlantLessUserMapper plantLessUserMapper;
+	private final PlantCreateMapper plantCreateMapper;
 
 	/**
 	 * Recovers all plants created
@@ -33,7 +43,7 @@ public class PlantController {
 		List<Plant> plants = this.plantService.getPlants();
 		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
 			responseEntity = ResponseEntity.ok(this.plantMapper.toDtos(plants));
-		}
+		};
 		return responseEntity;
 	}
 
@@ -46,9 +56,9 @@ public class PlantController {
 	public ResponseEntity<PlantDTO> getPlantById(@PathVariable() Integer id) {
 		ResponseEntity<PlantDTO> plantDTOResponseEntity;
 		Optional<Plant> plantOptional = this.plantService.getPlantById(id);
-		plantDTOResponseEntity = plantOptional
-				.map(plant -> ResponseEntity.ok(this.plantMapper.toDto(plant)))
-				.orElseGet(() -> ResponseEntity.notFound().build());
+		if(plantOptional.isEmpty()){plantDTOResponseEntity = ResponseEntity.notFound().build();} else {
+			plantDTOResponseEntity = ResponseEntity.ok(this.plantMapper.toDto(plantOptional.get()));
+		};
 		return plantDTOResponseEntity;
 	}
 
@@ -58,28 +68,43 @@ public class PlantController {
 	 * @return The List of plantDTO object linked with a userId
 	 */
 	@GetMapping("users/{userId}")
-	public ResponseEntity<List<PlantDTO>> getPlantByUserId(@PathVariable() Integer userId) {
-		ResponseEntity<List<PlantDTO>> responseEntity;
+	public ResponseEntity<List<PlantLessUserDTO>> getPlantByUserId(@PathVariable() Integer userId) {
+		ResponseEntity<List<PlantLessUserDTO>> responseEntity;
 		List<Plant> plants = this.plantService.getPlantsByUserId(userId);
 		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
-			responseEntity = ResponseEntity.ok(this.plantMapper.toDtos(plants));
-		}
+			responseEntity = ResponseEntity.ok(this.plantLessUserMapper.toDtos(plants));
+		};
+		return responseEntity;
+	}
+
+	/**
+	 * Retrieves the list of plants linked to an address
+	 * @param addressId Id of the address
+	 * @return The List of plantDTO object linked with an address id
+	 */
+	@GetMapping("address/{addressId}")
+	public ResponseEntity<List<PlantMinimalDTO>> getPlantByAddressId(@PathVariable() Integer addressId) {
+		ResponseEntity<List<PlantMinimalDTO>> responseEntity;
+		List<Plant> plants = this.plantService.getPlantsByAddressId(addressId);
+		if(plants.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
+			responseEntity = ResponseEntity.ok(this.plantMinimalMapper.toDtos(plants));
+		};
 		return responseEntity;
 	}
 
 	/***
 	 * Create a plant in the database
-	 * @param plantDTO
+	 * @param plantCreateDTO PlantCreateDTO object : model for creation
 	 * @return plantDTO object created
 	 */
 	@PostMapping()
 	public ResponseEntity<PlantDTO> createPlant(
-		@RequestBody PlantDTO plantDTO
+		@RequestBody PlantCreateDTO plantCreateDTO
 	) {
 		ResponseEntity<PlantDTO> responseEntity;
 
 		Plant plant = plantService.savePlant(
-			this.plantMapper.fromDto(plantDTO), plantDTO.getUser_id());
+			this.plantCreateMapper.fromDto(plantCreateDTO));
 
 		if (plant == null) {
 			responseEntity = ResponseEntity
@@ -96,17 +121,17 @@ public class PlantController {
 	/***
 	 *
 	 * @param id  Plant id to be updated
-	 * @param plantDTO PlantDTO Object : model for updating
+	 * @param plantMinimalDTO PlantDTO Object : model for updating
 	 * @return The updated plant as plantDTO object
 	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<PlantDTO> updatePlant(
 		@PathVariable() Integer id,
-		@RequestBody PlantDTO plantDTO
+		@RequestBody PlantMinimalDTO plantMinimalDTO
 	) {
 		ResponseEntity<PlantDTO> responseEntity;
 
-		if (!id.equals(plantDTO.getId())) {
+		if (!id.equals(plantMinimalDTO.getId())) {
 			responseEntity = ResponseEntity
 				.status(HttpStatus.BAD_REQUEST)
 				.build();
@@ -116,7 +141,7 @@ public class PlantController {
 				.build();
 		} else {
 			Plant updatedPlant = plantService.savePlant(
-				this.plantMapper.fromDto(plantDTO), plantDTO.getUser_id());
+				this.plantMinimalMapper.fromDto(plantMinimalDTO));
 			responseEntity = ResponseEntity
 				.ok(this.plantMapper.toDto(updatedPlant));
 		}
@@ -124,15 +149,13 @@ public class PlantController {
 		return responseEntity;
 	}
 
-	//TODO Remplacer la forêt de if par un try catch
-
 	/***
 	 * Deletes a plant from the database according to the id entered in parameter
 	 * @param id plant to delete
 	 * @return ResponseEntity to describe the successful deletion
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletePower(
+	public ResponseEntity<Void> deleteReport(
 		@PathVariable() Integer id
 	) {
 		ResponseEntity<Void> responseEntity;
@@ -153,7 +176,7 @@ public class PlantController {
 			responseEntity = ResponseEntity
 				.status(HttpStatus.NO_CONTENT)
 				.build();
-		}
+		};
 
 		return responseEntity;
 	}

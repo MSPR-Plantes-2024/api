@@ -30,4 +30,7 @@ public class Plant {
 	@ManyToOne
 	private PlantCondition plantCondition;
 
+	@ManyToOne
+	private Address address;
+
 }
