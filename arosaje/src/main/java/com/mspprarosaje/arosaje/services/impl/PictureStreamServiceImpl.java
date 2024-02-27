@@ -25,7 +25,7 @@ public class PictureStreamServiceImpl implements PictureStreamService {
 		boolean pictureIsUpload = false;
 		try
 		{
-			byte[] data = picture.getData().getBytes();
+			byte[] data = picture.getData();
 			data = compressImage(data);
 			Files.write(Path.of(appConfig.picturesPath() + picture.getId() +".jpg"), data);
 			if (Files.exists(Path.of(appConfig.picturesPath() + picture.getId() +".jpg"))) {
