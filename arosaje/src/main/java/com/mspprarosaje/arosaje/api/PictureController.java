@@ -38,8 +38,8 @@ public class PictureController {
 		if(pictures.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
 			List<PictureDTO> pictureDTOS = this.pictureMapper.toDtos(pictures);
 			for (PictureDTO pictureDTO : pictureDTOS) {
-				pictureDTO.setData(Arrays.toString(pictureStreamService.downloadPicture(pictureDTO.getId())));
-				if (pictureDTO.getData().isEmpty()) {dataIsTransfered = false;}
+				pictureDTO.setData(pictureStreamService.downloadPicture(pictureDTO.getId()));
+				if (pictureDTO.getData().length == 0) {dataIsTransfered = false;}
 			}
 
 			if (!dataIsTransfered) {responseEntity = ResponseEntity.badRequest().build();}
@@ -59,7 +59,7 @@ public class PictureController {
 		Optional<Picture> pictureOptional = this.pictureService.getPictureById(id);
 		if(pictureOptional.isEmpty()){pictureDTOResponseEntity = ResponseEntity.notFound().build();} else {
 			PictureDTO pictureDTO = this.pictureMapper.toDto(pictureOptional.get());
-			pictureDTO.setData(Arrays.toString(pictureStreamService.downloadPicture(pictureDTO.getId())));
+			pictureDTO.setData(pictureStreamService.downloadPicture(pictureDTO.getId()));
 			if (pictureDTO.getData() == null) {pictureDTOResponseEntity = ResponseEntity.badRequest().build();}
 			else {pictureDTOResponseEntity = ResponseEntity.ok(pictureDTO);}
 		};

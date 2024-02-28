@@ -5,10 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
+import java.util.List;
+
 @Data
 @Builder
 public class PictureDTO {
     private int id;
     private Date creationDate;
-	private String data;
+	private byte[] data;
 }
