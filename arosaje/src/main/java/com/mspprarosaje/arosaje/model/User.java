@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.model;
 
+import com.mspprarosaje.arosaje.auth.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -41,11 +42,14 @@ public class User implements UserDetails {
 	private UserType userType;
 
 	@OneToMany(mappedBy = "user")
+	private List<Token> tokens;
+
+	@OneToMany(mappedBy = "user")
 	private List<Address> addresses = new ArrayList<>();
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return List.of(new SimpleGrantedAuthority(userType.name()));
+		return userType.getAuthorities();
 	}
 
 	@Override
