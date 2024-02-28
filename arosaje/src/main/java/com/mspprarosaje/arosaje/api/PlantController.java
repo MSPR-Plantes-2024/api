@@ -155,7 +155,7 @@ public class PlantController {
 	 * @return ResponseEntity to describe the successful deletion
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deleteReport(
+	public ResponseEntity<Void> deletePlant(
 		@PathVariable() Integer id
 	) {
 		ResponseEntity<Void> responseEntity;

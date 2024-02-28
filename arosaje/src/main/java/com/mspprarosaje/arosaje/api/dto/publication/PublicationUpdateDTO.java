@@ -8,4 +8,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class PublicationUpdateDTO {
     private String description;
+	private int gardenKeeperId;
 }
