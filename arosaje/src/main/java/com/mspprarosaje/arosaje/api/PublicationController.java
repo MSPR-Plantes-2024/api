@@ -9,6 +9,7 @@ import com.mspprarosaje.arosaje.api.mappers.publication.PublicationMapper;
 import com.mspprarosaje.arosaje.api.mappers.publication.PublicationMinimalMapper;
 import com.mspprarosaje.arosaje.model.Publication;
 import com.mspprarosaje.arosaje.services.PublicationService;
+import com.mspprarosaje.arosaje.services.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,7 @@ import java.util.List;
 public class PublicationController {
 
     final PublicationService publicationService;
+	final UserService userService;
 
     @Autowired
     final PublicationCreateMapper publicationCreateMapper;
@@ -96,6 +98,9 @@ public class PublicationController {
 					.build();
 		} else {
 			publication.setDescription(publicationUpdateDTO.getDescription());
+			if (publicationUpdateDTO.getGardenKeeperId() != 0) {
+				publication.setGardenKeeper(userService.getUserAccountById(publicationUpdateDTO.getGardenKeeperId()).get());
+			}
 			publication = this.publicationService.savePublication(publication);
 			responseEntity = ResponseEntity
 					.status(HttpStatus.OK)
