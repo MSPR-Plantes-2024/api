@@ -46,6 +46,21 @@ public class MessageController {
         return ResponseEntity.ok(dtos);
     }
 
+	/**
+	 * Get messages by user id
+	 * @param id user id
+	 * @return list of messages
+	 */
+	@GetMapping("/user/{id}")
+	public ResponseEntity<List<MessageDTO>> getMessagesByUserId(@PathVariable("id") int id){
+		ResponseEntity<List<MessageDTO>> responseEntity;
+		List<Message> messages = this.messageService.getMessagesByUserId(id);
+		if(messages.isEmpty()){responseEntity = ResponseEntity.notFound().build();} else {
+			responseEntity = ResponseEntity.ok(this.messageMapper.toDtos(messages));
+		};
+		return responseEntity;
+	}
+
     @PostMapping()
     public ResponseEntity<MessageCreateDTO> saveMessage(@RequestBody MessageCreateDTO messageCreateDTO){
         Message createdMessage = messageService.saveMessage(
