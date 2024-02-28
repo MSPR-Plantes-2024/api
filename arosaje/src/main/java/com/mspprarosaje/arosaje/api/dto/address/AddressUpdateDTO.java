@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.api.dto.address;
 
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,5 +16,5 @@ public class AddressUpdateDTO {
     private String city;
     private String zipCode;
     private String otherInfo;
-    private UserDTO user;
+    private UserMinimalDTO user;
 }

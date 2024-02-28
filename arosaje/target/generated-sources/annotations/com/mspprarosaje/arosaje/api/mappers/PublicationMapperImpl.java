@@ -4,7 +4,6 @@ import com.mspprarosaje.arosaje.api.dto.PublicationDTO;
 import com.mspprarosaje.arosaje.api.dto.ReportDTO;
 import com.mspprarosaje.arosaje.api.dto.address.AddressDTO;
 import com.mspprarosaje.arosaje.api.dto.comment.CommentDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.model.Address;
 import com.mspprarosaje.arosaje.model.Comment;
@@ -19,7 +18,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-28T02:32:36+0100",
+    date = "2024-02-28T11:36:16+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
@@ -41,8 +40,8 @@ public class PublicationMapperImpl implements PublicationMapper {
         publication.setDescription( publicationDto.getDescription() );
         publication.setCreationDate( publicationDto.getCreationDate() );
         publication.setAddress( addressDTOToAddress( publicationDto.getAddress() ) );
-        publication.setPublisher( userDTOToUser( publicationDto.getPublisher() ) );
-        publication.setGardenKeeper( userDTOToUser( publicationDto.getGardenKeeper() ) );
+        publication.setPublisher( userMinimalDTOToUser( publicationDto.getPublisher() ) );
+        publication.setGardenKeeper( userMinimalDTOToUser( publicationDto.getGardenKeeper() ) );
         publication.setPlants( plantMapper.fromDtos( publicationDto.getPlants() ) );
         publication.setComments( commentDTOListToCommentList( publicationDto.getComments() ) );
 
@@ -76,8 +75,8 @@ public class PublicationMapperImpl implements PublicationMapper {
         publicationDTO.description( publicattion.getDescription() );
         publicationDTO.creationDate( publicattion.getCreationDate() );
         publicationDTO.address( addressToAddressDTO( publicattion.getAddress() ) );
-        publicationDTO.publisher( userToUserDTO( publicattion.getPublisher() ) );
-        publicationDTO.gardenKeeper( userToUserDTO( publicattion.getGardenKeeper() ) );
+        publicationDTO.publisher( userToUserMinimalDTO( publicattion.getPublisher() ) );
+        publicationDTO.gardenKeeper( userToUserMinimalDTO( publicattion.getGardenKeeper() ) );
         publicationDTO.plants( plantMapper.toDtos( publicattion.getPlants() ) );
         publicationDTO.comments( commentListToCommentDTOList( publicattion.getComments() ) );
 
@@ -128,23 +127,6 @@ public class PublicationMapperImpl implements PublicationMapper {
         address.setUser( userMinimalDTOToUser( addressDTO.getUser() ) );
 
         return address;
-    }
-
-    protected User userDTOToUser(UserDTO userDTO) {
-        if ( userDTO == null ) {
-            return null;
-        }
-
-        User.UserBuilder user = User.builder();
-
-        user.id( userDTO.getId() );
-        user.firstName( userDTO.getFirstName() );
-        user.lastName( userDTO.getLastName() );
-        user.email( userDTO.getEmail() );
-        user.password( userDTO.getPassword() );
-        user.userType( userDTO.getUserType() );
-
-        return user.build();
     }
 
     protected Report reportDTOToReport(ReportDTO reportDTO) {
@@ -221,23 +203,6 @@ public class PublicationMapperImpl implements PublicationMapper {
         addressDTO.user( userToUserMinimalDTO( address.getUser() ) );
 
         return addressDTO.build();
-    }
-
-    protected UserDTO userToUserDTO(User user) {
-        if ( user == null ) {
-            return null;
-        }
-
-        UserDTO.UserDTOBuilder userDTO = UserDTO.builder();
-
-        userDTO.id( user.getId() );
-        userDTO.firstName( user.getFirstName() );
-        userDTO.lastName( user.getLastName() );
-        userDTO.email( user.getEmail() );
-        userDTO.password( user.getPassword() );
-        userDTO.userType( user.getUserType() );
-
-        return userDTO.build();
     }
 
     protected ReportDTO reportToReportDTO(Report report) {

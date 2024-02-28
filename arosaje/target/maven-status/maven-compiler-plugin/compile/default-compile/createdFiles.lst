@@ -12,7 +12,6 @@ com\mspprarosaje\arosaje\api\dto\user\UserAccountDTO.class
 com\mspprarosaje\arosaje\api\mappers\PlantMapper.class
 com\mspprarosaje\arosaje\api\dto\user\UserUpdateDTO$UserUpdateDTOBuilder.class
 com\mspprarosaje\arosaje\services\MessageService.class
-com\mspprarosaje\arosaje\model\UserType.class
 com\mspprarosaje\arosaje\api\mappers\message\MessageMapper.class
 com\mspprarosaje\arosaje\model\Publication.class
 com\mspprarosaje\arosaje\api\mappers\ReportMapperImpl.class
@@ -33,7 +32,6 @@ com\mspprarosaje\arosaje\auth\token\Token.class
 com\mspprarosaje\arosaje\auth\config\LogoutService.class
 com\mspprarosaje\arosaje\auth\token\TokenType.class
 com\mspprarosaje\arosaje\api\PlantController.class
-com\mspprarosaje\arosaje\repositories\UserTypeRepository.class
 com\mspprarosaje\arosaje\repositories\PictureRepository.class
 com\mspprarosaje\arosaje\api\dto\comment\CommentDTO.class
 com\mspprarosaje\arosaje\repositories\AddressRepository.class
@@ -53,22 +51,17 @@ com\mspprarosaje\arosaje\api\dto\user\UserMinimalDTO.class
 com\mspprarosaje\arosaje\api\dto\user\UserDTO$UserDTOBuilder.class
 com\mspprarosaje\arosaje\api\mappers\address\AddressMapper.class
 com\mspprarosaje\arosaje\services\impl\CommentServiceImpl.class
-com\mspprarosaje\arosaje\api\mappers\UserTypeMapper.class
 com\mspprarosaje\arosaje\model\Message.class
 com\mspprarosaje\arosaje\api\dto\message\MessageCreateDTO$MessageCreateDTOBuilder.class
 com\mspprarosaje\arosaje\api\mappers\ReportMapper.class
 com\mspprarosaje\arosaje\api\dto\ReportDTO$ReportDTOBuilder.class
-com\mspprarosaje\arosaje\api\dto\UserTypeDTO$UserTypeDTOBuilder.class
 com\mspprarosaje\arosaje\model\Picture.class
 com\mspprarosaje\arosaje\services\impl\AddressServiceImpl.class
 com\mspprarosaje\arosaje\api\mappers\message\MessageCreateMapperImpl.class
 com\mspprarosaje\arosaje\api\mappers\message\MessageMapperImpl.class
 com\mspprarosaje\arosaje\api\enumerated\Permission.class
 com\mspprarosaje\arosaje\services\CommentService.class
-com\mspprarosaje\arosaje\services\UserTypeService.class
-com\mspprarosaje\arosaje\api\mappers\UserTypeMapperImpl.class
 com\mspprarosaje\arosaje\api\dto\comment\CommentDTO$CommentDTOBuilder.class
-com\mspprarosaje\arosaje\services\impl\UserTypeServiceImpl.class
 com\mspprarosaje\arosaje\api\dto\user\UserDTO.class
 com\mspprarosaje\arosaje\services\impl\PlantServiceImpl.class
 com\mspprarosaje\arosaje\api\mappers\PublicationMapperImpl.class
@@ -86,7 +79,6 @@ com\mspprarosaje\arosaje\auth\token\TokenRepository.class
 com\mspprarosaje\arosaje\repositories\PlantRepository.class
 com\mspprarosaje\arosaje\auth\demo\ManagementController.class
 com\mspprarosaje\arosaje\api\mappers\comment\CommentUpdateMapperImpl.class
-com\mspprarosaje\arosaje\api\UserTypeController.class
 com\mspprarosaje\arosaje\api\dto\user\UserCreateDTO.class
 com\mspprarosaje\arosaje\api\mappers\PlantMapperImpl.class
 com\mspprarosaje\arosaje\api\mappers\message\MessageCreateMapper.class
@@ -117,7 +109,6 @@ com\mspprarosaje\arosaje\api\dto\PictureDTO.class
 com\mspprarosaje\arosaje\api\mappers\user\UserMapper.class
 com\mspprarosaje\arosaje\ArosajeApplication.class
 com\mspprarosaje\arosaje\api\mappers\user\UserUpdateMapperImpl.class
-com\mspprarosaje\arosaje\api\dto\UserTypeDTO.class
 com\mspprarosaje\arosaje\api\mappers\address\AddressUpdateMapperImpl.class
 com\mspprarosaje\arosaje\services\impl\ReportServiceImpl.class
 com\mspprarosaje\arosaje\repositories\UserRepository.class

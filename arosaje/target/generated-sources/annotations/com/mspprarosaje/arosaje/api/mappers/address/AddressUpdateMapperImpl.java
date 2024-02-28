@@ -1,7 +1,7 @@
 package com.mspprarosaje.arosaje.api.mappers.address;
 
 import com.mspprarosaje.arosaje.api.dto.address.AddressUpdateDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.model.Address;
 import com.mspprarosaje.arosaje.model.User;
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-28T02:32:35+0100",
+    date = "2024-02-28T11:36:16+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
@@ -30,7 +30,7 @@ public class AddressUpdateMapperImpl implements AddressUpdateMapper {
         address.setCity( addressUpdateDto.getCity() );
         address.setZipCode( addressUpdateDto.getZipCode() );
         address.setOtherInfo( addressUpdateDto.getOtherInfo() );
-        address.setUser( userDTOToUser( addressUpdateDto.getUser() ) );
+        address.setUser( userMinimalDTOToUser( addressUpdateDto.getUser() ) );
 
         return address;
     }
@@ -62,7 +62,7 @@ public class AddressUpdateMapperImpl implements AddressUpdateMapper {
         addressUpdateDTO.city( address.getCity() );
         addressUpdateDTO.zipCode( address.getZipCode() );
         addressUpdateDTO.otherInfo( address.getOtherInfo() );
-        addressUpdateDTO.user( userToUserDTO( address.getUser() ) );
+        addressUpdateDTO.user( userToUserMinimalDTO( address.getUser() ) );
 
         return addressUpdateDTO.build();
     }
@@ -81,37 +81,33 @@ public class AddressUpdateMapperImpl implements AddressUpdateMapper {
         return list;
     }
 
-    protected User userDTOToUser(UserDTO userDTO) {
-        if ( userDTO == null ) {
+    protected User userMinimalDTOToUser(UserMinimalDTO userMinimalDTO) {
+        if ( userMinimalDTO == null ) {
             return null;
         }
 
         User.UserBuilder user = User.builder();
 
-        user.id( userDTO.getId() );
-        user.firstName( userDTO.getFirstName() );
-        user.lastName( userDTO.getLastName() );
-        user.email( userDTO.getEmail() );
-        user.password( userDTO.getPassword() );
-        user.userType( userDTO.getUserType() );
+        user.id( userMinimalDTO.getId() );
+        user.firstName( userMinimalDTO.getFirstName() );
+        user.lastName( userMinimalDTO.getLastName() );
+        user.userType( userMinimalDTO.getUserType() );
 
         return user.build();
     }
 
-    protected UserDTO userToUserDTO(User user) {
+    protected UserMinimalDTO userToUserMinimalDTO(User user) {
         if ( user == null ) {
             return null;
         }
 
-        UserDTO.UserDTOBuilder userDTO = UserDTO.builder();
+        UserMinimalDTO.UserMinimalDTOBuilder userMinimalDTO = UserMinimalDTO.builder();
 
-        userDTO.id( user.getId() );
-        userDTO.firstName( user.getFirstName() );
-        userDTO.lastName( user.getLastName() );
-        userDTO.email( user.getEmail() );
-        userDTO.password( user.getPassword() );
-        userDTO.userType( user.getUserType() );
+        userMinimalDTO.id( user.getId() );
+        userMinimalDTO.firstName( user.getFirstName() );
+        userMinimalDTO.lastName( user.getLastName() );
+        userMinimalDTO.userType( user.getUserType() );
 
-        return userDTO.build();
+        return userMinimalDTO.build();
     }
 }

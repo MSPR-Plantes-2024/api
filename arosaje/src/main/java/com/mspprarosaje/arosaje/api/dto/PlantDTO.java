@@ -1,6 +1,5 @@
 package com.mspprarosaje.arosaje.api.dto;
 
-import com.mspprarosaje.arosaje.model.Picture;
 import lombok.Builder;
 import lombok.Data;
 

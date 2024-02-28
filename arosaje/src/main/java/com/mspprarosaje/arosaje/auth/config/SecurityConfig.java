@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static com.mspprarosaje.arosaje.api.enumerated.Permission.*;
-import static com.mspprarosaje.arosaje.api.enumerated.UserType.BOTANIST;
+import static com.mspprarosaje.arosaje.api.enumerated.UserType.ADMIN;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
@@ -28,7 +28,16 @@ public class SecurityConfig {
 
     private static final String[] WHITE_LIST = {
             "/api/v1/auth/**",
-            "/api/v1/auth/logout"
+            "/api/v1/demo-controller/**",
+            "/api/v1/addresses/**",
+            "/api/v1/messages/**",
+            "/api/v1/plants/**",
+            "/api/v1/comments/**",
+            "/api/v1/publications/**",
+            "/api/v1/reports/**",
+            "/api/v1/pictures/**",
+            "/api/v1/users/user/**",
+            "/api/v1/plantsConditions/**",
     };
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
@@ -45,11 +54,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST).permitAll()
-                                .requestMatchers("/api/v1/management/**").hasAnyRole(BOTANIST.name())
-                                .requestMatchers(GET, "/api/v1/management/**").hasAnyAuthority("ROLE_" + BOTANIST_READ.name())
-                                .requestMatchers(POST, "/api/v1/management/**").hasAnyAuthority("ROLE_" + BOTANIST_CREATE.name())
-                                .requestMatchers(PUT, "/api/v1/management/**").hasAnyAuthority("ROLE_" + BOTANIST_UPDATE.name())
-                                .requestMatchers(DELETE, "/api/v1/management/**").hasAnyAuthority("ROLE_" + BOTANIST_DELETE.name())
+                                .requestMatchers("/api/v1/users/**").hasAnyRole(ADMIN.name())
+                                .requestMatchers(GET, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_READ.name())
+                                .requestMatchers(POST, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_CREATE.name())
+                                .requestMatchers(PUT, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_UPDATE.name())
+                                .requestMatchers(DELETE, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_DELETE.name())
                                 .anyRequest()
                                 .authenticated()
                 )

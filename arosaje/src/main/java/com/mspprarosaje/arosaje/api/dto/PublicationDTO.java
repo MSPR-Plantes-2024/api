@@ -2,7 +2,7 @@ package com.mspprarosaje.arosaje.api.dto;
 
 import com.mspprarosaje.arosaje.api.dto.address.AddressDTO;
 import com.mspprarosaje.arosaje.api.dto.comment.CommentDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import lombok.Builder;
 import lombok.Data;
 
@@ -18,8 +18,8 @@ public class PublicationDTO {
 	private String description;
 	private Date creationDate;
 	private AddressDTO address;
-	private UserDTO publisher;
-	private UserDTO gardenKeeper;
+	private UserMinimalDTO publisher;
+	private UserMinimalDTO gardenKeeper;
 	private List<PlantDTO> plants;
 	private List<CommentDTO> comments;
 }

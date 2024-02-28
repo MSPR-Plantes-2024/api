@@ -21,6 +21,14 @@ public enum UserType {
                     BOTANIST_DELETE,
                     BOTANIST_UPDATE
             )
+    ),
+    ADMIN(
+            Set.of(
+                    ADMIN_READ,
+                    ADMIN_CREATE,
+                    ADMIN_DELETE,
+                    ADMIN_UPDATE
+            )
     );
 
     @Getter
