@@ -43,4 +43,9 @@ public class MessageServiceImpl implements MessageService {
     public void deleteById(int id) {
         this.messageRepository.deleteById(id);
     }
+
+    @Override
+    public List<Message> getMessagesByUserId(int id) {
+        return this.messageRepository.findMessagesByUserIdAAndByReceiverId(id);
+    }
 }
