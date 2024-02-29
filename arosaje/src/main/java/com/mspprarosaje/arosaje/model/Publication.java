@@ -18,14 +18,12 @@ public class Publication {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(nullable = false, length = 50)
-	private String title;
-
-	@Column(nullable = false)
+	@Column(length = 200)
 	private String description;
 
-	@Column(nullable = false)
-	private Date creationDate = new Date();
+	@Temporal(TemporalType.DATE)
+	@Column(updatable = false)
+	private Date creationDate;
 
 	@ManyToOne
 	private Address address;
@@ -36,10 +34,14 @@ public class Publication {
 	@ManyToOne
 	private User gardenKeeper;
 
-	@OneToMany
+	@ManyToMany
 	private List<Plant> plants;
 
 	@OneToMany
-	private List<Comment> comments;
+	private List<Report> reports;
 
+	@PrePersist
+	protected void onCreate() {
+		creationDate = new Date();
+	}
 }

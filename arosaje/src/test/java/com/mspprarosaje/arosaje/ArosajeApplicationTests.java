@@ -10,4 +10,9 @@ class ArosajeApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void testIsTrue() {
+		assert(true);
+	}
+
 }

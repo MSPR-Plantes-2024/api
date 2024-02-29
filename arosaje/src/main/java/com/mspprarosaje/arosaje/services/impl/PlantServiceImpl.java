@@ -29,8 +29,10 @@ public class PlantServiceImpl implements PlantService {
 	public List<Plant> getPlantsByUserId(Integer UserId){return this.plantRepository.findByUserId(UserId);}
 
 	@Override
-	//TODO utiliser le service User pour convertir user et picture en models
-	public Plant savePlant(Plant plant, int userId) {
+	public List<Plant> getPlantsByAddressId(Integer addressId){return this.plantRepository.findByAddressId(addressId);}
+
+	@Override
+	public Plant savePlant(Plant plant) {
 		return this.plantRepository.save(plant);
 	}
 

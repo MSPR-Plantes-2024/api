@@ -11,16 +11,26 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class ReportServiceImpl implements ReportService {
-    //Todo : à modifier en cas de conflit avec le travail d'Alex
-    private final ReportRepository reportRepository;
-    @Override
-    public List<Report> getReports(){
-        return reportRepository.findAll();
-    }
+public class ReportServiceImpl implements ReportService{
 
-    @Override
-    public Optional<Report> getReportById(int id){
-        return reportRepository.findById(id);
-    }
+	private final ReportRepository reportRepository;
+	@Override
+	public Optional<Report> getReportById(Integer id) {
+		return this.reportRepository.findById(id);
+	}
+
+	@Override
+	public List<Report> getReports() {
+		return this.reportRepository.findAll();
+	}
+
+	@Override
+	public Report saveReport(Report report) {
+		return this.reportRepository.save(report);
+	}
+
+	@Override
+	public void deleteById(Integer id) {
+		this.reportRepository.deleteById(id);
+	}
 }
