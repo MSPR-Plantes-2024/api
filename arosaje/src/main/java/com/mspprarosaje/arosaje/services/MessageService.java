@@ -12,4 +12,5 @@ public interface MessageService {
     Message saveMessage(Message message, int senderId);
     boolean existsById(int id);
     void deleteById(int id);
+    List<Message> getMessagesByUserId(int id);
 }

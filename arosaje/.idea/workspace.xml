@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add docker file" />
+    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add Get Message by User">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mspprarosaje/arosaje/publication/publicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,6 +23,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -62,14 +71,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexr/Documents/GitHub/mspr-arosaje/api/arosaje&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/publications&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexr/Documents/GitHub/mspr-arosaje/api/arosaje/target/src/bdd&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -80,13 +89,78 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\alexr\Documents\GitHub\mspr-arosaje\api\arosaje\target\src\bdd" />
       <recent name="C:\Users\alexr\Documents\GitHub\mspr-arosaje\api\arosaje\pictures" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\alexr\Documents\GitHub\mspr-arosaje\api\arosaje" />
       <recent name="C:\Users\alexr\Documents\GitHub\mspr-arosaje\api\arosaje\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.ArosajeApplication">
+    <configuration name="ArosajeApplicationTests.testIsTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="arosaje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mspprarosaje.arosaje.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mspprarosaje.arosaje" />
+      <option name="MAIN_CLASS_NAME" value="com.mspprarosaje.arosaje.ArosajeApplicationTests" />
+      <option name="METHOD_NAME" value="testIsTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlantTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="arosaje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mspprarosaje.arosaje.plant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mspprarosaje.arosaje.plant" />
+      <option name="MAIN_CLASS_NAME" value="com.mspprarosaje.arosaje.plant.PlantTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlantTests.plantPostRequestIsTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="arosaje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mspprarosaje.arosaje.plant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mspprarosaje.arosaje.plant" />
+      <option name="MAIN_CLASS_NAME" value="com.mspprarosaje.arosaje.plant.PlantTests" />
+      <option name="METHOD_NAME" value="plantPostRequestIsTrue" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlantTests.plantsResquestTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="arosaje" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mspprarosaje.arosaje.plant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.mspprarosaje.arosaje.plant" />
+      <option name="MAIN_CLASS_NAME" value="com.mspprarosaje.arosaje.plant.PlantTests" />
+      <option name="METHOD_NAME" value="plantsResquestTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ArosajeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
       <module name="arosaje" />
@@ -95,6 +169,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.PlantTests.plantPostRequestIsTrue" />
+        <item itemvalue="JUnit.PlantTests" />
+        <item itemvalue="JUnit.PlantTests.plantsResquestTest" />
+        <item itemvalue="JUnit.ArosajeApplicationTests.testIsTrue" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -115,6 +197,11 @@
       <workItem from="1708687521323" duration="4321000" />
       <workItem from="1708707537641" duration="806000" />
       <workItem from="1708971461312" duration="3305000" />
+      <workItem from="1709046006089" duration="3831000" />
+      <workItem from="1709065146100" duration="8374000" />
+      <workItem from="1709107167843" duration="3071000" />
+      <workItem from="1709145006748" duration="230000" />
+      <workItem from="1709215128814" duration="3458000" />
     </task>
     <task id="LOCAL-00001" summary="Add Upload and Download pictures. Add AppConfig to setup pictures path in properties files.">
       <option name="closed" value="true" />
@@ -148,15 +235,95 @@
       <option name="project" value="LOCAL" />
       <updated>1708979716270</updated>
     </task>
-    <task id="LOCAL-00005" summary="Add docker file">
+    <task id="LOCAL-00005" summary="Merge feature/publications : Add Get Address by user id">
       <option name="closed" value="true" />
-      <created>1709127108735</created>
+      <created>1708981522490</created>
       <option name="number" value="00005" />
       <option name="presentableId" value="LOCAL-00005" />
       <option name="project" value="LOCAL" />
-      <updated>1709127108735</updated>
+      <updated>1708981522490</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add Test is true">
+      <option name="closed" value="true" />
+      <created>1709067384983</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1709067384983</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add Test is true">
+      <option name="closed" value="true" />
+      <created>1709067427505</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709067427505</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Modify pictures data">
+      <option name="closed" value="true" />
+      <created>1709069996749</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1709069996749</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Add docker file">
+      <option name="closed" value="true" />
+      <created>1709126836719</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1709126836719</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add docker file">
+      <option name="closed" value="true" />
+      <created>1709126847604</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1709126847604</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148044688</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148044688</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148052242</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148052242</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148057364</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148057364</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148136641</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148136641</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148256007</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148256007</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,8 +334,13 @@
     <MESSAGE value="Add WebConfig class and get publication by userid (publisher)" />
     <MESSAGE value="Add pictures upload and download. Add javadoc and move picture and bdd folder." />
     <MESSAGE value="Merge feature/publications" />
+    <MESSAGE value="Merge feature/publications : Add Get Address by user id" />
+    <MESSAGE value="Add Test is true" />
+    <MESSAGE value="Modify pictures data" />
     <MESSAGE value="Add docker file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add docker file" />
+    <MESSAGE value="Update garden keeper on PublicationController" />
+    <MESSAGE value="Add Get Message by User" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Get Message by User" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
