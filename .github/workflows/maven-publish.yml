@@ -20,5 +20,12 @@ jobs:
         distribution: 'adopt'
         java-version: '21'
 
+    - name: List directory contents
+      run: ls -R .api/arosaje
+
     - name: Build with Maven
       run: mvn clean install --file .api/arosaje/pom.xml
+
+    - name: List directory contents after checkout
+      run: ls -R
+
