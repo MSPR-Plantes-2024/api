@@ -1,6 +1,7 @@
 package com.mspprarosaje.arosaje.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.api.enumerated.UserType;
 import com.mspprarosaje.arosaje.auth.config.JwtService;
 import com.mspprarosaje.arosaje.auth.token.Token;
@@ -56,6 +57,13 @@ public class AuthenticationService {
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
+                .user(UserMinimalDTO.builder()
+                        .id(user.getId())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .userType(UserType.USER)
+                        .build()
+                )
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
