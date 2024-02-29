@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add docker file" />
+    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add Get Message by User">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mspprarosaje/arosaje/publication/publicationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,6 +201,7 @@
       <workItem from="1709065146100" duration="8374000" />
       <workItem from="1709107167843" duration="3071000" />
       <workItem from="1709145006748" duration="230000" />
+      <workItem from="1709215128814" duration="3458000" />
     </task>
     <task id="LOCAL-00001" summary="Add Upload and Download pictures. Add AppConfig to setup pictures path in properties files.">
       <option name="closed" value="true" />
@@ -310,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709148136641</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148256007</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148256007</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -326,7 +339,8 @@
     <MESSAGE value="Modify pictures data" />
     <MESSAGE value="Add docker file" />
     <MESSAGE value="Update garden keeper on PublicationController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update garden keeper on PublicationController" />
+    <MESSAGE value="Add Get Message by User" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Get Message by User" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
