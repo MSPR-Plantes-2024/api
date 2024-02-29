@@ -4,45 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add docker file">
+    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add Get Message by User">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/mspprarosaje/arosaje/publication/publicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bdd/arosaje.bd" beforeDir="false" afterPath="$PROJECT_DIR$/src/bdd/arosaje.bd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/MessageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/MessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PlantConditionMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PlantConditionMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/ReportMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/ReportMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/UserTypeMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/UserTypeMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressCreateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressCreateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressUpdateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressUpdateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentCreateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentCreateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentUpdateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentUpdateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageCreateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageCreateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageUpdateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageUpdateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/picture/PictureMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/picture/PictureMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/plant/PlantLessUserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/plant/PlantLessUserMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/plant/PlantMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/plant/PlantMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/plant/PlantMinimalMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/plant/PlantMinimalMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/publication/PublicationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/publication/PublicationMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/publication/PublicationMinimalMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/publication/PublicationMinimalMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserCreateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserCreateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserMinimalMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserMinimalMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserUpdateMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserUpdateMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mspprarosaje.arosaje.ArosajeApplicationTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mspprarosaje.arosaje.ArosajeApplicationTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mspprarosaje.arosaje.plant.PlantTests.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mspprarosaje.arosaje.plant.PlantTests.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.mspprarosaje.arosaje.ArosajeApplicationTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.mspprarosaje.arosaje.ArosajeApplicationTests.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.mspprarosaje.arosaje.plant.PlantTests.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.mspprarosaje.arosaje.plant.PlantTests.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -236,6 +201,7 @@
       <workItem from="1709065146100" duration="8374000" />
       <workItem from="1709107167843" duration="3071000" />
       <workItem from="1709145006748" duration="230000" />
+      <workItem from="1709215128814" duration="3458000" />
     </task>
     <task id="LOCAL-00001" summary="Add Upload and Download pictures. Add AppConfig to setup pictures path in properties files.">
       <option name="closed" value="true" />
@@ -317,7 +283,47 @@
       <option name="project" value="LOCAL" />
       <updated>1709126847604</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148044688</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148044688</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148052242</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148052242</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148057364</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148057364</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148136641</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148136641</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add Get Message by User">
+      <option name="closed" value="true" />
+      <created>1709148256007</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1709148256007</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +339,8 @@
     <MESSAGE value="Modify pictures data" />
     <MESSAGE value="Add docker file" />
     <MESSAGE value="Update garden keeper on PublicationController" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update garden keeper on PublicationController" />
+    <MESSAGE value="Add Get Message by User" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Get Message by User" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

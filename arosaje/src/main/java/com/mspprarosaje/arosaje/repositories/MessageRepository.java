@@ -24,3 +24,4 @@ public interface MessageRepository extends JpaRepository<Message, Integer> {
 			"ORDER BY m.publishingDate ASC")
     List<Message> findMessagesByUserIdAAndByReceiverId(@Param("id") int id);
 }
+
