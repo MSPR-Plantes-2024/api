@@ -13,7 +13,5 @@
    ```bash
    git clone https://github.com/votre-utilisateur/votre-projet.git
    cd votre-projet
-   
-  docker build . -t arosaje:latest 
-
-  docker run arosaje -p 8080
+   docker build . -t arosaje:latest 
+   docker run arosaje -p 8080
