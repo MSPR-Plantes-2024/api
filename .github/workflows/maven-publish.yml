@@ -22,6 +22,3 @@ jobs:
 
     - name: Build with Maven
       run: mvn clean install
-
-    - name: Run tests
-      run: mvn test --file .arosaje/pom.xml
