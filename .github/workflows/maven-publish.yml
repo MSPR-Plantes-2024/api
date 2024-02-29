@@ -24,4 +24,4 @@ jobs:
       run: mvn -B package --file .arosaje/pom.xml
 
     - name: Run tests
-      run: mvn test --file ./path/to/your/pom.xml
+      run: mvn test --file .arosaje/pom.xml
