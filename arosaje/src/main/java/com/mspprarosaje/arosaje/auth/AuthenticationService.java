@@ -41,8 +41,17 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
-    }
+return AuthenticationResponse.builder()
+                .user(UserMinimalDTO.builder()
+                        .id(user.getId())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .userType(UserType.USER)
+                        .build()
+                )
+                .accessToken(jwtToken)
+                .refreshToken(refreshToken)
+                .build();    }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
