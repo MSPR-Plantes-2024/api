@@ -38,6 +38,8 @@ public class SecurityConfig {
             "/api/v1/pictures/**",
             "/api/v1/users/user/**",
             "/api/v1/plantsConditions/**",
+			"/api-docs",
+			"/swagger-ui/**"
     };
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;

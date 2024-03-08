@@ -4,264 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/api.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/AppConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/WebConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PlantConditionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PublicationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/address/AdressMinimalDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/picture/PictureCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/picture/PictureDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantLessUserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/plant/PlantMinimalDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/publication/PublicationCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/publication/PublicationDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/publication/PublicationMinimalDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/publication/PublicationUpdateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/report/ReportCreateDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/report/ReportDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/PlantConditionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/plant/PlantCreateMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/plant/PlantLessUserMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/plant/PlantMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/plant/PlantMinimalMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/plant/impl/PlantCreateMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/publication/PublicationCreateMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/publication/PublicationMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/publication/PublicationMinimalMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/publication/impl/PublicationCreateMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/PlantConditionRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/PublicationRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureStreamService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PlantConditionService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PublicationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureStreamServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PlantConditionImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PublicationServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/additional-spring-configuration-metadata.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pictures/Sample1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/mspprarosaje/arosaje/plant/PlantTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="b19800b3-0584-4988-b572-3c9f3403809a" name="Changes" comment="Add publicationTests">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bdd/arosaje.bd" beforeDir="false" afterPath="$PROJECT_DIR$/src/bdd/arosaje.bd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/ArosajeApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/ArosajeApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/AddressController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/AddressController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PictureController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PictureController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PlantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PlantController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/PictureDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/PlantDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/PlantConditionDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/dto/PublicationDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/PictureMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/picture/PictureMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/PlantMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/PublicationMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/ReportMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/mappers/ReportMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Publication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Publication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/model/Report.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/AddressRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/AddressRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/MessageRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/PlantRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/PlantRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/ReportRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/repositories/ReportRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/AddressService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/AddressService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/MessageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/MessageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PictureService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PlantService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/PlantService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/ReportService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/AddressServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/AddressServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/MessageServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/MessageServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PictureServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PlantServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/PlantServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/services/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PublicationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/api/PublicationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/auth/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mspprarosaje/arosaje/auth/config/SecurityConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/mspprarosaje/arosaje/ArosajeApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/mspprarosaje/arosaje/ArosajeApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/target/arosaje-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/ArosajeApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/AddressController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/CommentController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/MessageController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/PictureController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/PlantController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/ReportController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/UserController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/UserTypeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/UserTypeController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PictureDTO$PictureDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PictureDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PlantDTO$PlantDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PlantDTO$PlantDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PlantDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PlantDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PublicationDTO$PublicationDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PublicationDTO$PublicationDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PublicationDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/PublicationDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/ReportDTO$ReportDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/ReportDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/UserTypeDTO$UserTypeDTOBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/UserTypeDTO$UserTypeDTOBuilder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/UserTypeDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/UserTypeDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/address/AddressCreateDTO$AddressCreateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/address/AddressCreateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/address/AddressDTO$AddressDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/address/AddressDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/address/AddressUpdateDTO$AddressUpdateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/address/AddressUpdateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/comment/CommentCreateDTO$CommentCreateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/comment/CommentCreateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/comment/CommentDTO$CommentDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/comment/CommentDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/comment/CommentUpdateDTO$CommentUpdateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/comment/CommentUpdateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/message/MessageCreateDTO$MessageCreateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/message/MessageCreateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/message/MessageDTO$MessageDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/message/MessageDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/message/MessageUpdateDTO$MessageUpdateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/message/MessageUpdateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserAccountDTO$UserAccountDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserAccountDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserCreateDTO$UserCreateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserCreateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserDTO$UserDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserMinimalDTO$UserMinimalDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserMinimalDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserUpdateDTO$UserUpdateDTOBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/dto/user/UserUpdateDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/enumerated/Permission.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/enumerated/UserType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PictureMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PictureMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PlantMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PlantMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PublicationMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PublicationMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/PublicationMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/ReportMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/ReportMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/UserTypeMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/UserTypeMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/UserTypeMapperImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/UserTypeMapperImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/address/AddressCreateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/address/AddressCreateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/address/AddressMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/address/AddressMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/address/AddressUpdateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/address/AddressUpdateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/comment/CommentCreateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/comment/CommentCreateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/comment/CommentMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/comment/CommentMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/comment/CommentUpdateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/comment/CommentUpdateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/message/MessageCreateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/message/MessageCreateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/message/MessageMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/message/MessageMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/message/MessageUpdateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/message/MessageUpdateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserCreateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserCreateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserMinimalMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserMinimalMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserUpdateMapper.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/api/mappers/user/UserUpdateMapperImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/AuthenticationController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/AuthenticationRequest$AuthenticationRequestBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/AuthenticationRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/AuthenticationResponse$AuthenticationResponseBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/AuthenticationResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/AuthenticationService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/RegisterRequest$RegisterRequestBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/RegisterRequest.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/config/ApplicationConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/config/JwtAuthFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/config/JwtService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/config/LogoutService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/config/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/demo/AdminController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/demo/DemoController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/demo/ManagementController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/token/Token$TokenBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/token/Token.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/token/TokenRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/auth/token/TokenType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Address.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Comment.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Message.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Picture.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Plant.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/PlantCondition.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Publication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/Report.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/User$UserBuilder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/UserType.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/model/UserType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/AddressRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/CommentRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/MessageRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/PictureRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/PlantRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/ReportRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/repositories/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/AddressService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/CommentService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/MessageService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/PictureService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/PlantService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/ReportService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/UserTypeService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/UserTypeService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/AddressServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/CommentServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/MessageServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/PictureServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/PlantServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/ReportServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/UserServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/UserTypeServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mspprarosaje/arosaje/services/impl/UserTypeServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PictureMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PlantMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PlantMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PublicationMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/PublicationMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/ReportMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/UserTypeMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/UserTypeMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressCreateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/address/AddressUpdateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentCreateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/comment/CommentUpdateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageCreateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/message/MessageUpdateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserCreateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserMinimalMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/generated-sources/annotations/com/mspprarosaje/arosaje/api/mappers/user/UserUpdateMapperImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.mspprarosaje.arosaje.ArosajeApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.mspprarosaje.arosaje.ArosajeApplicationTests.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/mspprarosaje/arosaje/ArosajeApplicationTests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -321,6 +72,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;OverrideImplement.generate.javadoc&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/swagger&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/alexr/Documents/GitHub/mspr-arosaje/api/arosaje/target/src/bdd&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.github.copilot.settings.ApplicationConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "OverrideImplement.generate.javadoc": "true",
@@ -462,6 +233,10 @@
       <workItem from="1709065146100" duration="8374000" />
       <workItem from="1709107167843" duration="3071000" />
       <workItem from="1709145006748" duration="230000" />
+      <workItem from="1709310634730" duration="1640000" />
+      <workItem from="1709552369935" duration="1114000" />
+      <workItem from="1709564649443" duration="2000" />
+      <workItem from="1709917785249" duration="467000" />
     </task>
     <task id="LOCAL-00001" summary="Add Upload and Download pictures. Add AppConfig to setup pictures path in properties files.">
       <option name="closed" value="true" />
