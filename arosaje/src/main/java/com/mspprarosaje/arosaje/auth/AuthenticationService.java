@@ -1,6 +1,7 @@
 package com.mspprarosaje.arosaje.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.api.enumerated.UserType;
 import com.mspprarosaje.arosaje.auth.config.JwtService;
 import com.mspprarosaje.arosaje.auth.token.Token;
@@ -40,8 +41,17 @@ public class AuthenticationService {
         var jwtToken = jwtService.generateToken(user);
         var refreshToken = jwtService.generateRefreshToken(user);
         saveUserToken(savedUser, jwtToken);
-        return AuthenticationResponse.builder().accessToken(jwtToken).refreshToken(refreshToken).build();
-    }
+return AuthenticationResponse.builder()
+                .user(UserMinimalDTO.builder()
+                        .id(user.getId())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .userType(UserType.USER)
+                        .build()
+                )
+                .accessToken(jwtToken)
+                .refreshToken(refreshToken)
+                .build();    }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(
@@ -56,6 +66,13 @@ public class AuthenticationService {
         revokeAllUserTokens(user);
         saveUserToken(user, jwtToken);
         return AuthenticationResponse.builder()
+                .user(UserMinimalDTO.builder()
+                        .id(user.getId())
+                        .firstName(user.getFirstName())
+                        .lastName(user.getLastName())
+                        .userType(UserType.USER)
+                        .build()
+                )
                 .accessToken(jwtToken)
                 .refreshToken(refreshToken)
                 .build();
