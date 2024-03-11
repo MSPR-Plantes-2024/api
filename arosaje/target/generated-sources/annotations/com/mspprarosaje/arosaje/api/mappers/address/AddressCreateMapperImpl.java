@@ -1,11 +1,9 @@
 package com.mspprarosaje.arosaje.api.mappers.address;
 
-import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.address.AddressCreateDTO;
-import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
+import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.model.Address;
 import com.mspprarosaje.arosaje.model.User;
-import com.mspprarosaje.arosaje.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -13,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-29T18:38:01+0100",
+    date = "2024-03-11T17:13:22+0100",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
 )
 @Component
@@ -31,7 +29,7 @@ public class AddressCreateMapperImpl implements AddressCreateMapper {
         address.setCity( addressCreateDto.getCity() );
         address.setZipCode( addressCreateDto.getZipCode() );
         address.setOtherInfo( addressCreateDto.getOtherInfo() );
-        address.setUser( userDTOToUser( addressCreateDto.getUser() ) );
+        address.setUser( userMinimalDTOToUser( addressCreateDto.getUser() ) );
 
         return address;
     }
@@ -62,7 +60,7 @@ public class AddressCreateMapperImpl implements AddressCreateMapper {
         addressCreateDTO.city( address.getCity() );
         addressCreateDTO.zipCode( address.getZipCode() );
         addressCreateDTO.otherInfo( address.getOtherInfo() );
-        addressCreateDTO.user( userToUserDTO( address.getUser() ) );
+        addressCreateDTO.user( userToUserMinimalDTO( address.getUser() ) );
 
         return addressCreateDTO.build();
     }
@@ -81,63 +79,33 @@ public class AddressCreateMapperImpl implements AddressCreateMapper {
         return list;
     }
 
-    protected UserType userTypeDTOToUserType(UserTypeDTO userTypeDTO) {
-        if ( userTypeDTO == null ) {
+    protected User userMinimalDTOToUser(UserMinimalDTO userMinimalDTO) {
+        if ( userMinimalDTO == null ) {
             return null;
         }
 
-        UserType userType = new UserType();
+        User.UserBuilder user = User.builder();
 
-        userType.setId( userTypeDTO.getId() );
-        userType.setName( userTypeDTO.getName() );
+        user.id( userMinimalDTO.getId() );
+        user.firstName( userMinimalDTO.getFirstName() );
+        user.lastName( userMinimalDTO.getLastName() );
+        user.userType( userMinimalDTO.getUserType() );
 
-        return userType;
+        return user.build();
     }
 
-    protected User userDTOToUser(UserDTO userDTO) {
-        if ( userDTO == null ) {
-            return null;
-        }
-
-        User user = new User();
-
-        user.setId( userDTO.getId() );
-        user.setFirstName( userDTO.getFirstName() );
-        user.setLastName( userDTO.getLastName() );
-        user.setEmail( userDTO.getEmail() );
-        user.setPassword( userDTO.getPassword() );
-        user.setUserType( userTypeDTOToUserType( userDTO.getUserType() ) );
-
-        return user;
-    }
-
-    protected UserTypeDTO userTypeToUserTypeDTO(UserType userType) {
-        if ( userType == null ) {
-            return null;
-        }
-
-        UserTypeDTO.UserTypeDTOBuilder userTypeDTO = UserTypeDTO.builder();
-
-        userTypeDTO.id( userType.getId() );
-        userTypeDTO.name( userType.getName() );
-
-        return userTypeDTO.build();
-    }
-
-    protected UserDTO userToUserDTO(User user) {
+    protected UserMinimalDTO userToUserMinimalDTO(User user) {
         if ( user == null ) {
             return null;
         }
 
-        UserDTO.UserDTOBuilder userDTO = UserDTO.builder();
+        UserMinimalDTO.UserMinimalDTOBuilder userMinimalDTO = UserMinimalDTO.builder();
 
-        userDTO.id( user.getId() );
-        userDTO.firstName( user.getFirstName() );
-        userDTO.lastName( user.getLastName() );
-        userDTO.email( user.getEmail() );
-        userDTO.password( user.getPassword() );
-        userDTO.userType( userTypeToUserTypeDTO( user.getUserType() ) );
+        userMinimalDTO.id( user.getId() );
+        userMinimalDTO.firstName( user.getFirstName() );
+        userMinimalDTO.lastName( user.getLastName() );
+        userMinimalDTO.userType( user.getUserType() );
 
-        return userDTO.build();
+        return userMinimalDTO.build();
     }
 }

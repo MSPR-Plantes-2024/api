@@ -10,7 +10,6 @@ import com.mspprarosaje.arosaje.api.mappers.publication.PublicationMinimalMapper
 import com.mspprarosaje.arosaje.model.Publication;
 import com.mspprarosaje.arosaje.services.PublicationService;
 import com.mspprarosaje.arosaje.services.UserService;
-import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,6 @@ public class PublicationController {
 	 * Get all publications
 	 * @return list of publications
 	 */
-	@ApiOperation(value = "Get all users", notes = "Retrieves the list of all users.")
     @GetMapping
     public ResponseEntity<List<PublicationDTO>> getPublications() {
         ResponseEntity<List<PublicationDTO>> responseEntity;
