@@ -14,5 +14,4 @@ public class ReportDTO {
     private Date publishingDate;
     private String text;
     private Publication publication;
-    //private int publication_id;
 }

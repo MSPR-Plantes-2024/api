@@ -1,7 +1,6 @@
 package com.mspprarosaje.arosaje.api.mappers;
 
 import com.mspprarosaje.arosaje.api.dto.PlantConditionDTO;
-import com.mspprarosaje.arosaje.api.dto.UserTypeDTO;
 import com.mspprarosaje.arosaje.api.dto.address.AdressMinimalDTO;
 import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import com.mspprarosaje.arosaje.api.dto.plant.PlantMinimalDTO;
@@ -15,7 +14,6 @@ import com.mspprarosaje.arosaje.model.PlantCondition;
 import com.mspprarosaje.arosaje.model.Publication;
 import com.mspprarosaje.arosaje.model.Report;
 import com.mspprarosaje.arosaje.model.User;
-import com.mspprarosaje.arosaje.model.UserType;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -23,8 +21,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-02-29T18:38:01+0100",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
+    date = "2024-02-29T19:56:35+0100",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
 public class ReportMapperImpl implements ReportMapper {
@@ -109,32 +107,19 @@ public class ReportMapperImpl implements ReportMapper {
         return address;
     }
 
-    protected UserType userTypeDTOToUserType(UserTypeDTO userTypeDTO) {
-        if ( userTypeDTO == null ) {
-            return null;
-        }
-
-        UserType userType = new UserType();
-
-        userType.setId( userTypeDTO.getId() );
-        userType.setName( userTypeDTO.getName() );
-
-        return userType;
-    }
-
     protected User userAccountDTOToUser(UserAccountDTO userAccountDTO) {
         if ( userAccountDTO == null ) {
             return null;
         }
 
-        User user = new User();
+        User.UserBuilder user = User.builder();
 
-        user.setId( userAccountDTO.getId() );
-        user.setFirstName( userAccountDTO.getFirstName() );
-        user.setLastName( userAccountDTO.getLastName() );
-        user.setUserType( userTypeDTOToUserType( userAccountDTO.getUserType() ) );
+        user.id( userAccountDTO.getId() );
+        user.firstName( userAccountDTO.getFirstName() );
+        user.lastName( userAccountDTO.getLastName() );
+        user.userType( userAccountDTO.getUserType() );
 
-        return user;
+        return user.build();
     }
 
     protected Picture pictureDTOToPicture(PictureDTO pictureDTO) {
@@ -240,19 +225,6 @@ public class ReportMapperImpl implements ReportMapper {
         return adressMinimalDTO.build();
     }
 
-    protected UserTypeDTO userTypeToUserTypeDTO(UserType userType) {
-        if ( userType == null ) {
-            return null;
-        }
-
-        UserTypeDTO.UserTypeDTOBuilder userTypeDTO = UserTypeDTO.builder();
-
-        userTypeDTO.id( userType.getId() );
-        userTypeDTO.name( userType.getName() );
-
-        return userTypeDTO.build();
-    }
-
     protected UserAccountDTO userToUserAccountDTO(User user) {
         if ( user == null ) {
             return null;
@@ -263,7 +235,7 @@ public class ReportMapperImpl implements ReportMapper {
         userAccountDTO.id( user.getId() );
         userAccountDTO.firstName( user.getFirstName() );
         userAccountDTO.lastName( user.getLastName() );
-        userAccountDTO.userType( userTypeToUserTypeDTO( user.getUserType() ) );
+        userAccountDTO.userType( user.getUserType() );
 
         return userAccountDTO.build();
     }

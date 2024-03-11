@@ -28,28 +28,32 @@ public class UserController {
     private final UserCreateMapper userCreateMapper;
     private final UserUpdateMapper userUpdateMapper;
 
-    @GetMapping
-    public ResponseEntity<List<UserMinimalDTO>> getUsers(){
-        return ResponseEntity.ok(userMinimalMapper.toMinimalDtos(userService.getUsers()));
+    @GetMapping("/admin")
+    public ResponseEntity<List<UserDTO>> getUsers(){
+        return ResponseEntity.ok(userMapper.toDtos(userService.getUsers()));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<UserDTO> getUserAccountById(@PathVariable() Integer id){
-        return ResponseEntity.of(this.userService.getUserAccountById(id).map(this.userMapper::toDto));
+    @GetMapping("/admin/{id}")
+    public ResponseEntity<UserDTO> getUserAccountByIdAdmin(@PathVariable() Integer id){
+        return ResponseEntity.of(this.userService.getUserAccountByIdAdmin(id).map(this.userMapper::toDto));
     }
 
-    @PostMapping
+    @GetMapping("/user/{id}")
+    public ResponseEntity<UserMinimalDTO> getUserAccountById(@PathVariable() Integer id){
+        return ResponseEntity.of(this.userService.getUserAccountById(id).map(this.userMinimalMapper::toMinimalDto));
+    }
+
+    @PostMapping("/admin")
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
         User createdUser = userService.saveUser(
                 this.userCreateMapper.fromDto(userCreateDTO),
-                userCreateDTO.getUserType().getId()
-                //userCreateDTO.getUserType()
+                userCreateDTO.getUserType()
         );
 
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userCreateMapper.toDto(createdUser));
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/admin/{id}")
     public ResponseEntity<UserUpdateDTO> updateUser(@PathVariable() Integer id,
                                                         @RequestBody UserUpdateDTO userUpdateDTO){
         if (!id.equals(userUpdateDTO.getId())) {
@@ -66,13 +70,13 @@ public class UserController {
 
         User updatedUser = userService.saveUser(
                 this.userUpdateMapper.fromDto(userUpdateDTO),
-                userUpdateDTO.getUserType().getId()
+                userUpdateDTO.getUserType()
         );
         return ResponseEntity.ok(this.userUpdateMapper.toDto(updatedUser));
     }
 
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/admin/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable() Integer id) {
         if(!this.userService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
