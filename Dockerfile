@@ -9,6 +9,7 @@ WORKDIR /app
 
 # Cloner le dépôt GitHub
 RUN git clone https://github.com/MSPR-Plantes-2024/api.git .
+RUN git pull origin main
 
 # Construire le projet avec Maven
 RUN mvn package -DskipTests
