@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth;
+package com.mspprarosaje.arosaje.security.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;

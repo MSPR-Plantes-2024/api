@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth.config;
+package com.mspprarosaje.arosaje.security.config;
 
 import com.mspprarosaje.arosaje.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;

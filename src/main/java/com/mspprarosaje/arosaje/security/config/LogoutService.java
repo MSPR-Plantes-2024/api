@@ -1,6 +1,6 @@
-package com.mspprarosaje.arosaje.auth.config;
+package com.mspprarosaje.arosaje.security.config;
 
-import com.mspprarosaje.arosaje.auth.token.TokenRepository;
+import com.mspprarosaje.arosaje.security.token.TokenRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;

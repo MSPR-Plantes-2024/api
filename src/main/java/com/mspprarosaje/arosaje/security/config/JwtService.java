@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth.config;
+package com.mspprarosaje.arosaje.security.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

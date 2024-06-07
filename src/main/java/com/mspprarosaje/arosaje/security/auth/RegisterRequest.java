@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth;
+package com.mspprarosaje.arosaje.security.auth;
 
 import com.mspprarosaje.arosaje.api.enumerated.UserType;
 import lombok.AllArgsConstructor;

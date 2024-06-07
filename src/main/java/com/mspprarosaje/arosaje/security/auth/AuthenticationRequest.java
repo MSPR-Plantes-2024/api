@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth;
+package com.mspprarosaje.arosaje.security.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

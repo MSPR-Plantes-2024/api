@@ -1,12 +1,12 @@
-package com.mspprarosaje.arosaje.auth;
+package com.mspprarosaje.arosaje.security.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
 import com.mspprarosaje.arosaje.api.enumerated.UserType;
-import com.mspprarosaje.arosaje.auth.config.JwtService;
-import com.mspprarosaje.arosaje.auth.token.Token;
-import com.mspprarosaje.arosaje.auth.token.TokenRepository;
-import com.mspprarosaje.arosaje.auth.token.TokenType;
+import com.mspprarosaje.arosaje.security.config.JwtService;
+import com.mspprarosaje.arosaje.security.token.Token;
+import com.mspprarosaje.arosaje.security.token.TokenRepository;
+import com.mspprarosaje.arosaje.security.token.TokenType;
 import com.mspprarosaje.arosaje.repositories.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

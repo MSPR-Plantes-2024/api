@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth.token;
+package com.mspprarosaje.arosaje.security.token;
 
 import java.util.List;
 import java.util.Optional;

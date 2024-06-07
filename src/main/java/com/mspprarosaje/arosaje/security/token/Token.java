@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth.token;
+package com.mspprarosaje.arosaje.security.token;
 
 import com.mspprarosaje.arosaje.model.User;
 import jakarta.persistence.*;

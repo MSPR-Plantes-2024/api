@@ -1,10 +1,9 @@
 package com.mspprarosaje.arosaje.model;
 
-import com.mspprarosaje.arosaje.auth.token.Token;
+import com.mspprarosaje.arosaje.security.token.Token;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import com.mspprarosaje.arosaje.api.enumerated.UserType;
 

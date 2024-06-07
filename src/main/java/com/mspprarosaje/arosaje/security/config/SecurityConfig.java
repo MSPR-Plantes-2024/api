@@ -1,4 +1,4 @@
-package com.mspprarosaje.arosaje.auth.config;
+package com.mspprarosaje.arosaje.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
