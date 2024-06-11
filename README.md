@@ -7,12 +7,12 @@ Son objectif, est de permettre à un utilisateur de s'inscrire, se connecter et 
 
 - [Docker](https://www.docker.com/) installé sur votre machine.
 
-## Installation
+## Lancement de l'Api
 
 1. Clonez le référentiel :
 
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-projet.git
-   cd votre-projet
-   docker build . -t arosaje:latest 
-   docker run arosaje -p 8080
+   git clone https://github.com/MSPR-Plantes-2024/api.git
+   cd ./api
+   docker build -t arosaje-api .
+   docker run -p 8080:8080 arosaje-api

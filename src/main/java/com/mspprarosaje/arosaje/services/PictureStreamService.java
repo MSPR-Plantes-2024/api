@@ -19,20 +19,6 @@ public interface PictureStreamService {
 	byte[] downloadPicture(int pictureId);
 
 	/**
-	 * Compress the picture in byte format
-	 * @param picture picture to compress in byte format
-	 * @return the compressed picture in byte format
-	 */
-	byte[] compressImage(byte[] picture);
-
-/**
-	 * Decompress the picture in byte format
-	 * @param picture picture to decompress in byte format
-	 * @return the decompressed picture in byte format
-	 */
-	byte[] decompressImage(byte[] picture);
-
-	/**
 	 * Delete a picture from the file system
 	 * @param pictureDTO picture to delete
 	 * @return true if the picture is deleted, false otherwise
