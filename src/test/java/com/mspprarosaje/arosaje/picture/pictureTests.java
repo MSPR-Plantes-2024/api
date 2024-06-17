@@ -31,6 +31,8 @@ public class pictureTests {
 	@Autowired
 	PictureStreamServiceImpl pictureStreamService;
 
+	//TODO : Charger une base de données en mémoire pour l'exécution des tests
+	// Permet de ne pas intéragir avec la base en prod
 	@Test
 	void pullDataOfPicture() throws IOException {
 		File file = new File(appConfig.picturesPath() + 1 + ".jpg");
