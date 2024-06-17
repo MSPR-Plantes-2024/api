@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-17T12:33:06+0200",
+    date = "2024-06-17T17:45:00+0200",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
 )
 @Component
@@ -132,12 +132,12 @@ public class PlantLessUserMapperImpl implements PlantLessUserMapper {
             return null;
         }
 
-        PictureDTO.PictureDTOBuilder pictureDTO = PictureDTO.builder();
+        PictureDTO pictureDTO = new PictureDTO();
 
-        pictureDTO.id( picture.getId() );
-        pictureDTO.creationDate( picture.getCreationDate() );
+        pictureDTO.setId( picture.getId() );
+        pictureDTO.setCreationDate( picture.getCreationDate() );
 
-        return pictureDTO.build();
+        return pictureDTO;
     }
 
     protected PlantConditionDTO plantConditionToPlantConditionDTO(PlantCondition plantCondition) {

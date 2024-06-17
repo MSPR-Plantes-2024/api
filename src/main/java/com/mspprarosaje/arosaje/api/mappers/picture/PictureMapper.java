@@ -10,15 +10,12 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
 public interface PictureMapper {
-	PictureStreamService pictureService = new PictureStreamServiceImpl();
 
     Picture fromDto(PictureDTO pictureDTO);
 
     List<Picture> fromDtos(List<PictureDTO> picturesDTO);
 
-	@Mapping(target = "data", expression = "java(pictureService.downloadPicture(picture.getId()))")
     PictureDTO toDto(Picture picture);
 
     List<PictureDTO> toDtos(List<Picture> pictures);
