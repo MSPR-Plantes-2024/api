@@ -158,6 +158,7 @@
 						</path>
 						<!-- other annotation processors -->
 					</annotationProcessorPaths>
+          <parameters>true</parameters>
 				</configuration>
 			</plugin>
       <plugin>
