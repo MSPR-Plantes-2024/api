@@ -1,7 +1,7 @@
 package com.mspprarosaje.arosaje.services;
 
-import com.mspprarosaje.arosaje.api.enumerated.UserType;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.UserType;
+import com.mspprarosaje.arosaje.model.user.User;
 
 import java.util.List;
 import java.util.Optional;

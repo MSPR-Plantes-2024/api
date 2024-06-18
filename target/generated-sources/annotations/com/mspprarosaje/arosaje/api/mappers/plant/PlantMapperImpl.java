@@ -9,7 +9,7 @@ import com.mspprarosaje.arosaje.model.Address;
 import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.model.PlantCondition;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
@@ -17,8 +17,8 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-01T18:19:47+0200",
-    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
+    date = "2024-06-18T15:25:19+0200",
+    comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21 (Eclipse Adoptium)"
 )
 @Component
 public class PlantMapperImpl implements PlantMapper {

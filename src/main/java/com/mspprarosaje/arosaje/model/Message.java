@@ -1,5 +1,6 @@
 package com.mspprarosaje.arosaje.model;
 
+import com.mspprarosaje.arosaje.model.user.User;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

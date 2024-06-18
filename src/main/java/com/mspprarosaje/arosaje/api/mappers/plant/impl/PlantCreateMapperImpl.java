@@ -5,7 +5,7 @@ import com.mspprarosaje.arosaje.api.mappers.plant.PlantCreateMapper;
 import com.mspprarosaje.arosaje.model.Address;
 import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.model.PlantCondition;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import com.mspprarosaje.arosaje.services.AddressService;
 import com.mspprarosaje.arosaje.services.PlantConditionService;
 import com.mspprarosaje.arosaje.services.UserService;

@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.security.auth;
 
-import com.mspprarosaje.arosaje.api.enumerated.UserType;
+import com.mspprarosaje.arosaje.model.user.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

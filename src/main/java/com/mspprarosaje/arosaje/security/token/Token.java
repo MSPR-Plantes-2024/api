@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.security.token;
 
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

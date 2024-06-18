@@ -5,7 +5,7 @@ import com.mspprarosaje.arosaje.api.mappers.user.UserCreateMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMinimalMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserUpdateMapper;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import com.mspprarosaje.arosaje.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

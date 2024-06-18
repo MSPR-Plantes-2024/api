@@ -2,7 +2,7 @@ package com.mspprarosaje.arosaje.security.auth;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
-import com.mspprarosaje.arosaje.api.enumerated.UserType;
+import com.mspprarosaje.arosaje.model.user.UserType;
 import com.mspprarosaje.arosaje.security.config.JwtService;
 import com.mspprarosaje.arosaje.security.token.Token;
 import com.mspprarosaje.arosaje.security.token.TokenRepository;
@@ -11,7 +11,9 @@ import com.mspprarosaje.arosaje.repositories.UserRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +21,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -28,6 +31,7 @@ public class AuthenticationService {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
+    private static  final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
     public AuthenticationResponse register(RegisterRequest request) {
         var user = User.builder()
@@ -90,14 +94,29 @@ return AuthenticationResponse.builder()
     }
 
     private void revokeAllUserTokens(User user) {
-        var validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
-        if (validUserTokens.isEmpty())
-            return;
-        validUserTokens.forEach(token -> {
-            token.setExpired(true);
-            token.setRevoked(true);
-        });
-        tokenRepository.saveAll(validUserTokens);
+        try {
+            logger.debug("Début de la révocation des jetons pour l'utilisateur avec ID: {}", user.getId());
+
+            List<Token> validUserTokens = tokenRepository.findAllValidTokenByUser(user.getId());
+            logger.debug("Jetons valides récupérés: {}", validUserTokens);
+
+            if (validUserTokens.isEmpty()) {
+                logger.debug("Aucun jeton valide trouvé pour l'utilisateur avec ID: {}", user.getId());
+                return;
+            }
+
+            validUserTokens.forEach(token -> {
+                logger.debug("Révocation du jeton avec ID: {}", token.getId());
+                token.setExpired(true);
+                token.setRevoked(true);
+            });
+
+            tokenRepository.saveAll(validUserTokens);
+            logger.debug("Tous les jetons valides ont été révoqués pour l'utilisateur avec ID: {}", user.getId());
+        } catch (Exception e) {
+            logger.error("Erreur lors de la révocation des jetons pour l'utilisateur avec ID: {}", user.getId(), e);
+            throw e;
+        }
     }
 
     public void refreshToken(

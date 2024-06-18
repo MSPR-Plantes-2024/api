@@ -16,7 +16,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
 import static com.mspprarosaje.arosaje.api.enumerated.Permission.*;
-import static com.mspprarosaje.arosaje.api.enumerated.UserType.ADMIN;
+import static com.mspprarosaje.arosaje.model.user.UserType.ADMIN;
 import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
