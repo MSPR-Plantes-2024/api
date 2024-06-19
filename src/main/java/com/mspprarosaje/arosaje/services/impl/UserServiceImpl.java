@@ -20,11 +20,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> getUserAccountByIdAdmin(int id){
-        return userRepository.findById(id);
-    }
-
-    @Override
     public Optional<User> getUserAccountById(int id){
         return userRepository.findById(id);
     }

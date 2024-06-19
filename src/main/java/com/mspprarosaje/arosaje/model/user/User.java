@@ -36,7 +36,6 @@ public class User implements UserDetails {
 	@Column(nullable = false)
 	private String password;
 
-	//@ManyToOne
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
 

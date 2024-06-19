@@ -15,9 +15,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-import static com.mspprarosaje.arosaje.api.enumerated.Permission.*;
-import static com.mspprarosaje.arosaje.model.user.UserType.ADMIN;
-import static org.springframework.http.HttpMethod.*;
+//import static com.mspprarosaje.arosaje.api.enumerated.Permission.*;
+//import static com.mspprarosaje.arosaje.model.user.UserType.ADMIN;
+//import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -56,11 +56,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST).permitAll()
-                                .requestMatchers("/api/v1/users/**").hasAnyRole(ADMIN.name())
-                                .requestMatchers(GET, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_READ.name())
-                                .requestMatchers(POST, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_CREATE.name())
-                                .requestMatchers(PUT, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_UPDATE.name())
-                                .requestMatchers(DELETE, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_DELETE.name())
+                                //.requestMatchers("/api/v1/users/**").hasAnyRole(ADMIN.name())
+                                //.requestMatchers(GET, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_READ.name())
+                                //.requestMatchers(POST, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_CREATE.name())
+                                //.requestMatchers(PUT, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_UPDATE.name())
+                                //.requestMatchers(DELETE, "/api/v1/users/admin/**").hasAnyAuthority("ROLE_" + ADMIN_DELETE.name())
                                 .anyRequest()
                                 .authenticated()
                 )
