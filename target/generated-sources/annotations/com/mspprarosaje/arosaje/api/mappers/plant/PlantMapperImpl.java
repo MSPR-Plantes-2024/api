@@ -2,26 +2,29 @@ package com.mspprarosaje.arosaje.api.mappers.plant;
 
 import com.mspprarosaje.arosaje.api.dto.PlantConditionDTO;
 import com.mspprarosaje.arosaje.api.dto.address.AdressMinimalDTO;
-import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import com.mspprarosaje.arosaje.api.dto.plant.PlantDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserMinimalDTO;
+import com.mspprarosaje.arosaje.api.mappers.picture.PictureMapper;
 import com.mspprarosaje.arosaje.model.Address;
-import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.model.PlantCondition;
 import com.mspprarosaje.arosaje.model.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-17T17:44:59+0200",
+    date = "2024-06-19T15:37:58+0200",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
 )
 @Component
 public class PlantMapperImpl implements PlantMapper {
+
+    @Autowired
+    private PictureMapper pictureMapper;
 
     @Override
     public Plant fromDto(PlantDTO plantDTO) {
@@ -34,7 +37,7 @@ public class PlantMapperImpl implements PlantMapper {
         plant.setId( plantDTO.getId() );
         plant.setName( plantDTO.getName() );
         plant.setDescription( plantDTO.getDescription() );
-        plant.setPicture( pictureDTOToPicture( plantDTO.getPicture() ) );
+        plant.setPicture( pictureMapper.fromDto( plantDTO.getPicture() ) );
         plant.setUser( userMinimalDTOToUser( plantDTO.getUser() ) );
         plant.setPlantCondition( plantConditionDTOToPlantCondition( plantDTO.getPlantCondition() ) );
         plant.setAddress( adressMinimalDTOToAddress( plantDTO.getAddress() ) );
@@ -67,7 +70,7 @@ public class PlantMapperImpl implements PlantMapper {
         plantDTO.id( plant.getId() );
         plantDTO.name( plant.getName() );
         plantDTO.description( plant.getDescription() );
-        plantDTO.picture( pictureToPictureDTO( plant.getPicture() ) );
+        plantDTO.picture( pictureMapper.toDto( plant.getPicture() ) );
         plantDTO.plantCondition( plantConditionToPlantConditionDTO( plant.getPlantCondition() ) );
         plantDTO.address( addressToAdressMinimalDTO( plant.getAddress() ) );
         plantDTO.user( userToUserMinimalDTO( plant.getUser() ) );
@@ -87,19 +90,6 @@ public class PlantMapperImpl implements PlantMapper {
         }
 
         return list;
-    }
-
-    protected Picture pictureDTOToPicture(PictureDTO pictureDTO) {
-        if ( pictureDTO == null ) {
-            return null;
-        }
-
-        Picture picture = new Picture();
-
-        picture.setId( pictureDTO.getId() );
-        picture.setCreationDate( pictureDTO.getCreationDate() );
-
-        return picture;
     }
 
     protected User userMinimalDTOToUser(UserMinimalDTO userMinimalDTO) {
@@ -144,19 +134,6 @@ public class PlantMapperImpl implements PlantMapper {
         address.setOtherInfo( adressMinimalDTO.getOtherInfo() );
 
         return address;
-    }
-
-    protected PictureDTO pictureToPictureDTO(Picture picture) {
-        if ( picture == null ) {
-            return null;
-        }
-
-        PictureDTO pictureDTO = new PictureDTO();
-
-        pictureDTO.setId( picture.getId() );
-        pictureDTO.setCreationDate( picture.getCreationDate() );
-
-        return pictureDTO;
     }
 
     protected PlantConditionDTO plantConditionToPlantConditionDTO(PlantCondition plantCondition) {
