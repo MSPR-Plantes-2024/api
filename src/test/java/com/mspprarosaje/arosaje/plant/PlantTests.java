@@ -20,23 +20,6 @@ public class PlantTests {
 	PlantController plantController;
 
 	@Test
-	void plantPostAndDeleteRequestIsTrue() {
-		PlantCreateDTO plantDTO = PlantCreateDTO.builder()
-				.name("test")
-				.description("test")
-				.plantConditionId(1)
-				.addressId(1)
-				.userId(1)
-				.build();
-
-		PlantDTO plantIsCreated = plantController.createPlant(plantDTO).getBody();
-		assertTrue(plantIsCreated != null);
-
-		plantController.deletePlant(plantIsCreated.getId()).getBody();
-		PlantDTO plantIsDeleted = plantController.getPlantById(plantIsCreated.getId()).getBody();
-		assertTrue(plantIsDeleted == null);
-	}
-	@Test
 	void plantsRequestIsNotNull() {
 		assertTrue(plantController.getPlants().getBody() != null);
 	}

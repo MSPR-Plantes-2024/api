@@ -1,6 +1,8 @@
 package com.mspprarosaje.arosaje.api.mappers.publication.impl;
 
+import com.mspprarosaje.arosaje.api.dto.plant.PlantDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationCreateDTO;
+import com.mspprarosaje.arosaje.api.mappers.plant.PlantMapper;
 import com.mspprarosaje.arosaje.api.mappers.publication.PublicationCreateMapper;
 import com.mspprarosaje.arosaje.model.*;
 import com.mspprarosaje.arosaje.model.user.User;
@@ -28,24 +30,32 @@ public class PublicationCreateMapperImpl implements PublicationCreateMapper {
         User publisher = new User();
         List<Plant> plants = new ArrayList<>();
 
-        if (publicationCreateDTO.getAddressId() != 0 && addressService.getAddressById(publicationCreateDTO.getAddressId()).isPresent()) {
-            address = addressService.getAddressById(publicationCreateDTO.getAddressId()).get();
+        if (publicationCreateDTO.getAddress() != null) {
+			if(addressService.getAddressById(publicationCreateDTO.getAddress().getId()).isPresent()) {
+				address = addressService.getAddressById(publicationCreateDTO.getAddress().getId()).get();
+			} else {address = null;}
         } else {address = null;}
 
-        if (publicationCreateDTO.getPublisherId() != 0 && userService.getUserAccountById(publicationCreateDTO.getPublisherId()).isPresent()) {
-            publisher = userService.getUserAccountById(publicationCreateDTO.getPublisherId()).get();
+        if (publicationCreateDTO.getPublisher() != null ) {
+			if(userService.getUserAccountById(publicationCreateDTO.getPublisher().getId()).isPresent()) {
+				publisher = userService.getUserAccountById(publicationCreateDTO.getPublisher().getId()).get();
+			} else {publisher = null;}
         } else {publisher = null;}
 
-        for (Integer plantId : publicationCreateDTO.getPlantsId()) {
-            if (plantService.getPlantById(plantId).isPresent()) {
-                plants.add(plantService.getPlantById(plantId).get());
-            }
-        }
+		if(publicationCreateDTO.getPlants() != null) {
+			for (PlantDTO plantDTO : publicationCreateDTO.getPlants()) {
+				if (plantService.getPlantById(plantDTO.getId()).isPresent()) {
+					plants.add(plantService.getPlantById(plantDTO.getId()).get());
+				}
+			}
+		}
 
         publication.setDescription(publicationCreateDTO.getDescription());
         publication.setAddress(address);
         publication.setPublisher(publisher);
         publication.setPlants(plants);
+		if(publicationCreateDTO.getStartingDate() != null){publication.setStartingDate(publicationCreateDTO.getStartingDate());};
+		if(publicationCreateDTO.getEndingDate() != null){publication.setEndingDate(publicationCreateDTO.getEndingDate());}
 
         return publication;
     }

@@ -26,6 +26,14 @@ public class Publication {
 	@Column(updatable = false)
 	private Date creationDate;
 
+	@Temporal(TemporalType.DATE)
+	@Column()
+	private Date startingDate;
+
+	@Temporal(TemporalType.DATE)
+	@Column()
+	private Date endingDate;
+
 	@ManyToOne
 	private Address address;
 
