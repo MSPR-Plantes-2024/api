@@ -13,11 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.LogoutHandler;
 
-//import static com.mspprarosaje.arosaje.api.enumerated.Permission.*;
-//import static com.mspprarosaje.arosaje.model.user.UserType.ADMIN;
-//import static org.springframework.http.HttpMethod.*;
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
@@ -43,7 +39,7 @@ public class SecurityConfig {
     };
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
-    private final LogoutHandler logoutHandler;
+    private final LogoutService logoutService;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -67,8 +63,8 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .logout(logout -> logout.logoutSuccessUrl("/api/v1/auth/logout")
-                        .addLogoutHandler(logoutHandler)
+                .logout(logout -> logout.logoutUrl("/api/v1/auth/logout")  // Vérifiez que l'URL de déconnexion correspond à celle que vous appelez
+                        .addLogoutHandler(logoutService)  // Ajout du LogoutHandler
                         .logoutSuccessHandler((request, response, authentication)
                                 -> SecurityContextHolder.clearContext()));
         return http.build();
