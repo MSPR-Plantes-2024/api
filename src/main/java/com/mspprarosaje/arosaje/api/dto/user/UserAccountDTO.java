@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.api.dto.user;
 
-import com.mspprarosaje.arosaje.api.enumerated.UserType;
+import com.mspprarosaje.arosaje.model.user.UserType;
 import lombok.Builder;
 import lombok.Data;
 
