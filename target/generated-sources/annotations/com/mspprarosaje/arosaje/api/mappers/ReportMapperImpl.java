@@ -21,7 +21,7 @@ import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-17T17:44:59+0200",
+    date = "2024-06-19T16:48:56+0200",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
 )
 @Component
@@ -187,6 +187,8 @@ public class ReportMapperImpl implements ReportMapper {
         publication.setId( publicationDTO.getId() );
         publication.setDescription( publicationDTO.getDescription() );
         publication.setCreationDate( publicationDTO.getCreationDate() );
+        publication.setStartingDate( publicationDTO.getStartingDate() );
+        publication.setEndingDate( publicationDTO.getEndingDate() );
         publication.setAddress( adressMinimalDTOToAddress( publicationDTO.getAddress() ) );
         publication.setPublisher( userAccountDTOToUser( publicationDTO.getPublisher() ) );
         publication.setGardenKeeper( userAccountDTOToUser( publicationDTO.getGardenKeeper() ) );
@@ -304,6 +306,8 @@ public class ReportMapperImpl implements ReportMapper {
 
         publicationDTO.id( publication.getId() );
         publicationDTO.creationDate( publication.getCreationDate() );
+        publicationDTO.startingDate( publication.getStartingDate() );
+        publicationDTO.endingDate( publication.getEndingDate() );
         publicationDTO.description( publication.getDescription() );
         publicationDTO.address( addressToAdressMinimalDTO( publication.getAddress() ) );
         publicationDTO.publisher( userToUserAccountDTO( publication.getPublisher() ) );

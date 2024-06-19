@@ -2,14 +2,13 @@ package com.mspprarosaje.arosaje.api.mappers.publication;
 
 import com.mspprarosaje.arosaje.api.dto.PlantConditionDTO;
 import com.mspprarosaje.arosaje.api.dto.address.AdressMinimalDTO;
-import com.mspprarosaje.arosaje.api.dto.picture.PictureDTO;
 import com.mspprarosaje.arosaje.api.dto.plant.PlantMinimalDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationDTO;
 import com.mspprarosaje.arosaje.api.dto.publication.PublicationMinimalDTO;
 import com.mspprarosaje.arosaje.api.dto.report.ReportDTO;
 import com.mspprarosaje.arosaje.api.dto.user.UserAccountDTO;
+import com.mspprarosaje.arosaje.api.mappers.picture.PictureMapper;
 import com.mspprarosaje.arosaje.model.Address;
-import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.model.Plant;
 import com.mspprarosaje.arosaje.model.PlantCondition;
 import com.mspprarosaje.arosaje.model.Publication;
@@ -18,15 +17,19 @@ import com.mspprarosaje.arosaje.model.User;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-06-17T17:44:59+0200",
+    date = "2024-06-19T16:48:55+0200",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 21.0.1 (Eclipse Adoptium)"
 )
 @Component
 public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
+
+    @Autowired
+    private PictureMapper pictureMapper;
 
     @Override
     public Publication fromDto(PublicationMinimalDTO publicationMinimalDTO) {
@@ -39,6 +42,8 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         publication.setId( publicationMinimalDTO.getId() );
         publication.setDescription( publicationMinimalDTO.getDescription() );
         publication.setCreationDate( publicationMinimalDTO.getCreationDate() );
+        publication.setStartingDate( publicationMinimalDTO.getStartingDate() );
+        publication.setEndingDate( publicationMinimalDTO.getEndingDate() );
         publication.setAddress( adressMinimalDTOToAddress( publicationMinimalDTO.getAddress() ) );
         publication.setGardenKeeper( userAccountDTOToUser( publicationMinimalDTO.getGardenKeeper() ) );
         publication.setPlants( plantMinimalDTOListToPlantList( publicationMinimalDTO.getPlants() ) );
@@ -71,6 +76,8 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
 
         publicationMinimalDTO.id( publication.getId() );
         publicationMinimalDTO.creationDate( publication.getCreationDate() );
+        publicationMinimalDTO.startingDate( publication.getStartingDate() );
+        publicationMinimalDTO.endingDate( publication.getEndingDate() );
         publicationMinimalDTO.description( publication.getDescription() );
         publicationMinimalDTO.address( addressToAdressMinimalDTO( publication.getAddress() ) );
         publicationMinimalDTO.gardenKeeper( userToUserAccountDTO( publication.getGardenKeeper() ) );
@@ -125,19 +132,6 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         return user.build();
     }
 
-    protected Picture pictureDTOToPicture(PictureDTO pictureDTO) {
-        if ( pictureDTO == null ) {
-            return null;
-        }
-
-        Picture picture = new Picture();
-
-        picture.setId( pictureDTO.getId() );
-        picture.setCreationDate( pictureDTO.getCreationDate() );
-
-        return picture;
-    }
-
     protected PlantCondition plantConditionDTOToPlantCondition(PlantConditionDTO plantConditionDTO) {
         if ( plantConditionDTO == null ) {
             return null;
@@ -161,7 +155,7 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         plant.setId( plantMinimalDTO.getId() );
         plant.setName( plantMinimalDTO.getName() );
         plant.setDescription( plantMinimalDTO.getDescription() );
-        plant.setPicture( pictureDTOToPicture( plantMinimalDTO.getPicture() ) );
+        plant.setPicture( pictureMapper.fromDto( plantMinimalDTO.getPicture() ) );
         plant.setPlantCondition( plantConditionDTOToPlantCondition( plantMinimalDTO.getPlantCondition() ) );
 
         return plant;
@@ -203,6 +197,8 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         publication.setId( publicationDTO.getId() );
         publication.setDescription( publicationDTO.getDescription() );
         publication.setCreationDate( publicationDTO.getCreationDate() );
+        publication.setStartingDate( publicationDTO.getStartingDate() );
+        publication.setEndingDate( publicationDTO.getEndingDate() );
         publication.setAddress( adressMinimalDTOToAddress( publicationDTO.getAddress() ) );
         publication.setPublisher( userAccountDTOToUser( publicationDTO.getPublisher() ) );
         publication.setGardenKeeper( userAccountDTOToUser( publicationDTO.getGardenKeeper() ) );
@@ -210,19 +206,6 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         publication.setReports( reportDTOListToReportList( publicationDTO.getReports() ) );
 
         return publication;
-    }
-
-    protected List<Picture> pictureDTOListToPictureList(List<PictureDTO> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<Picture> list1 = new ArrayList<Picture>( list.size() );
-        for ( PictureDTO pictureDTO : list ) {
-            list1.add( pictureDTOToPicture( pictureDTO ) );
-        }
-
-        return list1;
     }
 
     protected Report reportDTOToReport(ReportDTO reportDTO) {
@@ -237,7 +220,7 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         report.setText( reportDTO.getText() );
         report.setPublishingDate( reportDTO.getPublishingDate() );
         report.setPublication( publicationDTOToPublication( reportDTO.getPublication() ) );
-        report.setPictures( pictureDTOListToPictureList( reportDTO.getPictures() ) );
+        report.setPictures( pictureMapper.fromDtos( reportDTO.getPictures() ) );
 
         return report;
     }
@@ -273,19 +256,6 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         return userAccountDTO.build();
     }
 
-    protected PictureDTO pictureToPictureDTO(Picture picture) {
-        if ( picture == null ) {
-            return null;
-        }
-
-        PictureDTO pictureDTO = new PictureDTO();
-
-        pictureDTO.setId( picture.getId() );
-        pictureDTO.setCreationDate( picture.getCreationDate() );
-
-        return pictureDTO;
-    }
-
     protected PlantConditionDTO plantConditionToPlantConditionDTO(PlantCondition plantCondition) {
         if ( plantCondition == null ) {
             return null;
@@ -309,7 +279,7 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         plantMinimalDTO.id( plant.getId() );
         plantMinimalDTO.name( plant.getName() );
         plantMinimalDTO.description( plant.getDescription() );
-        plantMinimalDTO.picture( pictureToPictureDTO( plant.getPicture() ) );
+        plantMinimalDTO.picture( pictureMapper.toDto( plant.getPicture() ) );
         plantMinimalDTO.plantCondition( plantConditionToPlantConditionDTO( plant.getPlantCondition() ) );
 
         return plantMinimalDTO.build();
@@ -350,6 +320,8 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
 
         publicationDTO.id( publication.getId() );
         publicationDTO.creationDate( publication.getCreationDate() );
+        publicationDTO.startingDate( publication.getStartingDate() );
+        publicationDTO.endingDate( publication.getEndingDate() );
         publicationDTO.description( publication.getDescription() );
         publicationDTO.address( addressToAdressMinimalDTO( publication.getAddress() ) );
         publicationDTO.publisher( userToUserAccountDTO( publication.getPublisher() ) );
@@ -358,19 +330,6 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         publicationDTO.reports( reportListToReportDTOList( publication.getReports() ) );
 
         return publicationDTO.build();
-    }
-
-    protected List<PictureDTO> pictureListToPictureDTOList(List<Picture> list) {
-        if ( list == null ) {
-            return null;
-        }
-
-        List<PictureDTO> list1 = new ArrayList<PictureDTO>( list.size() );
-        for ( Picture picture : list ) {
-            list1.add( pictureToPictureDTO( picture ) );
-        }
-
-        return list1;
     }
 
     protected ReportDTO reportToReportDTO(Report report) {
@@ -385,7 +344,7 @@ public class PublicationMinimalMapperImpl implements PublicationMinimalMapper {
         reportDTO.text( report.getText() );
         reportDTO.publishingDate( report.getPublishingDate() );
         reportDTO.publication( publicationToPublicationDTO( report.getPublication() ) );
-        reportDTO.pictures( pictureListToPictureDTOList( report.getPictures() ) );
+        reportDTO.pictures( pictureMapper.toDtos( report.getPictures() ) );
 
         return reportDTO.build();
     }

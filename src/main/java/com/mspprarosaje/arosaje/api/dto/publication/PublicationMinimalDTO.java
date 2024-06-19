@@ -15,6 +15,8 @@ import java.util.List;
 public class PublicationMinimalDTO {
     private int id;
     private Date creationDate;
+	private Date startingDate;
+	private Date endingDate;
     private String description;
     private AdressMinimalDTO address;
     private UserAccountDTO gardenKeeper;
