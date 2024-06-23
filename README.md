@@ -14,5 +14,9 @@ Son objectif, est de permettre à un utilisateur de s'inscrire, se connecter et 
    ```bash
    git clone https://github.com/MSPR-Plantes-2024/api.git
    cd ./api
+   
    docker build -t arosaje-api .
    docker run -p 8080:8080 arosaje-api
+
+    docker build -t arosaje-db-postgres .
+    docker run -p 5432:5432 arosaje-db-postgres
