@@ -14,7 +14,7 @@ import java.util.Date;
 @Table(name = "picture")
 public class Picture {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Temporal(TemporalType.DATE)

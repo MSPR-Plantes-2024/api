@@ -18,4 +18,8 @@ RUN mvn package -DskipTests
 EXPOSE 8080
 
 # Lancer l'application Spring Boot
+# Retirer les variables d'environement dans un contexte de mise en production
+CMD export DATABASE_PASSWORD = "Cascade23River"
+CMD export DATABASE_USER = "user"
+CMD export DATABASE_URL = "jdbc:postgresql://localhost:5432/arosaje"
 CMD mvn clean compile exec:java

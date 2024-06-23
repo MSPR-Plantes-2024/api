@@ -19,10 +19,10 @@ import java.util.List;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "user")
+@Table(name = "\"user\"")
 public class User implements UserDetails {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(nullable = false, length = 50)
