@@ -33,6 +33,7 @@ public class AddressController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AddressDTO> getAddressById(@PathVariable() int id) {
+        System.out.println("start");
         return ResponseEntity.of(this.addressService.getAddressById(id).map(this.addressMapper::toDto));
     }
 

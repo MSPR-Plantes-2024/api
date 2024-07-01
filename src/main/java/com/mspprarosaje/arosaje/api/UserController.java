@@ -37,6 +37,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserMinimalDTO> getUserAccountById(@PathVariable() Integer id){
+        System.out.println("start");
         return ResponseEntity.of(this.userService.getUserAccountById(id).map(this.userMinimalMapper::toMinimalDto));
     }
 

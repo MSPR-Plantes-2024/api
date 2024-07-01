@@ -32,7 +32,7 @@ public class SecurityConfig {
             "/api/v1/publications/**",
             "/api/v1/reports/**",
             "/api/v1/pictures/**",
-            "/api/v1/users/user/**",
+            "/api/v1/users/**",
             "/api/v1/plantsConditions/**",
 			"/api-docs",
 			"/swagger-ui/**"
