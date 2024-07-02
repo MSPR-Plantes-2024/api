@@ -3,6 +3,7 @@ package com.mspprarosaje.arosaje.api.mappers.plant.impl;
 import com.mspprarosaje.arosaje.api.dto.plant.PlantCreateDTO;
 import com.mspprarosaje.arosaje.api.mappers.plant.PlantCreateMapper;
 import com.mspprarosaje.arosaje.model.*;
+import com.mspprarosaje.arosaje.model.user.User;
 import com.mspprarosaje.arosaje.services.AddressService;
 import com.mspprarosaje.arosaje.services.PictureService;
 import com.mspprarosaje.arosaje.services.PlantConditionService;

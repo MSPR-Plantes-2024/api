@@ -5,12 +5,13 @@ import com.mspprarosaje.arosaje.api.mappers.user.UserCreateMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserMinimalMapper;
 import com.mspprarosaje.arosaje.api.mappers.user.UserUpdateMapper;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import com.mspprarosaje.arosaje.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -27,24 +28,24 @@ public class UserController {
     private final UserMinimalMapper userMinimalMapper;
     private final UserCreateMapper userCreateMapper;
     private final UserUpdateMapper userUpdateMapper;
+    private final PasswordEncoder passwordEncoder;
 
-    @GetMapping("/admin")
+    @GetMapping()
     public ResponseEntity<List<UserDTO>> getUsers(){
         return ResponseEntity.ok(userMapper.toDtos(userService.getUsers()));
     }
 
-    @GetMapping("/admin/{id}")
-    public ResponseEntity<UserDTO> getUserAccountByIdAdmin(@PathVariable() Integer id){
-        return ResponseEntity.of(this.userService.getUserAccountByIdAdmin(id).map(this.userMapper::toDto));
-    }
-
-    @GetMapping("/user/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<UserMinimalDTO> getUserAccountById(@PathVariable() Integer id){
+        System.out.println("start");
         return ResponseEntity.of(this.userService.getUserAccountById(id).map(this.userMinimalMapper::toMinimalDto));
     }
 
-    @PostMapping("/admin")
+    @PostMapping()
     public ResponseEntity<UserCreateDTO> createUser(@RequestBody UserCreateDTO userCreateDTO){
+        var encoded = passwordEncoder.encode(userCreateDTO.getPassword());
+        userCreateDTO.setPassword(encoded);
+
         User createdUser = userService.saveUser(
                 this.userCreateMapper.fromDto(userCreateDTO),
                 userCreateDTO.getUserType()
@@ -53,7 +54,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(this.userCreateMapper.toDto(createdUser));
     }
 
-    @PutMapping("/admin/{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<UserUpdateDTO> updateUser(@PathVariable() Integer id,
                                                         @RequestBody UserUpdateDTO userUpdateDTO){
         if (!id.equals(userUpdateDTO.getId())) {
@@ -68,6 +69,9 @@ public class UserController {
                     .build();
         }
 
+        var encoded = passwordEncoder.encode(userUpdateDTO.getPassword());
+        userUpdateDTO.setPassword(encoded);
+
         User updatedUser = userService.saveUser(
                 this.userUpdateMapper.fromDto(userUpdateDTO),
                 userUpdateDTO.getUserType()
@@ -76,7 +80,7 @@ public class UserController {
     }
 
 
-    @DeleteMapping("/admin/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable() Integer id) {
         if(!this.userService.existsById(id)){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();

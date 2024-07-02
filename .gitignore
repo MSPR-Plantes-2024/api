@@ -1,2 +1,4 @@
 # Ignore le .idea (configuration de l'ide)
 .idea/
+src/bdd/arosaje.bd
+target/

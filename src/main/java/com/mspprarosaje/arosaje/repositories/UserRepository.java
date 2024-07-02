@@ -1,6 +1,6 @@
 package com.mspprarosaje.arosaje.repositories;
 
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

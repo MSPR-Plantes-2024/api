@@ -3,7 +3,7 @@ package com.mspprarosaje.arosaje.api.mappers.user;
 import java.util.List;
 
 import com.mspprarosaje.arosaje.api.dto.user.UserDTO;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

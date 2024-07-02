@@ -1,7 +1,7 @@
 package com.mspprarosaje.arosaje.services.impl;
 
-import com.mspprarosaje.arosaje.api.enumerated.UserType;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.UserType;
+import com.mspprarosaje.arosaje.model.user.User;
 import com.mspprarosaje.arosaje.repositories.UserRepository;
 import com.mspprarosaje.arosaje.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +17,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<User> getUsers(){
         return userRepository.findAll();
-    }
-
-    @Override
-    public Optional<User> getUserAccountByIdAdmin(int id){
-        return userRepository.findById(id);
     }
 
     @Override

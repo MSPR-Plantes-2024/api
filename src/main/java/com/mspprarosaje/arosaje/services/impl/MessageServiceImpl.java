@@ -1,7 +1,7 @@
 package com.mspprarosaje.arosaje.services.impl;
 
 import com.mspprarosaje.arosaje.model.Message;
-import com.mspprarosaje.arosaje.model.User;
+import com.mspprarosaje.arosaje.model.user.User;
 import com.mspprarosaje.arosaje.repositories.MessageRepository;
 import com.mspprarosaje.arosaje.services.MessageService;
 import lombok.AllArgsConstructor;
