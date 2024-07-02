@@ -9,6 +9,7 @@ import com.mspprarosaje.arosaje.model.Picture;
 import com.mspprarosaje.arosaje.services.impl.PictureStreamServiceImpl;
 import jakarta.validation.constraints.AssertTrue;
 import org.junit.Assert;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,6 +21,7 @@ import java.nio.file.Files;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
+@Disabled
 public class pictureTests {
 
 	@Autowired

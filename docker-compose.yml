@@ -1,0 +1,24 @@
+name: arosaje
+services:
+  db:
+    env_file:
+      - .env
+    build:
+      context: ./src/bdd
+      dockerfile: Dockerfile
+    container_name: arosaje-db
+    restart: always
+    ports:
+      - "5432:5432"
+  api:
+    depends_on:
+      - db
+    env_file:
+      - .env
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: arosaje-api
+    restart: always
+    ports:
+      - "8080:8080"

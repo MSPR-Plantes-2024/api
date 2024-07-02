@@ -1,4 +1,6 @@
 # Ignore le .idea (configuration de l'ide)
 .idea/
+#Ignore les fichiers de variables d'environnement
+.env
 src/bdd/arosaje.bd
 target/
