@@ -13,6 +13,9 @@ COPY pom.xml .
 # Copy your source code
 COPY src /app/src
 
+# Copier le fichier .env
+COPY .env .
+
 # Construire le projet avec Maven
 RUN mvn package -DskipTests
 
@@ -25,4 +28,4 @@ CMD export DATABASE_PASSWORD = $POSTGRES_PASSWORD
 CMD export DATABASE_USER = $POSTGRES_USER
 CMD export DATABASE_URL = $DATABASE_URL
 
-CMD mvn clean install exec:java
+CMD source .env && mvn clean install exec:java
