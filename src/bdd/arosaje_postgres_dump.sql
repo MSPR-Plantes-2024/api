@@ -52,7 +52,7 @@ CREATE TABLE public.address (
     city text NOT NULL,
     zip_code text NOT NULL,
     postal_address text NOT NULL,
-    other_info text,
+    other_info text
 );
 
 
