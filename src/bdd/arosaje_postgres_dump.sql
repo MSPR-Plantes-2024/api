@@ -616,7 +616,7 @@ COPY public.plant_condition (id, name) FROM stdin;
 1	Sain
 2	Malade
 3	Abimé
-4   Problème
+4	Problème
 \.
 
 
