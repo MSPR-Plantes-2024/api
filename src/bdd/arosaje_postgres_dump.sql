@@ -688,7 +688,8 @@ COPY public."user" (id, first_name, last_name, email, password, user_type) FROM 
 -- Data for Name: user_type; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.user_type (name, id) FROM stdin;
+COPY public.user_type (`name`, id) FROM stdin;
+`USER` 1
 \.
 
 
