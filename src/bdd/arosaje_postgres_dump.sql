@@ -463,7 +463,7 @@ ALTER SEQUENCE public.user_seq OWNED BY public."user".id;
 
 CREATE TABLE public.user_type (
     id integer NOT NULL,
-    name text NOT NULL,
+    name text NOT NULL
 );
 
 
