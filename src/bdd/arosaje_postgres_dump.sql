@@ -20,7 +20,7 @@ SET row_security = off;
 -- Name: arosaje; Type: DATABASE; Schema: -; Owner: user
 --
 
-CREATE DATABASE arosaje WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'en_US.utf8';
+CREATE DATABASE arosaje WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'fr_FR.utf8';
 
 
 ALTER DATABASE arosaje OWNER TO "user";
@@ -48,11 +48,11 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.address (
     id integer NOT NULL,
-    user_id integer,
-    city text,
+    user_id integer NOT NULL,
+    city text NOT NULL,
+    zip_code text NOT NULL,
+    postal_address text NOT NULL,
     other_info text,
-    postal_address text,
-    zip_code text
 );
 
 
@@ -84,11 +84,11 @@ ALTER SEQUENCE public.address_seq OWNED BY public.address.id;
 --
 
 CREATE TABLE public.comment (
-    commentator_id integer,
     id integer NOT NULL,
-    report_id integer,
-    publishing_date timestamp with time zone,
-    text text
+    commentator_id integer NOT NULL,
+    report_id integer NOT NULL,
+    publishing_date timestamp with time zone NOT NULL,
+    text text NOT NULL
 );
 
 
@@ -133,10 +133,10 @@ ALTER SEQUENCE public.comment_seq OWNED BY public.comment.id;
 
 CREATE TABLE public.message (
     id integer NOT NULL,
-    receiver_id integer,
-    sender_id integer,
-    publishing_date timestamp with time zone,
-    text text
+    receiver_id integer NOT NULL,
+    sender_id integer NOT NULL,
+    publishing_date timestamp with time zone NOT NULL,
+    text text NOT NULL
 );
 
 
@@ -196,11 +196,11 @@ ALTER TABLE public.picture OWNER TO "user";
 CREATE TABLE public.plant (
     id integer NOT NULL,
     picture_id integer,
-    plant_condition_id integer,
+    plant_condition_id integer NOT NULL,
     user_id integer,
-    name text,
+    name text NOT NULL,
     description text,
-    address_id integer
+    address_id integer NOT NULL
 );
 
 
@@ -212,7 +212,7 @@ ALTER TABLE public.plant OWNER TO "user";
 
 CREATE TABLE public.plant_condition (
     id integer NOT NULL,
-    name text
+    name text NOT NULL
 );
 
 
@@ -265,14 +265,14 @@ ALTER SEQUENCE public.plant_seq OWNED BY public.plant.id;
 --
 
 CREATE TABLE public.publication (
-    address_id integer,
-    garden_keeper_id integer,
     id integer NOT NULL,
-    publisher_id integer,
-    creation_date timestamp with time zone,
+    garden_keeper_id integer,
+    address_id integer NOT NULL,
+    publisher_id integer NOT NULL,
+    creation_date timestamp with time zone NOT NULL,
     description text,
-    ending_date timestamp with time zone,
-    starting_date timestamp with time zone
+    ending_date timestamp with time zone NOT NULL,
+    starting_date timestamp with time zone NOT NULL
 );
 
 
@@ -341,10 +341,10 @@ ALTER SEQUENCE public.publication_seq OWNED BY public.publication.id;
 
 CREATE TABLE public.report (
     id integer NOT NULL,
-    publication_id integer,
-    publishing_date date,
+    publication_id integer NOT NULL,
+    publishing_date date NOT NULL,
     text text,
-    title text
+    title text NOT NULL
 );
 
 
@@ -428,8 +428,8 @@ CREATE TABLE public."user" (
     id integer NOT NULL,
     first_name text,
     last_name text,
-    email text,
-    password text,
+    email text NOT NULL,
+    password text NOT NULL,
     user_type text
 );
 
@@ -462,8 +462,8 @@ ALTER SEQUENCE public.user_seq OWNED BY public."user".id;
 --
 
 CREATE TABLE public.user_type (
-    name text,
-    id integer NOT NULL
+    id integer NOT NULL,
+    name text NOT NULL,
 );
 
 
@@ -572,7 +572,7 @@ COPY public.address (id, user_id, city, other_info, postal_address, zip_code) FR
 -- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.comment (commentator_id, id, report_id, publishing_date, text) FROM stdin;
+COPY public.comment (id, commentator_id, report_id, publishing_date, text) FROM stdin;
 \.
 
 
@@ -688,8 +688,8 @@ COPY public."user" (id, first_name, last_name, email, password, user_type) FROM 
 -- Data for Name: user_type; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.user_type (`name`, id) FROM stdin;
-`USER` 1
+COPY public.user_type (name, id) FROM stdin;
+USER 1
 \.
 
 
@@ -771,11 +771,11 @@ SELECT pg_catalog.setval('public.user_type_seq', 1, false);
 
 
 --
--- Name: user id_user; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: user user_id; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
 ALTER TABLE ONLY public."user"
-    ADD CONSTRAINT id_user PRIMARY KEY (id);
+    ADD CONSTRAINT user_id PRIMARY KEY (id);
 
 
 --
@@ -1007,8 +1007,10 @@ ALTER TABLE ONLY public.comment
 -- Name: token fkl10xjn274m2rkxo54knt2xqvy; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
+ALTER TABLE public.token DROP CONSTRAINT IF EXISTS FKl10xjn274m2rkxo54knt2xqvy;
+
 ALTER TABLE ONLY public.token
-    ADD CONSTRAINT fkl10xjn274m2rkxo54knt2xqvy FOREIGN KEY (user_id) REFERENCES public."user"(id);
+    ADD CONSTRAINT fkl10xjn274m2rkxo54knt2xqvy FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
 
 
 --
