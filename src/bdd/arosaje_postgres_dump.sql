@@ -565,9 +565,6 @@ ALTER TABLE ONLY public.user_type ALTER COLUMN id SET DEFAULT nextval('public.us
 --
 
 COPY public.address (id, user_id, city, other_info, postal_address, zip_code) FROM stdin;
-1	1	Rennes		65 rue d'Antrain	35000
-52	2	Quimper	digicode : 3945	7 av. Victor HUGO	29000
-102	102	Cesson-cévigné	3ème étage	3 rue des myosotis	35510
 \.
 
 
@@ -592,7 +589,6 @@ COPY public.comment_answers (answers_id, comment_id) FROM stdin;
 --
 
 COPY public.message (id, receiver_id, sender_id, publishing_date, text) FROM stdin;
-1	1	2	2024-02-28 10:43:13+00	Bonjour toto.
 \.
 
 
@@ -601,9 +597,6 @@ COPY public.message (id, receiver_id, sender_id, publishing_date, text) FROM std
 --
 
 COPY public.picture (id, creation_date) FROM stdin;
-1	2024-06-12
-202	2024-06-17
-353	2024-06-17
 \.
 
 
@@ -612,7 +605,6 @@ COPY public.picture (id, creation_date) FROM stdin;
 --
 
 COPY public.plant (id, picture_id, plant_condition_id, user_id, name, description, address_id) FROM stdin;
-1	353	1	102	Tulipe	string	102
 \.
 
 
@@ -624,6 +616,7 @@ COPY public.plant_condition (id, name) FROM stdin;
 1	Sain
 2	Malade
 3	Abimé
+4   Problème
 \.
 
 
@@ -632,9 +625,6 @@ COPY public.plant_condition (id, name) FROM stdin;
 --
 
 COPY public.publication (address_id, garden_keeper_id, id, publisher_id, creation_date, description, ending_date, starting_date) FROM stdin;
-102	\N	1	102	2024-06-19 13:28:12+00	Je recherche un personnes pour s'occuper de mes plantes	2024-06-20 00:00:00+00	2024-06-19 13:12:14+00
-102	\N	4	102	2024-06-19 13:42:44+00	Je recherche un personnes pour s'occuper de mes plantes SVP	2024-06-20 00:00:00+00	2024-06-19 13:12:14+00
-102	\N	52	102	2024-06-20 13:26:35+00	Je recherche un personnes pour s'occuper de mes plantes SVP	2024-06-13 00:00:00+00	2024-06-19 13:12:14+00
 \.
 
 
@@ -651,9 +641,6 @@ COPY public.publication_comments (comments_id, publication_id) FROM stdin;
 --
 
 COPY public.publication_plants (plants_id, publication_id) FROM stdin;
-1	1
-1	4
-1	52
 \.
 
 
@@ -686,27 +673,6 @@ COPY public.report_pictures (report_id, pictures_id) FROM stdin;
 --
 
 COPY public.token (expired, id, revoked, user_id, token, token_type) FROM stdin;
-t	1	t	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTExNzMsImV4cCI6MTcwOTE5NzU3M30.npwOy8ufgsva_tjJppXtfmIw3mVb3oB5B16B2vC81xI	BEARER
-t	2	t	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTEyMDMsImV4cCI6MTcwOTE5NzYwM30.-e-ICvYlIXv-YPq75ueONjt7X8UHV_PDZ6ev-d0W4gU	BEARER
-t	52	t	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTQwMDUsImV4cCI6MTcwOTIwMDQwNX0.l20tqMNBSSX3VdqRiAaZBROEkLG5ON9tKD3Xg5upf94	BEARER
-f	102	f	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTQyNzgsImV4cCI6MTcwOTIwMDY3OH0.TxXKXXG2-WBiRx-RHTZHLVXEqCVoMhxA1kvnPlJDnnk	BEARER
-t	152	t	2	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aXRpQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTY3MTUsImV4cCI6MTcwOTIwMzExNX0.ZgD7vvh-LtnG9DRV9FYhk075IlID1DN8ToNFjSNUZGA	BEARER
-f	153	f	2	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aXRpQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTY3MzgsImV4cCI6MTcwOTIwMzEzOH0.fWGGk80aEmbl1gbZbFuxBtAkXa7FvnqeJ9voCslyQ24	BEARER
-t	202	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzMzA4NiwiZXhwIjoxNzA5MzE5NDg2fQ._-6lXCajyUglL2MExK04OkDoI5HfT3yo1wBbidlUxPM	BEARER
-t	203	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzMzExMCwiZXhwIjoxNzA5MzE5NTEwfQ.Uh4BdqF92G6vNuy1F6pMifKNkxpV_2rWvse3OuuckRs	BEARER
-t	252	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzODMzMCwiZXhwIjoxNzA5MzI0NzMwfQ.AuE9Pw5cpHHoBcrk1GkMOH51n5l0cSq0IfKDUBdcnq0	BEARER
-t	302	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzODUxNywiZXhwIjoxNzA5MzI0OTE3fQ.5QgXeBXyspVCeWK2J60dIiBsjKRtaTCRv6RdL9N2hFY	BEARER
-f	352	f	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzODk3NCwiZXhwIjoxNzA5MzI1Mzc0fQ.P8WjWbYytr07VoMLe7scEYC1KFy_tkL8AqcrzgvfHwc	BEARER
-t	402	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4NjE3NTg4LCJleHAiOjE3MTg3MDM5ODh9.LvVwX-8oWoXVp-8pp7eb3W7o3xtrVhBGDVWe2IN-UNY	BEARER
-t	452	t	152	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MkBnbWFpbC5mciIsImlhdCI6MTcxODYyMDIyNiwiZXhwIjoxNzE4NzA2NjI2fQ.5SnzBI69aW0NFSpOUpvl7tfpIAVQIoFPUxeGF4fnhqg	BEARER
-f	502	f	152	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MkBnbWFpbC5mciIsImlhdCI6MTcxODYyMDQ4NCwiZXhwIjoxNzE4NzA2ODg0fQ.U1VDp8t4xMexw6JihKorsx8xLNsIlHQytdqqREG8S34	BEARER
-t	552	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODAyMzYxLCJleHAiOjE3MTg4ODg3NjF9.97kXyG1_E2KeVkpwxEnwmEkgWhEr5d74l_UwEdhk-K0	BEARER
-t	602	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODA0MzY0LCJleHAiOjE3MTg4OTA3NjR9.juvzlXH39R9WnSkgda5YZyiiAZ51h5di4XDOxcXZtXs	BEARER
-t	652	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODA4NTgyLCJleHAiOjE3MTg4OTQ5ODJ9.tc3Vdats4j15F_TipU7Hp9TH8JOySZFl8ckq8oOuwD8	BEARER
-t	702	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODg5OTY3LCJleHAiOjE3MTg5NzYzNjd9.tAYDJrgG-2P7apKKZXQknTJlyg5OlAh1Zisl6npAEMY	BEARER
-t	3	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTQ2NDc1LCJleHAiOjE3MTkyMzI4NzV9.nErXXs6Vod0gHJR5ihW1eugyTJrLKahG_hw8UC94rI0	BEARER
-t	53	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTUzMzUxLCJleHAiOjE3MTkyMzk3NTF9.u3s5_2AnX9IT2BKKHcBI1XoU_F_qcUNd72s6cl2VVj0	BEARER
-f	54	f	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTUzMzU0LCJleHAiOjE3MTkyMzk3NTR9.r8QQIx7O59GdKPOaS6QPmJlrqmKp2iR7DIM0DVwaWKA	BEARER
 \.
 
 
@@ -715,11 +681,6 @@ f	54	f	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTUz
 --
 
 COPY public."user" (id, first_name, last_name, email, password, user_type) FROM stdin;
-1	toto	Lys	toto@test.fr	$2a$10$gYep9ACBOuks1VyQnx3f0upNG1IIJwjUeLNLM/8M48Fw0an53j2Ga	USER
-2	titi	Las	titi@test.fr	$2a$10$BzCJINiDInHzJc3ySQWyA.IUsfH83.cETaXOd1QtIaq9.arOM8WbS	USER
-52	tobias	Lest	tolest@test.fr	$2a$10$DB/irADykJH68ojCnmAY5uafZZjmrOF9DqoML1GQQiJpUetgZhTPm	USER
-102	Test	Test	test@gmail.fr	$2a$10$sTlAVTaAMoIZVD.Uu55FnejLp50aD4n0TGOoiIcVeMx9sGyn30ZFa	USER
-152	Test	Test	test2@gmail.fr	$2a$10$xl68zpamGH5fX6oIBEA.redWpHWvfINPpz3DX9QZoN.NpuvZz47cK	USER
 \.
 
 
