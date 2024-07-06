@@ -1012,6 +1012,16 @@ ALTER TABLE public.token DROP CONSTRAINT IF EXISTS FKl10xjn274m2rkxo54knt2xqvy;
 ALTER TABLE ONLY public.token
     ADD CONSTRAINT fkl10xjn274m2rkxo54knt2xqvy FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
 
+ALTER TABLE public.report_pictures ADD CONSTRAINT pk_report_pictures PRIMARY KEY (report_id, pictures_id);
+
+ALTER TABLE public.publication_reports ADD CONSTRAINT pk_publication_reports PRIMARY KEY (publication_id, reports_id);
+
+ALTER TABLE public.publication_plants ADD CONSTRAINT pk_publication_plants PRIMARY KEY (plants_id, publication_id);
+
+ALTER TABLE public.publication_comments ADD CONSTRAINT pk_publication_comments PRIMARY KEY (comments_id, publication_id);
+
+ALTER TABLE public.comment_answers ADD CONSTRAINT pk_comment_answers PRIMARY KEY (answers_id, comment_id);
+
 
 --
 -- Name: report fkmlmq1w66s5uinwjggf89o9ps2; Type: FK CONSTRAINT; Schema: public; Owner: user
