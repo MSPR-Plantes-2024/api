@@ -1022,63 +1022,108 @@ ALTER TABLE public.publication_comments ADD CONSTRAINT pk_publication_comments P
 
 ALTER TABLE public.comment_answers ADD CONSTRAINT pk_comment_answers PRIMARY KEY (answers_id, comment_id);
 
+-- Address Table Foreign Key
+ALTER TABLE public.address
+    ADD CONSTRAINT fk_address_user_id FOREIGN KEY (user_id)
+        REFERENCES public."user" (id);
 
---
--- Name: report fkmlmq1w66s5uinwjggf89o9ps2; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+-- Comment Table Foreign Keys
+ALTER TABLE public.comment
+    ADD CONSTRAINT fk_comment_commentator_id FOREIGN KEY (commentator_id)
+        REFERENCES public."user" (id);
 
-ALTER TABLE ONLY public.report
-    ADD CONSTRAINT fkmlmq1w66s5uinwjggf89o9ps2 FOREIGN KEY (publication_id) REFERENCES public.publication(id);
+ALTER TABLE public.comment
+    ADD CONSTRAINT fk_comment_report_id FOREIGN KEY (report_id)
+        REFERENCES public.report (id);
 
+-- Message Table Foreign Keys
+ALTER TABLE public.message
+    ADD CONSTRAINT fk_message_receiver_id FOREIGN KEY (receiver_id)
+        REFERENCES public."user" (id);
 
---
--- Name: comment fkn2m8whrfw1drq2c67d247br7c; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.message
+    ADD CONSTRAINT fk_message_sender_id FOREIGN KEY (sender_id)
+        REFERENCES public."user" (id);
 
-ALTER TABLE ONLY public.comment
-    ADD CONSTRAINT fkn2m8whrfw1drq2c67d247br7c FOREIGN KEY (report_id) REFERENCES public.report(id);
+-- Plant Table Foreign Keys
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_picture_id FOREIGN KEY (picture_id)
+        REFERENCES public.picture (id);
 
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_plant_condition_id FOREIGN KEY (plant_condition_id)
+        REFERENCES public.plant_condition (id);
 
---
--- Name: plant fknj7pdlp85ekaid5kgou1wl85v; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_user_id FOREIGN KEY (user_id)
+        REFERENCES public."user" (id);
 
-ALTER TABLE ONLY public.plant
-    ADD CONSTRAINT fknj7pdlp85ekaid5kgou1wl85v FOREIGN KEY (user_id) REFERENCES public."user"(id);
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_address_id FOREIGN KEY (address_id)
+        REFERENCES public.address (id);
 
+-- Publication Table Foreign Keys
+ALTER TABLE public.publication
+    ADD CONSTRAINT fk_publication_garden_keeper_id FOREIGN KEY (garden_keeper_id)
+        REFERENCES public."user" (id);
 
---
--- Name: publication_plants fkq1uod3iv85gr4brb8qsimqxup; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.publication
+    ADD CONSTRAINT fk_publication_address_id FOREIGN KEY (address_id)
+        REFERENCES public.address (id);
 
-ALTER TABLE ONLY public.publication_plants
-    ADD CONSTRAINT fkq1uod3iv85gr4brb8qsimqxup FOREIGN KEY (publication_id) REFERENCES public.publication(id);
+ALTER TABLE public.publication
+    ADD CONSTRAINT fk_publication_publisher_id FOREIGN KEY (publisher_id)
+        REFERENCES public."user" (id);
 
+-- Token Table Foreign Key
+ALTER TABLE public.token
+    ADD CONSTRAINT fk_token_user_id FOREIGN KEY (user_id)
+        REFERENCES public."user" (id) ON DELETE CASCADE;
 
---
--- Name: address fksa4c9i7qwgoffq6mmhdnnjhoy; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+-- Publication Reports Foreign Key
+ALTER TABLE public.publication_reports
+    ADD CONSTRAINT fk_publication_reports_publication_id FOREIGN KEY (publication_id)
+        REFERENCES public.publication(id);
 
-ALTER TABLE ONLY public.address
-    ADD CONSTRAINT fksa4c9i7qwgoffq6mmhdnnjhoy FOREIGN KEY (user_id) REFERENCES public."user"(id);
+ALTER TABLE public.publication_reports
+    ADD CONSTRAINT fk_publication_reports_reports_id FOREIGN KEY (reports_id)
+        REFERENCES public.report(id);
 
+-- Report Pictures Foreign Key
+ALTER TABLE public.report_pictures
+    ADD CONSTRAINT fk_report_pictures_report_id FOREIGN KEY (report_id)
+        REFERENCES public.report(id);
 
---
--- Name: plant fksdl1u305i0vd1n6affgbpp650; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.report_pictures
+    ADD CONSTRAINT fk_report_pictures_pictures_id FOREIGN KEY (pictures_id)
+        REFERENCES public.picture(id);
 
-ALTER TABLE ONLY public.plant
-    ADD CONSTRAINT fksdl1u305i0vd1n6affgbpp650 FOREIGN KEY (address_id) REFERENCES public.address(id);
+-- Publication Plants Foreign Key
+ALTER TABLE public.publication_plants
+    ADD CONSTRAINT fk_publication_plants_plants_id FOREIGN KEY (plants_id)
+        REFERENCES public.plant(id);
 
+ALTER TABLE public.publication_plants
+    ADD CONSTRAINT fk_publication_plants_publication_id FOREIGN KEY (publication_id)
+        REFERENCES public.publication(id);
 
---
--- Name: publication fksmwvpq90560h49kv3i068s5hu; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+-- Publication Comments Foreign Key
+ALTER TABLE public.publication_comments
+    ADD CONSTRAINT fk_publication_comments_comments_id FOREIGN KEY (comments_id)
+        REFERENCES public.comment(id);
 
-ALTER TABLE ONLY public.publication
-    ADD CONSTRAINT fksmwvpq90560h49kv3i068s5hu FOREIGN KEY (address_id) REFERENCES public.address(id);
+ALTER TABLE public.publication_comments
+    ADD CONSTRAINT fk_publication_comments_publication_id FOREIGN KEY (publication_id)
+        REFERENCES public.publication(id);
 
+-- Comment Answers Foreign Key
+ALTER TABLE public.comment_answers
+    ADD CONSTRAINT fk_comment_answers_answers_id FOREIGN KEY (answers_id)
+        REFERENCES public.comment(id);
 
+ALTER TABLE public.comment_answers
+    ADD CONSTRAINT fk_comment_answers_comment_id FOREIGN KEY (comment_id)
+        REFERENCES public.comment(id);
 --
 -- PostgreSQL database dump complete
 --
