@@ -857,55 +857,46 @@ ALTER TABLE ONLY public.token
 ALTER TABLE ONLY public.user_type
     ADD CONSTRAINT user_type_pk PRIMARY KEY (id);
 
+-- User Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_id ON public."user" (id);
 
---
--- Name: idx_32982_sqlite_autoindex_comment_answers_1; Type: INDEX; Schema: public; Owner: user
---
+-- Address Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_address_id ON public.address (id);
 
-CREATE UNIQUE INDEX idx_32982_sqlite_autoindex_comment_answers_1 ON public.comment_answers USING btree (answers_id);
+-- Comment Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_comment_id ON public.comment (id);
 
+-- Message Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_message_id ON public.message (id);
 
---
--- Name: idx_33067_sqlite_autoindex_plant_1; Type: INDEX; Schema: public; Owner: user
---
+-- Plant Table: Primary Key and Picture ID
+CREATE UNIQUE INDEX IF NOT EXISTS idx_plant_id ON public.plant (id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_plant_picture_id ON public.plant (picture_id);
 
-CREATE UNIQUE INDEX idx_33067_sqlite_autoindex_plant_1 ON public.plant USING btree (picture_id);
+-- Plant Condition Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_plant_condition_id ON public.plant_condition (id);
 
+-- Picture Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_picture_id ON public.picture (id);
 
---
--- Name: idx_33083_sqlite_autoindex_publication_comments_1; Type: INDEX; Schema: public; Owner: user
---
+-- Publication Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_publication_id ON public.publication (id);
 
-CREATE UNIQUE INDEX idx_33083_sqlite_autoindex_publication_comments_1 ON public.publication_comments USING btree (comments_id);
+-- Report Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_report_id ON public.report (id);
 
+-- Token Table: Primary Key and Token
+CREATE UNIQUE INDEX IF NOT EXISTS idx_token_id ON public.token (id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_token_token ON public.token (token);
 
---
--- Name: idx_33097_sqlite_autoindex_token_1; Type: INDEX; Schema: public; Owner: user
---
+-- User Type Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_type_id ON public.user_type (id);
 
-CREATE UNIQUE INDEX idx_33097_sqlite_autoindex_token_1 ON public.token USING btree (token);
+-- Comment Answers Table: Answers ID (assuming it should be unique)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_comment_answers_answers_id ON public.comment_answers (answers_id);
 
-
---
--- Name: idx_33121_sqlite_autoindex_publication_reports_1; Type: INDEX; Schema: public; Owner: user
---
-
-CREATE UNIQUE INDEX idx_33121_sqlite_autoindex_publication_reports_1 ON public.publication_reports USING btree (reports_id);
-
-
---
--- Name: idx_33124_sqlite_autoindex_report_pictures_1; Type: INDEX; Schema: public; Owner: user
---
-
-CREATE UNIQUE INDEX idx_33124_sqlite_autoindex_report_pictures_1 ON public.report_pictures USING btree (pictures_id);
-
-
---
--- Name: idx_33127_sqlite_autoindex_publication_plants_1; Type: INDEX; Schema: public; Owner: user
---
-
-CREATE UNIQUE INDEX idx_33127_sqlite_autoindex_publication_plants_1 ON public.publication_plants USING btree (publication_id);
-
+-- Publication Comments Table: Comments ID (assuming it should be unique)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_publication_comments_comments_id ON public.publication_comments (comments_id);
 
 --
 -- Name: publication_reports fk1wkjj9ptb3msqb0jnf49u08ui; Type: FK CONSTRAINT; Schema: public; Owner: user
