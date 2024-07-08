@@ -20,7 +20,7 @@ SET row_security = off;
 -- Name: arosaje; Type: DATABASE; Schema: -; Owner: user
 --
 
-CREATE DATABASE arosaje WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'en_US.utf8';
+CREATE DATABASE arosaje WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE_PROVIDER = libc LOCALE = 'fr_FR.utf8';
 
 
 ALTER DATABASE arosaje OWNER TO "user";
@@ -48,11 +48,11 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.address (
     id integer NOT NULL,
-    user_id integer,
-    city text,
-    other_info text,
-    postal_address text,
-    zip_code text
+    user_id integer NOT NULL,
+    city text NOT NULL,
+    zip_code text NOT NULL,
+    postal_address text NOT NULL,
+    other_info text
 );
 
 
@@ -84,11 +84,11 @@ ALTER SEQUENCE public.address_seq OWNED BY public.address.id;
 --
 
 CREATE TABLE public.comment (
-    commentator_id integer,
     id integer NOT NULL,
-    report_id integer,
-    publishing_date timestamp with time zone,
-    text text
+    commentator_id integer NOT NULL,
+    report_id integer NOT NULL,
+    publishing_date timestamp with time zone NOT NULL,
+    text text NOT NULL
 );
 
 
@@ -133,10 +133,10 @@ ALTER SEQUENCE public.comment_seq OWNED BY public.comment.id;
 
 CREATE TABLE public.message (
     id integer NOT NULL,
-    receiver_id integer,
-    sender_id integer,
-    publishing_date timestamp with time zone,
-    text text
+    receiver_id integer NOT NULL,
+    sender_id integer NOT NULL,
+    publishing_date timestamp with time zone NOT NULL,
+    text text NOT NULL
 );
 
 
@@ -196,11 +196,11 @@ ALTER TABLE public.picture OWNER TO "user";
 CREATE TABLE public.plant (
     id integer NOT NULL,
     picture_id integer,
-    plant_condition_id integer,
+    plant_condition_id integer NOT NULL,
     user_id integer,
-    name text,
+    name text NOT NULL,
     description text,
-    address_id integer
+    address_id integer NOT NULL
 );
 
 
@@ -212,7 +212,7 @@ ALTER TABLE public.plant OWNER TO "user";
 
 CREATE TABLE public.plant_condition (
     id integer NOT NULL,
-    name text
+    name text NOT NULL
 );
 
 
@@ -265,14 +265,14 @@ ALTER SEQUENCE public.plant_seq OWNED BY public.plant.id;
 --
 
 CREATE TABLE public.publication (
-    address_id integer,
-    garden_keeper_id integer,
     id integer NOT NULL,
-    publisher_id integer,
-    creation_date timestamp with time zone,
+    garden_keeper_id integer,
+    address_id integer NOT NULL,
+    publisher_id integer NOT NULL,
+    creation_date timestamp with time zone NOT NULL,
     description text,
-    ending_date timestamp with time zone,
-    starting_date timestamp with time zone
+    ending_date timestamp with time zone NOT NULL,
+    starting_date timestamp with time zone NOT NULL
 );
 
 
@@ -341,10 +341,10 @@ ALTER SEQUENCE public.publication_seq OWNED BY public.publication.id;
 
 CREATE TABLE public.report (
     id integer NOT NULL,
-    publication_id integer,
-    publishing_date date,
+    publication_id integer NOT NULL,
+    publishing_date date NOT NULL,
     text text,
-    title text
+    title text NOT NULL
 );
 
 
@@ -428,8 +428,8 @@ CREATE TABLE public."user" (
     id integer NOT NULL,
     first_name text,
     last_name text,
-    email text,
-    password text,
+    email text NOT NULL,
+    password text NOT NULL,
     user_type text
 );
 
@@ -462,8 +462,8 @@ ALTER SEQUENCE public.user_seq OWNED BY public."user".id;
 --
 
 CREATE TABLE public.user_type (
-    name text,
-    id integer NOT NULL
+    id integer NOT NULL,
+    name text NOT NULL
 );
 
 
@@ -565,9 +565,6 @@ ALTER TABLE ONLY public.user_type ALTER COLUMN id SET DEFAULT nextval('public.us
 --
 
 COPY public.address (id, user_id, city, other_info, postal_address, zip_code) FROM stdin;
-1	1	Rennes		65 rue d'Antrain	35000
-52	2	Quimper	digicode : 3945	7 av. Victor HUGO	29000
-102	102	Cesson-cévigné	3ème étage	3 rue des myosotis	35510
 \.
 
 
@@ -575,7 +572,7 @@ COPY public.address (id, user_id, city, other_info, postal_address, zip_code) FR
 -- Data for Name: comment; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.comment (commentator_id, id, report_id, publishing_date, text) FROM stdin;
+COPY public.comment (id, commentator_id, report_id, publishing_date, text) FROM stdin;
 \.
 
 
@@ -592,7 +589,6 @@ COPY public.comment_answers (answers_id, comment_id) FROM stdin;
 --
 
 COPY public.message (id, receiver_id, sender_id, publishing_date, text) FROM stdin;
-1	1	2	2024-02-28 10:43:13+00	Bonjour toto.
 \.
 
 
@@ -601,9 +597,6 @@ COPY public.message (id, receiver_id, sender_id, publishing_date, text) FROM std
 --
 
 COPY public.picture (id, creation_date) FROM stdin;
-1	2024-06-12
-202	2024-06-17
-353	2024-06-17
 \.
 
 
@@ -612,7 +605,6 @@ COPY public.picture (id, creation_date) FROM stdin;
 --
 
 COPY public.plant (id, picture_id, plant_condition_id, user_id, name, description, address_id) FROM stdin;
-1	353	1	102	Tulipe	string	102
 \.
 
 
@@ -624,6 +616,7 @@ COPY public.plant_condition (id, name) FROM stdin;
 1	Sain
 2	Malade
 3	Abimé
+4	Problème
 \.
 
 
@@ -632,9 +625,6 @@ COPY public.plant_condition (id, name) FROM stdin;
 --
 
 COPY public.publication (address_id, garden_keeper_id, id, publisher_id, creation_date, description, ending_date, starting_date) FROM stdin;
-102	\N	1	102	2024-06-19 13:28:12+00	Je recherche un personnes pour s'occuper de mes plantes	2024-06-20 00:00:00+00	2024-06-19 13:12:14+00
-102	\N	4	102	2024-06-19 13:42:44+00	Je recherche un personnes pour s'occuper de mes plantes SVP	2024-06-20 00:00:00+00	2024-06-19 13:12:14+00
-102	\N	52	102	2024-06-20 13:26:35+00	Je recherche un personnes pour s'occuper de mes plantes SVP	2024-06-13 00:00:00+00	2024-06-19 13:12:14+00
 \.
 
 
@@ -651,9 +641,6 @@ COPY public.publication_comments (comments_id, publication_id) FROM stdin;
 --
 
 COPY public.publication_plants (plants_id, publication_id) FROM stdin;
-1	1
-1	4
-1	52
 \.
 
 
@@ -686,27 +673,6 @@ COPY public.report_pictures (report_id, pictures_id) FROM stdin;
 --
 
 COPY public.token (expired, id, revoked, user_id, token, token_type) FROM stdin;
-t	1	t	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTExNzMsImV4cCI6MTcwOTE5NzU3M30.npwOy8ufgsva_tjJppXtfmIw3mVb3oB5B16B2vC81xI	BEARER
-t	2	t	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTEyMDMsImV4cCI6MTcwOTE5NzYwM30.-e-ICvYlIXv-YPq75ueONjt7X8UHV_PDZ6ev-d0W4gU	BEARER
-t	52	t	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTQwMDUsImV4cCI6MTcwOTIwMDQwNX0.l20tqMNBSSX3VdqRiAaZBROEkLG5ON9tKD3Xg5upf94	BEARER
-f	102	f	1	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b3RvQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTQyNzgsImV4cCI6MTcwOTIwMDY3OH0.TxXKXXG2-WBiRx-RHTZHLVXEqCVoMhxA1kvnPlJDnnk	BEARER
-t	152	t	2	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aXRpQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTY3MTUsImV4cCI6MTcwOTIwMzExNX0.ZgD7vvh-LtnG9DRV9FYhk075IlID1DN8ToNFjSNUZGA	BEARER
-f	153	f	2	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0aXRpQHRlc3QuZnIiLCJpYXQiOjE3MDkxMTY3MzgsImV4cCI6MTcwOTIwMzEzOH0.fWGGk80aEmbl1gbZbFuxBtAkXa7FvnqeJ9voCslyQ24	BEARER
-t	202	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzMzA4NiwiZXhwIjoxNzA5MzE5NDg2fQ._-6lXCajyUglL2MExK04OkDoI5HfT3yo1wBbidlUxPM	BEARER
-t	203	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzMzExMCwiZXhwIjoxNzA5MzE5NTEwfQ.Uh4BdqF92G6vNuy1F6pMifKNkxpV_2rWvse3OuuckRs	BEARER
-t	252	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzODMzMCwiZXhwIjoxNzA5MzI0NzMwfQ.AuE9Pw5cpHHoBcrk1GkMOH51n5l0cSq0IfKDUBdcnq0	BEARER
-t	302	t	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzODUxNywiZXhwIjoxNzA5MzI0OTE3fQ.5QgXeBXyspVCeWK2J60dIiBsjKRtaTCRv6RdL9N2hFY	BEARER
-f	352	f	52	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0b2xlc3RAdGVzdC5mciIsImlhdCI6MTcwOTIzODk3NCwiZXhwIjoxNzA5MzI1Mzc0fQ.P8WjWbYytr07VoMLe7scEYC1KFy_tkL8AqcrzgvfHwc	BEARER
-t	402	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4NjE3NTg4LCJleHAiOjE3MTg3MDM5ODh9.LvVwX-8oWoXVp-8pp7eb3W7o3xtrVhBGDVWe2IN-UNY	BEARER
-t	452	t	152	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MkBnbWFpbC5mciIsImlhdCI6MTcxODYyMDIyNiwiZXhwIjoxNzE4NzA2NjI2fQ.5SnzBI69aW0NFSpOUpvl7tfpIAVQIoFPUxeGF4fnhqg	BEARER
-f	502	f	152	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0MkBnbWFpbC5mciIsImlhdCI6MTcxODYyMDQ4NCwiZXhwIjoxNzE4NzA2ODg0fQ.U1VDp8t4xMexw6JihKorsx8xLNsIlHQytdqqREG8S34	BEARER
-t	552	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODAyMzYxLCJleHAiOjE3MTg4ODg3NjF9.97kXyG1_E2KeVkpwxEnwmEkgWhEr5d74l_UwEdhk-K0	BEARER
-t	602	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODA0MzY0LCJleHAiOjE3MTg4OTA3NjR9.juvzlXH39R9WnSkgda5YZyiiAZ51h5di4XDOxcXZtXs	BEARER
-t	652	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODA4NTgyLCJleHAiOjE3MTg4OTQ5ODJ9.tc3Vdats4j15F_TipU7Hp9TH8JOySZFl8ckq8oOuwD8	BEARER
-t	702	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE4ODg5OTY3LCJleHAiOjE3MTg5NzYzNjd9.tAYDJrgG-2P7apKKZXQknTJlyg5OlAh1Zisl6npAEMY	BEARER
-t	3	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTQ2NDc1LCJleHAiOjE3MTkyMzI4NzV9.nErXXs6Vod0gHJR5ihW1eugyTJrLKahG_hw8UC94rI0	BEARER
-t	53	t	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTUzMzUxLCJleHAiOjE3MTkyMzk3NTF9.u3s5_2AnX9IT2BKKHcBI1XoU_F_qcUNd72s6cl2VVj0	BEARER
-f	54	f	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTUzMzU0LCJleHAiOjE3MTkyMzk3NTR9.r8QQIx7O59GdKPOaS6QPmJlrqmKp2iR7DIM0DVwaWKA	BEARER
 \.
 
 
@@ -715,11 +681,6 @@ f	54	f	102	eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QGdtYWlsLmZyIiwiaWF0IjoxNzE5MTUz
 --
 
 COPY public."user" (id, first_name, last_name, email, password, user_type) FROM stdin;
-1	toto	Lys	toto@test.fr	$2a$10$gYep9ACBOuks1VyQnx3f0upNG1IIJwjUeLNLM/8M48Fw0an53j2Ga	USER
-2	titi	Las	titi@test.fr	$2a$10$BzCJINiDInHzJc3ySQWyA.IUsfH83.cETaXOd1QtIaq9.arOM8WbS	USER
-52	tobias	Lest	tolest@test.fr	$2a$10$DB/irADykJH68ojCnmAY5uafZZjmrOF9DqoML1GQQiJpUetgZhTPm	USER
-102	Test	Test	test@gmail.fr	$2a$10$sTlAVTaAMoIZVD.Uu55FnejLp50aD4n0TGOoiIcVeMx9sGyn30ZFa	USER
-152	Test	Test	test2@gmail.fr	$2a$10$xl68zpamGH5fX6oIBEA.redWpHWvfINPpz3DX9QZoN.NpuvZz47cK	USER
 \.
 
 
@@ -727,7 +688,8 @@ COPY public."user" (id, first_name, last_name, email, password, user_type) FROM 
 -- Data for Name: user_type; Type: TABLE DATA; Schema: public; Owner: user
 --
 
-COPY public.user_type (name, id) FROM stdin;
+COPY public.user_type (id, name) FROM stdin;
+1	USER
 \.
 
 
@@ -809,11 +771,11 @@ SELECT pg_catalog.setval('public.user_type_seq', 1, false);
 
 
 --
--- Name: user id_user; Type: CONSTRAINT; Schema: public; Owner: user
+-- Name: user user_id; Type: CONSTRAINT; Schema: public; Owner: user
 --
 
 ALTER TABLE ONLY public."user"
-    ADD CONSTRAINT id_user PRIMARY KEY (id);
+    ADD CONSTRAINT user_id PRIMARY KEY (id);
 
 
 --
@@ -895,55 +857,46 @@ ALTER TABLE ONLY public.token
 ALTER TABLE ONLY public.user_type
     ADD CONSTRAINT user_type_pk PRIMARY KEY (id);
 
+-- User Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_id ON public."user" (id);
 
---
--- Name: idx_32982_sqlite_autoindex_comment_answers_1; Type: INDEX; Schema: public; Owner: user
---
+-- Address Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_address_id ON public.address (id);
 
-CREATE UNIQUE INDEX idx_32982_sqlite_autoindex_comment_answers_1 ON public.comment_answers USING btree (answers_id);
+-- Comment Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_comment_id ON public.comment (id);
 
+-- Message Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_message_id ON public.message (id);
 
---
--- Name: idx_33067_sqlite_autoindex_plant_1; Type: INDEX; Schema: public; Owner: user
---
+-- Plant Table: Primary Key and Picture ID
+CREATE UNIQUE INDEX IF NOT EXISTS idx_plant_id ON public.plant (id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_plant_picture_id ON public.plant (picture_id);
 
-CREATE UNIQUE INDEX idx_33067_sqlite_autoindex_plant_1 ON public.plant USING btree (picture_id);
+-- Plant Condition Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_plant_condition_id ON public.plant_condition (id);
 
+-- Picture Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_picture_id ON public.picture (id);
 
---
--- Name: idx_33083_sqlite_autoindex_publication_comments_1; Type: INDEX; Schema: public; Owner: user
---
+-- Publication Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_publication_id ON public.publication (id);
 
-CREATE UNIQUE INDEX idx_33083_sqlite_autoindex_publication_comments_1 ON public.publication_comments USING btree (comments_id);
+-- Report Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_report_id ON public.report (id);
 
+-- Token Table: Primary Key and Token
+CREATE UNIQUE INDEX IF NOT EXISTS idx_token_id ON public.token (id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_token_token ON public.token (token);
 
---
--- Name: idx_33097_sqlite_autoindex_token_1; Type: INDEX; Schema: public; Owner: user
---
+-- User Type Table: Primary Key
+CREATE UNIQUE INDEX IF NOT EXISTS idx_user_type_id ON public.user_type (id);
 
-CREATE UNIQUE INDEX idx_33097_sqlite_autoindex_token_1 ON public.token USING btree (token);
+-- Comment Answers Table: Answers ID (assuming it should be unique)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_comment_answers_answers_id ON public.comment_answers (answers_id);
 
-
---
--- Name: idx_33121_sqlite_autoindex_publication_reports_1; Type: INDEX; Schema: public; Owner: user
---
-
-CREATE UNIQUE INDEX idx_33121_sqlite_autoindex_publication_reports_1 ON public.publication_reports USING btree (reports_id);
-
-
---
--- Name: idx_33124_sqlite_autoindex_report_pictures_1; Type: INDEX; Schema: public; Owner: user
---
-
-CREATE UNIQUE INDEX idx_33124_sqlite_autoindex_report_pictures_1 ON public.report_pictures USING btree (pictures_id);
-
-
---
--- Name: idx_33127_sqlite_autoindex_publication_plants_1; Type: INDEX; Schema: public; Owner: user
---
-
-CREATE UNIQUE INDEX idx_33127_sqlite_autoindex_publication_plants_1 ON public.publication_plants USING btree (publication_id);
-
+-- Publication Comments Table: Comments ID (assuming it should be unique)
+CREATE UNIQUE INDEX IF NOT EXISTS idx_publication_comments_comments_id ON public.publication_comments (comments_id);
 
 --
 -- Name: publication_reports fk1wkjj9ptb3msqb0jnf49u08ui; Type: FK CONSTRAINT; Schema: public; Owner: user
@@ -1045,66 +998,123 @@ ALTER TABLE ONLY public.comment
 -- Name: token fkl10xjn274m2rkxo54knt2xqvy; Type: FK CONSTRAINT; Schema: public; Owner: user
 --
 
+ALTER TABLE public.token DROP CONSTRAINT IF EXISTS FKl10xjn274m2rkxo54knt2xqvy;
+
 ALTER TABLE ONLY public.token
-    ADD CONSTRAINT fkl10xjn274m2rkxo54knt2xqvy FOREIGN KEY (user_id) REFERENCES public."user"(id);
+    ADD CONSTRAINT fkl10xjn274m2rkxo54knt2xqvy FOREIGN KEY (user_id) REFERENCES public."user"(id) ON DELETE CASCADE;
 
+ALTER TABLE public.report_pictures ADD CONSTRAINT pk_report_pictures PRIMARY KEY (report_id, pictures_id);
 
---
--- Name: report fkmlmq1w66s5uinwjggf89o9ps2; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.publication_reports ADD CONSTRAINT pk_publication_reports PRIMARY KEY (publication_id, reports_id);
 
-ALTER TABLE ONLY public.report
-    ADD CONSTRAINT fkmlmq1w66s5uinwjggf89o9ps2 FOREIGN KEY (publication_id) REFERENCES public.publication(id);
+ALTER TABLE public.publication_plants ADD CONSTRAINT pk_publication_plants PRIMARY KEY (plants_id, publication_id);
 
+ALTER TABLE public.publication_comments ADD CONSTRAINT pk_publication_comments PRIMARY KEY (comments_id, publication_id);
 
---
--- Name: comment fkn2m8whrfw1drq2c67d247br7c; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.comment_answers ADD CONSTRAINT pk_comment_answers PRIMARY KEY (answers_id, comment_id);
 
-ALTER TABLE ONLY public.comment
-    ADD CONSTRAINT fkn2m8whrfw1drq2c67d247br7c FOREIGN KEY (report_id) REFERENCES public.report(id);
+-- Address Table Foreign Key
+ALTER TABLE public.address
+    ADD CONSTRAINT fk_address_user_id FOREIGN KEY (user_id)
+        REFERENCES public."user" (id);
 
+-- Comment Table Foreign Keys
+ALTER TABLE public.comment
+    ADD CONSTRAINT fk_comment_commentator_id FOREIGN KEY (commentator_id)
+        REFERENCES public."user" (id);
 
---
--- Name: plant fknj7pdlp85ekaid5kgou1wl85v; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.comment
+    ADD CONSTRAINT fk_comment_report_id FOREIGN KEY (report_id)
+        REFERENCES public.report (id);
 
-ALTER TABLE ONLY public.plant
-    ADD CONSTRAINT fknj7pdlp85ekaid5kgou1wl85v FOREIGN KEY (user_id) REFERENCES public."user"(id);
+-- Message Table Foreign Keys
+ALTER TABLE public.message
+    ADD CONSTRAINT fk_message_receiver_id FOREIGN KEY (receiver_id)
+        REFERENCES public."user" (id);
 
+ALTER TABLE public.message
+    ADD CONSTRAINT fk_message_sender_id FOREIGN KEY (sender_id)
+        REFERENCES public."user" (id);
 
---
--- Name: publication_plants fkq1uod3iv85gr4brb8qsimqxup; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+-- Plant Table Foreign Keys
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_picture_id FOREIGN KEY (picture_id)
+        REFERENCES public.picture (id);
 
-ALTER TABLE ONLY public.publication_plants
-    ADD CONSTRAINT fkq1uod3iv85gr4brb8qsimqxup FOREIGN KEY (publication_id) REFERENCES public.publication(id);
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_plant_condition_id FOREIGN KEY (plant_condition_id)
+        REFERENCES public.plant_condition (id);
 
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_user_id FOREIGN KEY (user_id)
+        REFERENCES public."user" (id);
 
---
--- Name: address fksa4c9i7qwgoffq6mmhdnnjhoy; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.plant
+    ADD CONSTRAINT fk_plant_address_id FOREIGN KEY (address_id)
+        REFERENCES public.address (id);
 
-ALTER TABLE ONLY public.address
-    ADD CONSTRAINT fksa4c9i7qwgoffq6mmhdnnjhoy FOREIGN KEY (user_id) REFERENCES public."user"(id);
+-- Publication Table Foreign Keys
+ALTER TABLE public.publication
+    ADD CONSTRAINT fk_publication_garden_keeper_id FOREIGN KEY (garden_keeper_id)
+        REFERENCES public."user" (id);
 
+ALTER TABLE public.publication
+    ADD CONSTRAINT fk_publication_address_id FOREIGN KEY (address_id)
+        REFERENCES public.address (id);
 
---
--- Name: plant fksdl1u305i0vd1n6affgbpp650; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.publication
+    ADD CONSTRAINT fk_publication_publisher_id FOREIGN KEY (publisher_id)
+        REFERENCES public."user" (id);
 
-ALTER TABLE ONLY public.plant
-    ADD CONSTRAINT fksdl1u305i0vd1n6affgbpp650 FOREIGN KEY (address_id) REFERENCES public.address(id);
+-- Token Table Foreign Key
+ALTER TABLE public.token
+    ADD CONSTRAINT fk_token_user_id FOREIGN KEY (user_id)
+        REFERENCES public."user" (id) ON DELETE CASCADE;
 
+-- Publication Reports Foreign Key
+ALTER TABLE public.publication_reports
+    ADD CONSTRAINT fk_publication_reports_publication_id FOREIGN KEY (publication_id)
+        REFERENCES public.publication(id);
 
---
--- Name: publication fksmwvpq90560h49kv3i068s5hu; Type: FK CONSTRAINT; Schema: public; Owner: user
---
+ALTER TABLE public.publication_reports
+    ADD CONSTRAINT fk_publication_reports_reports_id FOREIGN KEY (reports_id)
+        REFERENCES public.report(id);
 
-ALTER TABLE ONLY public.publication
-    ADD CONSTRAINT fksmwvpq90560h49kv3i068s5hu FOREIGN KEY (address_id) REFERENCES public.address(id);
+-- Report Pictures Foreign Key
+ALTER TABLE public.report_pictures
+    ADD CONSTRAINT fk_report_pictures_report_id FOREIGN KEY (report_id)
+        REFERENCES public.report(id);
 
+ALTER TABLE public.report_pictures
+    ADD CONSTRAINT fk_report_pictures_pictures_id FOREIGN KEY (pictures_id)
+        REFERENCES public.picture(id);
 
+-- Publication Plants Foreign Key
+ALTER TABLE public.publication_plants
+    ADD CONSTRAINT fk_publication_plants_plants_id FOREIGN KEY (plants_id)
+        REFERENCES public.plant(id);
+
+ALTER TABLE public.publication_plants
+    ADD CONSTRAINT fk_publication_plants_publication_id FOREIGN KEY (publication_id)
+        REFERENCES public.publication(id);
+
+-- Publication Comments Foreign Key
+ALTER TABLE public.publication_comments
+    ADD CONSTRAINT fk_publication_comments_comments_id FOREIGN KEY (comments_id)
+        REFERENCES public.comment(id);
+
+ALTER TABLE public.publication_comments
+    ADD CONSTRAINT fk_publication_comments_publication_id FOREIGN KEY (publication_id)
+        REFERENCES public.publication(id);
+
+-- Comment Answers Foreign Key
+ALTER TABLE public.comment_answers
+    ADD CONSTRAINT fk_comment_answers_answers_id FOREIGN KEY (answers_id)
+        REFERENCES public.comment(id);
+
+ALTER TABLE public.comment_answers
+    ADD CONSTRAINT fk_comment_answers_comment_id FOREIGN KEY (comment_id)
+        REFERENCES public.comment(id);
 --
 -- PostgreSQL database dump complete
 --
