@@ -96,8 +96,8 @@ public class PublicationController {
 					.build();
 		} else {
 			publication.setDescription(publicationUpdateDTO.getDescription());
-			if (publicationUpdateDTO.getGardenKeeperId() != 0) {
-				publication.setGardenKeeper(userService.getUserAccountById(publicationUpdateDTO.getGardenKeeperId()).get());
+			if (publicationUpdateDTO.getGardenKeeper() != null) {
+				publication.setGardenKeeper(userService.getUserAccountById(publicationUpdateDTO.getGardenKeeper().getId()).get());
 			}
 			publication = this.publicationService.savePublication(publication);
 			responseEntity = ResponseEntity
