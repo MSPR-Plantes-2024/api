@@ -183,7 +183,7 @@ ALTER SEQUENCE public.picture_seq OWNER TO "user";
 
 CREATE TABLE public.picture (
     id integer DEFAULT nextval('public.picture_seq'::regclass) NOT NULL,
-    creation_date date
+    creation_date timestamp with time zone NOT NULL
 );
 
 
@@ -342,7 +342,7 @@ ALTER SEQUENCE public.publication_seq OWNED BY public.publication.id;
 CREATE TABLE public.report (
     id integer NOT NULL,
     publication_id integer NOT NULL,
-    publishing_date date NOT NULL,
+    publishing_date timestamp with time zone NOT NULL,
     text text,
     title text NOT NULL
 );
