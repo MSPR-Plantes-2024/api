@@ -41,8 +41,12 @@ public class PlantCreateMapperImpl implements PlantCreateMapper {
             user = userService.getUserAccountById(plantCreateDTO.getUser().getId()).get();
         } else { user = null;}
 
-		if (plantCreateDTO.getPicture().getId() != 0 && pictureService.getPictureById(plantCreateDTO.getPicture().getId()).isPresent()) {
-			picture = pictureService.getPictureById(plantCreateDTO.getPicture().getId()).get();
+		if (plantCreateDTO.getPicture() != null ) {
+            if( pictureService.getPictureById(plantCreateDTO.getPicture().getId()).isPresent()) {
+                picture = pictureService.getPictureById(plantCreateDTO.getPicture().getId()).get();
+            } else {
+                picture = null;
+            }
 		} else { picture = null;}
 
         plant.setName(plantCreateDTO.getName());

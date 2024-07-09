@@ -105,7 +105,6 @@ public class PlantController {
 
 		Plant plant = plantService.savePlant(
 			this.plantCreateMapper.fromDto(plantCreateDTO));
-
 		if (plant == null) {
 			responseEntity = ResponseEntity
 				.status(HttpStatus.INTERNAL_SERVER_ERROR)

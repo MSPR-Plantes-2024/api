@@ -17,8 +17,12 @@ public class PictureMapperImpl implements PictureMapper {
 	@Override
 	public Picture fromDto(PictureDTO pictureDTO) {
 		Picture picture = new Picture();
+		if (pictureDTO != null) {
 		if(pictureDTO.getId() != 0){picture.setId(pictureDTO.getId());}
 		if(pictureDTO.getCreationDate() != null){picture.setCreationDate(pictureDTO.getCreationDate());}
+		} else {
+			picture = null;
+		}
 		return picture;
 	}
 
@@ -34,11 +38,15 @@ public class PictureMapperImpl implements PictureMapper {
 	@Override
 	public PictureDTO toDto(Picture picture) {
 		PictureDTO pictureDTO = new PictureDTO();
-		if(picture.getId() != 0){
+		if(picture != null){
+			if(picture.getId() != 0){
 			pictureDTO.setId(picture.getId());
 			pictureDTO.setData(this.pictureStreamService.downloadPicture(picture.getId()));
+			if(picture.getCreationDate() != null){pictureDTO.setCreationDate(picture.getCreationDate());}}
+		} else {
+			pictureDTO = null;
 		}
-		if(picture.getCreationDate() != null){pictureDTO.setCreationDate(picture.getCreationDate());}
+
 		return pictureDTO;
 	}
 
