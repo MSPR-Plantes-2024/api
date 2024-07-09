@@ -10,7 +10,10 @@ import com.mspprarosaje.arosaje.api.mappers.plant.PlantLessUserMapper;
 import com.mspprarosaje.arosaje.api.mappers.plant.PlantMapper;
 import com.mspprarosaje.arosaje.api.mappers.plant.PlantMinimalMapper;
 import com.mspprarosaje.arosaje.model.Plant;
+import com.mspprarosaje.arosaje.services.PictureService;
+import com.mspprarosaje.arosaje.services.PictureStreamService;
 import com.mspprarosaje.arosaje.services.PlantService;
+import com.mspprarosaje.arosaje.services.impl.PictureServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,8 @@ public class PlantController {
 	private final PlantMinimalMapper plantMinimalMapper;
 	private final PlantLessUserMapper plantLessUserMapper;
 	private final PlantCreateMapper plantCreateMapper;
+
+	private final PictureController pictureController;
 
 	/**
 	 * Recovers all plants created
@@ -158,13 +163,16 @@ public class PlantController {
 		@PathVariable() Integer id
 	) {
 		ResponseEntity<Void> responseEntity;
-
-		if (this.plantService.getPlantById(id).isEmpty()) {
+		Plant plant = this.plantService.getPlantById(id).get();
+		if (plant == null) {
 			responseEntity = ResponseEntity
 				.status(HttpStatus.NOT_FOUND)
 				.build();
 		} else {
 			this.plantService.deleteById(id);
+			if(plant.getPicture() != null) {
+				this.pictureController.deletePicture(plant.getPicture().getId());
+			}
 		}
 
 		if (this.plantService.getPlantById(id).isPresent()) {

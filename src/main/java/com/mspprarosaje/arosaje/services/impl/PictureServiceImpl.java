@@ -36,5 +36,8 @@ public class PictureServiceImpl implements PictureService {
 	}
 
 	@Override
-	public void deletePicture(int id) {this.pictureRepository.deleteById(id);}
+	public void deletePicture(int id) {
+		this.pictureRepository.deleteById(id);
+
+	}
 }
