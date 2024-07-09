@@ -120,17 +120,17 @@ public class PlantController {
 	/***
 	 *
 	 * @param id  Plant id to be updated
-	 * @param plantMinimalDTO PlantDTO Object : model for updating
+	 * @param plantDTO PlantDTO Object : model for updating
 	 * @return The updated plant as plantDTO object
 	 */
 	@PutMapping("/{id}")
 	public ResponseEntity<PlantDTO> updatePlant(
 		@PathVariable() Integer id,
-		@RequestBody PlantMinimalDTO plantMinimalDTO
+		@RequestBody PlantDTO plantDTO
 	) {
 		ResponseEntity<PlantDTO> responseEntity;
 
-		if (!id.equals(plantMinimalDTO.getId())) {
+		if (!id.equals(plantDTO.getId())) {
 			responseEntity = ResponseEntity
 				.status(HttpStatus.BAD_REQUEST)
 				.build();
@@ -140,7 +140,7 @@ public class PlantController {
 				.build();
 		} else {
 			Plant updatedPlant = plantService.savePlant(
-				this.plantMinimalMapper.fromDto(plantMinimalDTO));
+				this.plantMapper.fromDto(plantDTO));
 			responseEntity = ResponseEntity
 				.ok(this.plantMapper.toDto(updatedPlant));
 		}
