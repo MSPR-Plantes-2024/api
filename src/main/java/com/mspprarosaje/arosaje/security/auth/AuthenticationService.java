@@ -34,28 +34,47 @@ public class AuthenticationService {
     private static  final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
 
     public AuthenticationResponse register(RegisterRequest request) {
-        var user = User.builder()
-                .firstName(request.getFirstName())
-                .lastName(request.getLastName())
-                .email(request.getEmail())
-                .password(passwordEncoder.encode(request.getPassword()))
-                .userType(request.getUserType())
-                .build();
-        var savedUser = repository.save(user);
-        var jwtToken = jwtService.generateToken(user);
-        var refreshToken = jwtService.generateRefreshToken(user);
-        saveUserToken(savedUser, jwtToken);
-return AuthenticationResponse.builder()
-                .user(UserMinimalDTO.builder()
-                        .id(user.getId())
-                        .firstName(user.getFirstName())
-                        .lastName(user.getLastName())
-                        .userType(UserType.USER)
-                        .build()
-                )
-                .accessToken(jwtToken)
-                .refreshToken(refreshToken)
-                .build();    }
+        User user;
+        AuthenticationResponse authenticationResponse = null;
+
+        try {
+            if (request == null) {
+                throw new NullPointerException();
+            }
+            if (this.repository.findByEmail(request.getEmail()).isPresent()) {
+                throw new IllegalArgumentException();
+            }
+            user = User.builder()
+                    .firstName(request.getFirstName())
+                    .lastName(request.getLastName())
+                    .email(request.getEmail())
+                    .password(passwordEncoder.encode(request.getPassword()))
+                    .userType(request.getUserType())
+                    .build();
+            User savedUser = repository.save(user);
+            String jwtToken = jwtService.generateToken(user);
+            String refreshToken = jwtService.generateRefreshToken(user);
+
+            saveUserToken(savedUser, jwtToken);
+
+            authenticationResponse = AuthenticationResponse.builder()
+                    .user(UserMinimalDTO.builder()
+                            .id(user.getId())
+                            .firstName(user.getFirstName())
+                            .lastName(user.getLastName())
+                            .userType(UserType.USER)
+                            .build()
+                    )
+                    .accessToken(jwtToken)
+                    .refreshToken(refreshToken)
+                    .build();
+
+        } catch (Exception ex) {
+            authenticationResponse = null;
+        }
+        return authenticationResponse;
+    }
+
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
         authenticationManager.authenticate(

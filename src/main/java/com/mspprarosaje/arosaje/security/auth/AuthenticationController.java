@@ -22,7 +22,15 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ){
-        return ResponseEntity.ok(service.register(request));
+        ResponseEntity<AuthenticationResponse> response;
+        try{
+            AuthenticationResponse authenticationResponse = service.register(request);
+            if(authenticationResponse == null){throw new NullPointerException();}
+            response = ResponseEntity.ok(authenticationResponse);
+        } catch(Exception ex){
+            response = ResponseEntity.badRequest().build();
+        }
+        return response;
     }
 
     @PostMapping("/authenticate")
